@@ -3,4 +3,5 @@
     <string name="home_tab">首页</string>
     <string name="message_tab">消息</string>
     <string name="mine_tab">我的</string>
+    <string name="amount_bg">金额展示视图背景图片</string>
 </resources>

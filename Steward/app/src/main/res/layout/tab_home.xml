@@ -1,7 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccent">
+    android:background="@color/colorSplitline">
 
-</LinearLayout>
+    <ImageView
+        android:id="@+id/amount_background_image"
+        android:layout_width="match_parent"
+        android:layout_height="230dp"
+        android:src="@mipmap/amount_bg"
+        android:contentDescription="@string/amount_bg"/>
+
+    <GridView
+        android:id="@+id/action_interface_gridview"
+        android:layout_below="@+id/amount_background_image"
+        android:layout_width="match_parent"
+        android:layout_height="196dp"
+        android:columnWidth="125dp"
+        android:numColumns="3"
+        android:stretchMode="spacingWidthUniform"
+        android:background="@color/colorWhite">
+    </GridView>
+    
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:src="@mipmap/guidelines"/>
+
+</RelativeLayout>

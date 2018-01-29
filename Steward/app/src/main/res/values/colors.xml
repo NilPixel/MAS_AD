@@ -6,4 +6,5 @@
     <color name="colorNavigation">#191E27</color> <!--导航栏颜色-->
     <color name="colorAppTheme">#07CEE9</color> <!--app的主题色-->
     <color name="colorSplitline">#EAEAEA</color><!--分割线颜色-->
+    <color name="colorWhite">#FFFFFF</color>
 </resources>
