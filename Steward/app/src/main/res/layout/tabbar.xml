@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="49dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorSplitline"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="48dp">
+
+        //首页
+        <LinearLayout
+            android:id="@+id/tabbar_home"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/tabbar_home_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_tabbar_home_selected"
+                android:background="#FFFFFF"
+                android:clickable="false"/>
+
+            <TextView
+                android:id="@+id/tabbar_home_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/home_tab"
+                android:textSize="12sp"
+                android:textColor="#07CEDF"/>
+
+        </LinearLayout>
+
+        //消息
+        <LinearLayout
+            android:id="@+id/tabbar_news"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/tabbar_news_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_tabbar_news_unselected"
+                android:background="#FFFFFF"
+                android:clickable="false"/>
+
+            <TextView
+                android:id="@+id/tabbar_news_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/message_tab"
+                android:textSize="12sp"
+                android:textColor="#AAADB7"/>
+
+        </LinearLayout>
+
+        //我的
+        <LinearLayout
+            android:id="@+id/tabbar_mine"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/tabbar_mine_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_tabbar_mine_unselected"
+                android:background="#FFFFFF"
+                android:clickable="false"/>
+
+            <TextView
+                android:id="@+id/tabbar_mine_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/mine_tab"
+                android:textSize="12sp"
+                android:textColor="#AAADB7"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
