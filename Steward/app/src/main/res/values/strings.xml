@@ -4,4 +4,10 @@
     <string name="message_tab">消息</string>
     <string name="mine_tab">我的</string>
     <string name="amount_bg">金额展示视图背景图片</string>
+    <string name="apply_query">申请件查询</string>
+    <string name="to_lend_query">待放款件查询</string>
+    <string name="lended_query">放款件查询</string>
+    <string name="overdue_query">逾期件查询</string>
+    <string name="coupon_query">优惠券查询</string>
+    <string name="customer_query">客户画像</string>
 </resources>

@@ -8,24 +8,32 @@
     <ImageView
         android:id="@+id/amount_background_image"
         android:layout_width="match_parent"
-        android:layout_height="230dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
         android:src="@mipmap/amount_bg"
-        android:contentDescription="@string/amount_bg"/>
+        android:contentDescription="@string/amount_bg"
+        android:scaleType="fitXY"/>
 
     <GridView
-        android:id="@+id/action_interface_gridview"
-        android:layout_below="@+id/amount_background_image"
+        android:id="@+id/order_interface_gridview"
         android:layout_width="match_parent"
         android:layout_height="196dp"
+        android:layout_marginBottom="15dp"
+        android:layout_below="@+id/amount_background_image"
         android:columnWidth="125dp"
         android:numColumns="3"
         android:stretchMode="spacingWidthUniform"
-        android:background="@color/colorWhite">
+        android:background="@color/clearColor"
+        android:horizontalSpacing="1dp"
+        android:verticalSpacing="1dp">
     </GridView>
     
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="75dp"
-        android:src="@mipmap/guidelines"/>
+        android:layout_height="105dp"
+        android:layout_marginBottom="15dp"
+        android:layout_below="@+id/order_interface_gridview"
+        android:src="@mipmap/guidelines"
+        android:scaleType="fitXY" />
 
 </RelativeLayout>

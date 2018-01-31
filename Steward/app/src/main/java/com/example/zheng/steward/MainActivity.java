@@ -12,15 +12,18 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    
+
     private static final String TAG = "MainActivity";
 
     /**
@@ -32,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      * viewPager适配器
      */
     private PagerAdapter mAdapter;
-    
+
     /**
      * 存放三个tab view的数组
      */
@@ -53,54 +56,69 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ImageButton mMineImageBtn;
 
     /**
-     *底部三个button的text
+     * 底部三个button的text
      */
     private TextView mHomeText;
     private TextView mNewsText;
     private TextView mMineText;
-    
-    
+
+    /**
+     * viewPager中的三个子页面
+     */
+    private View tabHome;
+    private View tabNews;
+    private View tabMine;
+
+    /**
+     * 订单入口gridView
+     */
+    private GridView mGridView;
+    private String[] from = {"image", "title"};
+    private int[] to = {R.id.order_interface_image, R.id.order_interface_title};
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        
+
         initViews();
         initEvents();
+        initOrderInterfaceGridView();
     }
 
     /**
      * 初始化view
      */
     private void initViews() {
-        mViewPager = (ViewPager)findViewById(R.id.tab_viewpager);
+        mViewPager = (ViewPager) findViewById(R.id.tab_viewpager);
 
         //tabs
-        mTabbarHome = (LinearLayout)findViewById(R.id.tabbar_home);
-        mTabbarNews = (LinearLayout)findViewById(R.id.tabbar_news);
-        mTabbarMine = (LinearLayout)findViewById(R.id.tabbar_mine);
+        mTabbarHome = (LinearLayout) findViewById(R.id.tabbar_home);
+        mTabbarNews = (LinearLayout) findViewById(R.id.tabbar_news);
+        mTabbarMine = (LinearLayout) findViewById(R.id.tabbar_mine);
 
         //imageButton
-        mHomeImageBtn = (ImageButton)findViewById(R.id.tabbar_home_btn);
-        mNewsImageBtn = (ImageButton)findViewById(R.id.tabbar_news_btn);
-        mMineImageBtn = (ImageButton)findViewById(R.id.tabbar_mine_btn);
+        mHomeImageBtn = (ImageButton) findViewById(R.id.tabbar_home_btn);
+        mNewsImageBtn = (ImageButton) findViewById(R.id.tabbar_news_btn);
+        mMineImageBtn = (ImageButton) findViewById(R.id.tabbar_mine_btn);
 
         //textView
-        mHomeText = (TextView)findViewById(R.id.tabbar_home_text);
-        mNewsText = (TextView)findViewById(R.id.tabbar_news_text);
-        mMineText= (TextView)findViewById(R.id.tabbar_mine_text);
+        mHomeText = (TextView) findViewById(R.id.tabbar_home_text);
+        mNewsText = (TextView) findViewById(R.id.tabbar_news_text);
+        mMineText = (TextView) findViewById(R.id.tabbar_mine_text);
 
         LayoutInflater mInflater = LayoutInflater.from(this);
 
         //将layout转换成对应的view
-        View tabHome = mInflater.inflate(R.layout.tab_home,null);
-        View tabNews = mInflater.inflate(R.layout.tab_news,null);
-        View tabMine = mInflater.inflate(R.layout.tab_mine,null);
+        tabHome = mInflater.inflate(R.layout.tab_home, null);
+        tabNews = mInflater.inflate(R.layout.tab_news, null);
+        tabMine = mInflater.inflate(R.layout.tab_mine, null);
 
         mViews.add(tabHome);
         mViews.add(tabNews);
         mViews.add(tabMine);
-        
+
         mAdapter = new PagerAdapter() {
 
             /**
@@ -137,7 +155,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 return view == object;
             }
         };
-        
+
         mViewPager.setAdapter(mAdapter);
     }
 
@@ -148,11 +166,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mTabbarHome.setOnClickListener(this);
         mTabbarNews.setOnClickListener(this);
         mTabbarMine.setOnClickListener(this);
-        
+
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                
+
             }
 
             @Override
@@ -174,7 +192,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         mMineImageBtn.setImageResource(R.mipmap.ic_tabbar_mine_selected);
                         mMineText.setTextColor(Color.parseColor("#07CDEF"));
                         break;
-                    default:break;
+                    default:
+                        break;
                 }
 
             }
@@ -184,7 +203,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             }
         });
-        
+
     }
 
     @Override
@@ -200,7 +219,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.tabbar_mine:
                 mViewPager.setCurrentItem(2, false);
                 break;
-            default:break;
+            default:
+                break;
         }
     }
 
@@ -221,9 +241,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mNewsText.setTextColor(Color.parseColor("#AAADB7"));
         mMineText.setTextColor(Color.parseColor("#AAADB7"));
     }
-    
+
     /**
      * 添加右侧扫描二维码菜单按钮
+     *
      * @param menu
      * @return
      */
@@ -236,6 +257,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     /**
      * 菜单点击事件
+     *
      * @param item
      * @return
      */
@@ -249,4 +271,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 return super.onOptionsItemSelected(item);
         }
     }
+
+    /**
+     * 初始化订单入口表格图
+     */
+    private void initOrderInterfaceGridView() {
+        mGridView = tabMine.findViewById(R.id.order_interface_gridview);
+        SimpleAdapter adapter = new SimpleAdapter(this, getList(), R.layout.interface_gridview_item, from, to);
+        mGridView.setAdapter(adapter);
+    }
+
+    private List<Map<String, Object>> getList() {
+        List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+        Map<String, Object> map = null;
+
+        String[] titles = new String[] {"申请件查询", "待放款件查询", "放款件查询", "逾期件查询", "优惠券查询", "客户画像"};
+        Integer[] images = new Integer[] {R.mipmap.ic_apply_query, R.mipmap.ic_for_lending, R.mipmap.ic_lended, R.mipmap.ic_overdue, R.mipmap.ic_coupon, R.mipmap.ic_customer};
+
+        for (int i = 0; i < images.length; i++) {
+            map.put("title", titles[i]);
+            map.put("image", images[i]);
+            list.add(map);
+        }
+        return list;
+    }
+
 }
