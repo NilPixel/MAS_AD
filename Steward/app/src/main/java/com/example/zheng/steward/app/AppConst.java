@@ -1,5 +1,8 @@
 package com.example.zheng.steward.app;
 
+import com.example.zheng.steward.utils.FileUtils;
+import com.example.zheng.steward.utils.LogUtils;
+
 /**
  * Created by zheng on 2018/2/1.
  * 全局常量类
