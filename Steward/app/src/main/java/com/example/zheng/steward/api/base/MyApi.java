@@ -1,7 +1,5 @@
 package com.example.zheng.steward.api.base;
 
-import android.database.Observable;
-
 import com.example.zheng.steward.model.response.AddGroupMemberResponse;
 import com.example.zheng.steward.model.response.AddToBlackListResponse;
 import com.example.zheng.steward.model.response.AgreeFriendsResponse;
@@ -47,6 +45,7 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Url;
+import rx.Observable;
 
 /**
  * Created by zheng on 2018/2/2.

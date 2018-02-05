@@ -9,11 +9,34 @@ import android.widget.ImageView;
 import com.alibaba.fastjson.JSONException;
 import com.alipay.android.phone.mrpc.core.HttpException;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.example.zheng.steward.api.redpacket.SignService;
 import com.example.zheng.steward.app.base.BaseApp;
+import com.example.zheng.steward.db.DBManager;
+import com.example.zheng.steward.db.model.Friend;
+import com.example.zheng.steward.db.model.Groups;
 import com.example.zheng.steward.manager.BroadcastManager;
 import com.example.zheng.steward.manager.JsonManager;
+import com.example.zheng.steward.model.cache.UserCache;
+import com.example.zheng.steward.model.data.GroupNotificationMessageData;
+import com.example.zheng.steward.model.message.DeleteContactMessage;
+import com.example.zheng.steward.model.message.RedPacketMessage;
+import com.example.zheng.steward.model.redpacket.SignModel;
+import com.example.zheng.steward.model.response.ContactNotificationMessageData;
+import com.example.zheng.steward.utils.LogUtils;
+import com.example.zheng.steward.utils.PinyinUtils;
+import com.example.zheng.steward.utils.RedPacketUtil;
 import com.example.zheng.steward.utils.UIUtils;
 import com.lqr.emoji.LQREmotionKit;
+import com.lqr.imagepicker.ImagePicker;
+import com.lqr.imagepicker.view.CropImageView;
+import com.lqr.imagepicker.loader.ImageLoader;
+import com.yunzhanghu.redpacketsdk.RPInitRedPacketCallback;
+import com.yunzhanghu.redpacketsdk.RPValueCallback;
+import com.yunzhanghu.redpacketsdk.RedPacket;
+import com.yunzhanghu.redpacketsdk.bean.RedPacketInfo;
+import com.yunzhanghu.redpacketsdk.bean.TokenData;
+import com.yunzhanghu.redpacketsdk.constant.RPConstant;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -29,6 +52,11 @@ import io.rong.imlib.model.Message;
 import io.rong.imlib.model.MessageContent;
 import io.rong.message.ContactNotificationMessage;
 import io.rong.message.GroupNotificationMessage;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Created by zheng on 2018/2/2.

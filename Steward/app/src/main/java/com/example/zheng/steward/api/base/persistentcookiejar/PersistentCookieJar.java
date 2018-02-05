@@ -17,10 +17,11 @@
 package com.example.zheng.steward.api.base.persistentcookiejar;
 
 
+import com.example.zheng.steward.api.base.persistentcookiejar.cache.CookieCache;
 import com.example.zheng.steward.api.base.persistentcookiejar.cache.SetCookieCache;
+import com.example.zheng.steward.api.base.persistentcookiejar.persistence.CookiePersistor;
 import com.example.zheng.steward.api.base.persistentcookiejar.persistence.SharedPrefsCookiePersistor;
-import com.lqr.wechat.api.base.persistentcookiejar.cache.CookieCache;
-import com.lqr.wechat.api.base.persistentcookiejar.persistence.CookiePersistor;
+
 
 import java.util.ArrayList;
 import java.util.Iterator;

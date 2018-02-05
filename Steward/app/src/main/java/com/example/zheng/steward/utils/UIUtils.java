@@ -8,6 +8,9 @@ import android.util.Log;
 import android.util.TypedValue;
 import android.widget.Toast;
 
+import com.example.zheng.steward.app.MyApp;
+import com.example.zheng.steward.app.base.BaseApp;
+
 import static com.zhy.autolayout.utils.ScreenUtils.getStatusBarHeight;
 import static io.rong.imlib.statistics.Statistics.TAG;
 
