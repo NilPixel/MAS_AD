@@ -1,4 +1,4 @@
-package com.example.zheng.steward.request;
+package com.example.zheng.steward.model.request;
 
 import java.util.List;
 

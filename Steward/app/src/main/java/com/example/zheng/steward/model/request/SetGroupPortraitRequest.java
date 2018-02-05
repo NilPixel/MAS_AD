@@ -1,4 +1,4 @@
-package com.example.zheng.steward.request;
+package com.example.zheng.steward.model.request;
 
 /**
  * Created by AMing on 16/1/25.
