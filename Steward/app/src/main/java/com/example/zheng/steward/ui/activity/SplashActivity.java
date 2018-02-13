@@ -2,16 +2,15 @@ package com.example.zheng.steward.ui.activity;
 
 import android.Manifest;
 import android.content.Intent;
+import android.os.Handler;
 import android.text.TextUtils;
-import android.view.animation.AlphaAnimation;
 
 import com.example.zheng.steward.MainActivity;
 import com.example.zheng.steward.R;
 import com.example.zheng.steward.model.cache.UserCache;
 import com.example.zheng.steward.ui.base.BaseActivity;
 import com.example.zheng.steward.ui.base.BasePresenter;
-import com.example.zheng.steward.utils.UIUtils;
-import com.jaeger.library.StatusBarUtil;
+
 
 import kr.co.namee.permissiongen.PermissionGen;
 
@@ -43,26 +42,24 @@ public class SplashActivity extends BaseActivity {
 //                        Manifest.permission.WRITE_SETTINGS
 //                )
 //                .request();
-//        if (!TextUtils.isEmpty(UserCache.getToken())) {
-//            Intent intent = new Intent(this, MainActivity.class);
-//            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//            jumpToActivity(intent);
-//            finish();
-//        }
     }
 
     @Override
     public void initView() {
-        StatusBarUtil.setColor(this, UIUtils.getColor(R.color.black));
 
-//        AlphaAnimation alphaAnimation = new AlphaAnimation(0, 1);
-//        alphaAnimation.setDuration(1000);
-//        mRlButton.startAnimation(alphaAnimation);
     }
 
     @Override
     public void initListener() {
-        super.initListener();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.right_in,R.anim.left_out);
+                finish();
+            }
+        }, 2000);
     }
 
     @Override

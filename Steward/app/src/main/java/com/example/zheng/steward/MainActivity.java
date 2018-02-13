@@ -3,8 +3,6 @@ package com.example.zheng.steward;
 import android.graphics.Color;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -18,11 +16,14 @@ import android.widget.LinearLayout;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
+import com.example.zheng.steward.ui.base.BaseActivity;
+import com.example.zheng.steward.ui.base.BasePresenter;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     private static final String TAG = "MainActivity";
 
@@ -76,21 +77,87 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private String[] from = {"image", "title"};
     private int[] to = {R.id.order_interface_image, R.id.order_interface_title};
 
+    @Override
+    public void onClick(View v) {
+        //点击事件切换viewPager
+        switch (v.getId()) {
+            case R.id.tabbar_home:
+                mViewPager.setCurrentItem(0, false);
+                break;
+            case R.id.tabbar_news:
+                mViewPager.setCurrentItem(1, false);
+                break;
+            case R.id.tabbar_mine:
+                mViewPager.setCurrentItem(2, false);
+                break;
+            default:
+                break;
+        }
+    }
+
+    /**
+     * 将所有的图片切换为未选择状态
+     */
+    private void resetImage() {
+        mHomeImageBtn.setImageResource(R.mipmap.ic_tabbar_home_unselected);
+        mNewsImageBtn.setImageResource(R.mipmap.ic_tabbar_news_unselected);
+        mMineImageBtn.setImageResource(R.mipmap.ic_tabbar_mine_unselected);
+    }
+
+    /**
+     * 将所有文字切换为未选择状态
+     */
+    private void resetTextColor() {
+        mHomeText.setTextColor(Color.parseColor("#AAADB7"));
+        mNewsText.setTextColor(Color.parseColor("#AAADB7"));
+        mMineText.setTextColor(Color.parseColor("#AAADB7"));
+    }
+
+    /**
+     * 添加右侧扫描二维码菜单按钮
+     *
+     * @param menu
+     * @return
+     */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.actionbar_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    /**
+     * 菜单点击事件
+     *
+     * @param item
+     * @return
+     */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.qr_scan_btn:
+                Log.d(TAG, "onOptionsItemSelected: 扫码按钮点击");
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    protected BasePresenter createPresenter() {
+        return null;
+    }
 
-        initViews();
-        initEvents();
-        initOrderInterfaceGridView();
+    @Override
+    protected int provideContentViewId() {
+        return R.layout.activity_main;
     }
 
     /**
      * 初始化view
      */
-    private void initViews() {
+    @Override
+    public void initView() {
         mViewPager = (ViewPager) findViewById(R.id.tab_viewpager);
 
         //tabs
@@ -162,7 +229,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     /**
      * tab点击事件
      */
-    private void initEvents() {
+    @Override
+    public void initListener() {
         mTabbarHome.setOnClickListener(this);
         mTabbarNews.setOnClickListener(this);
         mTabbarMine.setOnClickListener(this);
@@ -203,73 +271,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             }
         });
-
-    }
-
-    @Override
-    public void onClick(View v) {
-        //点击事件切换viewPager
-        switch (v.getId()) {
-            case R.id.tabbar_home:
-                mViewPager.setCurrentItem(0, false);
-                break;
-            case R.id.tabbar_news:
-                mViewPager.setCurrentItem(1, false);
-                break;
-            case R.id.tabbar_mine:
-                mViewPager.setCurrentItem(2, false);
-                break;
-            default:
-                break;
-        }
-    }
-
-    /**
-     * 将所有的图片切换为未选择状态
-     */
-    private void resetImage() {
-        mHomeImageBtn.setImageResource(R.mipmap.ic_tabbar_home_unselected);
-        mNewsImageBtn.setImageResource(R.mipmap.ic_tabbar_news_unselected);
-        mMineImageBtn.setImageResource(R.mipmap.ic_tabbar_mine_unselected);
-    }
-
-    /**
-     * 将所有文字切换为未选择状态
-     */
-    private void resetTextColor() {
-        mHomeText.setTextColor(Color.parseColor("#AAADB7"));
-        mNewsText.setTextColor(Color.parseColor("#AAADB7"));
-        mMineText.setTextColor(Color.parseColor("#AAADB7"));
-    }
-
-    /**
-     * 添加右侧扫描二维码菜单按钮
-     *
-     * @param menu
-     * @return
-     */
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.actionbar_menu, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    /**
-     * 菜单点击事件
-     *
-     * @param item
-     * @return
-     */
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.qr_scan_btn:
-                Log.d(TAG, "onOptionsItemSelected: 扫码按钮点击");
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
     }
 
     /**
@@ -295,5 +296,4 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         return list;
     }
-
 }
