@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,28 +13,26 @@
         android:layout_marginBottom="15dp"
         android:src="@mipmap/amount_bg"
         android:contentDescription="@string/amount_bg"
-        android:scaleType="fitXY"/>
+        android:scaleType="fitXY" />
 
-    <GridView
+    <com.example.zheng.steward.widget.MyGridView
         android:id="@+id/order_interface_gridview"
         android:layout_width="match_parent"
-        android:layout_height="196dp"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="15dp"
-        android:layout_below="@+id/amount_background_image"
-        android:columnWidth="125dp"
+        android:columnWidth="0dp"
         android:numColumns="3"
-        android:stretchMode="spacingWidthUniform"
+        android:stretchMode="columnWidth"
         android:background="@color/clearColor"
         android:horizontalSpacing="1dp"
-        android:verticalSpacing="1dp">
-    </GridView>
+        android:verticalSpacing="1dp" >
+    </com.example.zheng.steward.widget.MyGridView>
     
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="105dp"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="15dp"
-        android:layout_below="@+id/order_interface_gridview"
         android:src="@mipmap/guidelines"
-        android:scaleType="fitXY" />
+        android:scaleType="centerCrop" />
 
-</RelativeLayout>
+</LinearLayout>

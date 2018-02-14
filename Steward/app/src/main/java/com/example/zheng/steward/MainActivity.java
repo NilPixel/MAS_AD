@@ -20,6 +20,7 @@ import com.example.zheng.steward.ui.base.BaseActivity;
 import com.example.zheng.steward.ui.base.BasePresenter;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -224,6 +225,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         };
 
         mViewPager.setAdapter(mAdapter);
+        initOrderInterfaceGridView();
     }
 
     /**
@@ -277,19 +279,19 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
      * 初始化订单入口表格图
      */
     private void initOrderInterfaceGridView() {
-        mGridView = tabMine.findViewById(R.id.order_interface_gridview);
+        mGridView = tabHome.findViewById(R.id.order_interface_gridview);
         SimpleAdapter adapter = new SimpleAdapter(this, getList(), R.layout.interface_gridview_item, from, to);
         mGridView.setAdapter(adapter);
     }
 
     private List<Map<String, Object>> getList() {
         List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
-        Map<String, Object> map = null;
 
         String[] titles = new String[] {"申请件查询", "待放款件查询", "放款件查询", "逾期件查询", "优惠券查询", "客户画像"};
         Integer[] images = new Integer[] {R.mipmap.ic_apply_query, R.mipmap.ic_for_lending, R.mipmap.ic_lended, R.mipmap.ic_overdue, R.mipmap.ic_coupon, R.mipmap.ic_customer};
 
         for (int i = 0; i < images.length; i++) {
+            Map<String, Object> map = new HashMap<>();
             map.put("title", titles[i]);
             map.put("image", images[i]);
             list.add(map);
