@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/view_cumulative_btn"
+        android:layout_width="60dp"
+        android:layout_height="19dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="15dp"
+        android:background="@mipmap/ic_view_cumulative"/>
+    
+    <TextView
+        android:id="@+id/current_or_total_apply"
+        android:layout_width="170dp"
+        android:layout_height="20dp"
+        android:layout_below="@+id/view_cumulative_btn"
+        android:layout_marginTop="35dp"
+        android:layout_marginLeft="15dp"
+        android:text="@string/current_apply"
+        android:textSize="12sp"/>
+
+    <TextView
+        android:id="@+id/current_or_total_money"
+        android:layout_width="139dp"
+        android:layout_height="70dp"
+        android:layout_below="@+id/current_or_total_apply"
+        android:layout_marginTop="12dp"
+        android:layout_marginLeft="15dp"
+        android:text="2,160"
+        android:textSize="48sp"
+        android:textColor="@color/amountColor"/>
+
+    <TextView
+        android:id="@+id/current_or_total_into"
+        android:layout_width="170dp"
+        android:layout_height="20dp"
+        android:layout_below="@+id/current_or_total_money"
+        android:layout_marginTop="23dp"
+        android:layout_marginLeft="15dp"
+        android:text="@string/current_order_into"
+        android:textSize="12sp"/>
+
+    <TextView
+        android:id="@+id/current_or_total_order"
+        android:layout_width="139dp"
+        android:layout_height="70dp"
+        android:layout_below="@+id/current_or_total_into"
+        android:layout_marginTop="12dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginBottom="48dp"
+        android:text="103"
+        android:textSize="48sp"
+        android:textColor="@color/colorWhite"/>
+</RelativeLayout>

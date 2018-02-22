@@ -13,7 +13,9 @@
         android:layout_marginBottom="15dp"
         android:src="@mipmap/amount_bg"
         android:contentDescription="@string/amount_bg"
-        android:scaleType="fitXY" />
+        android:scaleType="fitXY" >
+        
+    </ImageView>
 
     <com.example.zheng.steward.widget.MyGridView
         android:id="@+id/order_interface_gridview"

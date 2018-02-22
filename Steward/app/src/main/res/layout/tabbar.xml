@@ -33,7 +33,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@mipmap/ic_tabbar_home_selected"
-                android:background="#FFFFFF"
+                android:background="@color/clearColor"
                 android:clickable="false"/>
 
             <TextView
@@ -60,7 +60,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@mipmap/ic_tabbar_news_unselected"
-                android:background="#FFFFFF"
+                android:background="@color/clearColor"
                 android:clickable="false"/>
 
             <TextView
@@ -87,7 +87,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@mipmap/ic_tabbar_mine_unselected"
-                android:background="#FFFFFF"
+                android:background="@color/clearColor"
                 android:clickable="false"/>
 
             <TextView
