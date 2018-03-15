@@ -21,6 +21,24 @@
             android:layout_marginLeft="15dp"
             android:background="@mipmap/ic_view_cumulative"/>
 
+        <Button
+            android:id="@+id/code_verification_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:background="@mipmap/ic_code_verification"/>
+
+        <Button
+            android:id="@+id/stages_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/code_verification_btn"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:background="@mipmap/ic_stages"/>
+
         <TextView
             android:id="@+id/current_or_total_apply"
             android:layout_width="170dp"
