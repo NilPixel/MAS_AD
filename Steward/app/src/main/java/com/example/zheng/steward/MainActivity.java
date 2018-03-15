@@ -10,6 +10,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -24,7 +25,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class MainActivity extends BaseActivity implements View.OnClickListener {
+public class MainActivity extends BaseActivity implements View.OnClickListener, AdapterView.OnItemClickListener {
 
     private static final String TAG = "MainActivity";
 
@@ -282,6 +283,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         mGridView = tabHome.findViewById(R.id.order_interface_gridview);
         SimpleAdapter adapter = new SimpleAdapter(this, getList(), R.layout.interface_gridview_item, from, to);
         mGridView.setAdapter(adapter);
+        mGridView.setOnItemClickListener(this);
     }
 
     private List<Map<String, Object>> getList() {
@@ -297,5 +299,32 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             list.add(map);
         }
         return list;
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        switch (position) {
+            case 0:
+                Log.d(TAG, "onItemClick: 申请件查询");
+                break;
+            case 1:
+                Log.d(TAG, "onItemClick: 待放款件查询");
+                break;
+            case 2:
+                Log.d(TAG, "onItemClick: 放款件查询");
+                break;
+            case 3:
+                Log.d(TAG, "onItemClick: 逾期件查询");
+                break;
+            case 4:
+                Log.d(TAG, "onItemClick: 优惠券查询");
+                break;
+            case 5:
+                Log.d(TAG, "onItemClick: 客户画像");
+                break;
+            default:
+                Log.d(TAG, "onItemClick: 无效点击");
+                break;
+        }
     }
 }
