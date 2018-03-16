@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -78,6 +79,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     private GridView mGridView;
     private String[] from = {"image", "title"};
     private int[] to = {R.id.order_interface_image, R.id.order_interface_title};
+
+    /**
+     * 查看累计按钮
+     */
+    private Button lookTotal;
+    private Integer lookTotalBtnStatus = 0;
 
     @Override
     public void onClick(View v) {
@@ -227,6 +234,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
         mViewPager.setAdapter(mAdapter);
         initOrderInterfaceGridView();
+
+        //初始化查看金额按钮
+        initLookTotalButton();
     }
 
     /**
@@ -327,4 +337,20 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                 break;
         }
     }
+
+    private void initLookTotalButton() {
+        lookTotal = (Button) tabHome.findViewById(R.id.view_cumulative_btn);
+        lookTotal.setOnClickListener(view -> looKCurrentMoneyButtonClicked());
+    }
+
+    private void looKCurrentMoneyButtonClicked() {
+        if (lookTotalBtnStatus == 0) {
+            lookTotalBtnStatus = 1;
+            lookTotal.setBackgroundResource(R.mipmap.ic_view_current_month);
+        } else if (lookTotalBtnStatus == 1) {
+            lookTotalBtnStatus = 0;
+            lookTotal.setBackgroundResource(R.mipmap.ic_view_cumulative);
+        }
+    }
+
 }
