@@ -84,7 +84,36 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
      * 查看累计按钮
      */
     private Button lookTotal;
+
+    /**
+     * 查看累计按钮状态标志位
+     */
     private Integer lookTotalBtnStatus = 0;
+
+    /**
+     * 查看当月或累计金额标签
+     */
+    private TextView currentOrTotalApplyText;
+
+    /**
+     * 查看当月或累计进件数
+     */
+    private TextView currentOrTotalIntoText;
+
+    /**
+     * 券码验证按钮
+     */
+    private Button codeVerificationBtn;
+
+    /**
+     * 开始分期按钮
+     */
+    private Button startStageBtn;
+
+    /**
+     * 新手须知按钮
+     */
+    private ImageButton newGuidelinesBtn;
 
     @Override
     public void onClick(View v) {
@@ -237,6 +266,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
         //初始化查看金额按钮
         initLookTotalButton();
+        //初始化查看当月或累计标签
+        initCurrentOrTotalText();
+        //初始化券码验证和开始分期按钮
+        initCodeVerificationAndStartStageBtn();
+        //新手须知按钮点击
+        initNewGuidelinesBtn();
+
     }
 
     /**
@@ -338,19 +374,90 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         }
     }
 
+    /**
+     * 初始化切换金额按钮
+     */
     private void initLookTotalButton() {
         lookTotal = (Button) tabHome.findViewById(R.id.view_cumulative_btn);
         lookTotal.setOnClickListener(view -> looKCurrentMoneyButtonClicked());
     }
 
+    /**
+     * 初始化当月或累计金额标签
+     */
+    private void initCurrentOrTotalText() {
+        currentOrTotalApplyText = (TextView) tabHome.findViewById(R.id.current_or_total_apply);
+        currentOrTotalIntoText = (TextView) tabHome.findViewById(R.id.current_or_total_into);
+    }
+
+    /**
+     * 初始化券码验证和开始分期按钮
+     */
+    private void initCodeVerificationAndStartStageBtn() {
+        codeVerificationBtn = (Button) tabHome.findViewById(R.id.code_verification_btn);
+        codeVerificationBtn.setOnClickListener(view -> codeVerificationBtnClicked());
+        startStageBtn = (Button) tabHome.findViewById(R.id.stages_btn);
+        startStageBtn.setOnClickListener(view -> startStageBtnClicked());
+    }
+
+    /**
+     * 初始化新手须知按钮
+     */
+    private void initNewGuidelinesBtn() {
+        newGuidelinesBtn = (ImageButton) tabHome.findViewById(R.id.new_guidelines);
+        newGuidelinesBtn.setOnClickListener(view -> newGuidelinesBtnClicked());
+    }
+    
+    /**
+     * 查看金额按钮点击事件
+     */
     private void looKCurrentMoneyButtonClicked() {
         if (lookTotalBtnStatus == 0) {
-            lookTotalBtnStatus = 1;
-            lookTotal.setBackgroundResource(R.mipmap.ic_view_current_month);
+            currentMonthAction();
         } else if (lookTotalBtnStatus == 1) {
-            lookTotalBtnStatus = 0;
-            lookTotal.setBackgroundResource(R.mipmap.ic_view_cumulative);
+            cumulativeAction();
         }
+    }
+
+    /**
+     * 查看当月动作
+     */
+    private void currentMonthAction() {
+        lookTotalBtnStatus = 1;
+        lookTotal.setBackgroundResource(R.mipmap.ic_view_current_month);
+        currentOrTotalApplyText.setText("累计申请金额（万元）");
+        currentOrTotalIntoText.setText("累计进件数 (笔）");
+    }
+
+    /**
+     * 查看累计动作
+     */
+    private void cumulativeAction() {
+        lookTotalBtnStatus = 0;
+        lookTotal.setBackgroundResource(R.mipmap.ic_view_cumulative);
+        currentOrTotalApplyText.setText("当月申请金额（元）");
+        currentOrTotalIntoText.setText("当月进件数 (笔）");
+    }
+
+    /**
+     * 券码验证按钮点击事件
+     */
+    private void codeVerificationBtnClicked() {
+        Log.d(TAG, "codeVerificationBtnClicked: 券码验证按钮点击");
+    }
+
+    /**
+     * 开始分期按钮点击事件
+     */
+    private void startStageBtnClicked() {
+        Log.d(TAG, "startStageBtnClicked: 开始分期按钮点击");
+    }
+
+    /**
+     * 新手须知按钮点击事件
+     */
+    private void newGuidelinesBtnClicked() {
+        Log.d(TAG, "newGuidelinesBtnClicked: 新手须知按钮点击");
     }
 
 }

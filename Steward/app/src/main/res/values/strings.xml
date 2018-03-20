@@ -13,8 +13,8 @@
 
     <string name="current_apply">当月申请金额（元）</string>
     <string name="cumulative_apply">累计申请金额（万元）</string>
-    <string name="current_order_into">当月进件数 (笔)</string>
-    <string name="current_order_num">累计进件数 (笔)</string>
+    <string name="current_order_into">当月进件数 (笔）</string>
+    <string name="current_order_num">累计进件数 (笔）</string>
 
     <string name="error_code">异常码：</string>
     <string name="please_check_net">请检查网络</string>
