@@ -50,7 +50,7 @@ public class SplashActivity extends BaseActivity {
     }
 
     @Override
-    public void initListener() {
+    public void initData() {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -60,6 +60,11 @@ public class SplashActivity extends BaseActivity {
                 finish();
             }
         }, 2000);
+    }
+
+    @Override
+    public void initListener() {
+
     }
 
     @Override

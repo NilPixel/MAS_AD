@@ -30,11 +30,11 @@ public class LoginAtPresenter extends BasePresenter<ILoginAtView> {
     }
 
     public void login() {
-        String userName = getView().getEtPhone().getText().toString().trim();
+        String userName = getView().getEtUserName().getText().toString().trim();
         String pwd = getView().getEtPwd().getText().toString().trim();
 
         if (TextUtils.isEmpty(userName)) {
-            UIUtils.showToast(UIUtils.getString(R.string.phone_not_empty));
+            UIUtils.showToast(UIUtils.getString(R.string.username_not_empty));
             return;
         }
         if (TextUtils.isEmpty(pwd)) {
