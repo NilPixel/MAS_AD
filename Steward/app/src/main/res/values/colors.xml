@@ -9,6 +9,8 @@
     <color name="colorWhite">#FFFFFF</color>
     <color name="clearColor">#00FFFFFF</color><!--透明色-->
     <color name="amountColor">#ffc000</color><!--首页金额颜色-->
+    <color name="loginTextBgColor">#F2000000</color><!--登录输入框背景色/5%透明黑色-->
+    <color name="loginBtnBgColor">#9E929C</color><!--登录按钮背景色-->
 
     <color name="white">#ffffff</color>
     <color name="line">#D2D2D2</color>
