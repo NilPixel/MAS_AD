@@ -53,7 +53,7 @@ import rx.Observable;
  */
 
 public interface MyApi {
-    public static final String BASE_URL = "http://api.sealtalk.im/";
+    public static final String BASE_URL = "https://mrs2.memedai.cn/";
 
     //检查手机是否被注册
     @POST("user/check_phone_available")
@@ -72,7 +72,7 @@ public interface MyApi {
     Observable<RegisterResponse> register(@Body RequestBody body);
 
     //登录
-    @POST("user/login")
+    @POST("api/user/app/login/11")
     Observable<LoginResponse> login(@Body RequestBody body);
 
     //获取 token 前置条件需要登录   502 坏的网关 测试环境用户已达上限

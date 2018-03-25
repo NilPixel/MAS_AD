@@ -43,7 +43,7 @@ public class LoginAtPresenter extends BasePresenter<ILoginAtView> {
         }
 
         mContext.showWaitingDialog(UIUtils.getString(R.string.please_wait));
-        ApiRetrofit.getInstance().login(AppConst.REGION, userName, pwd)
+        ApiRetrofit.getInstance().login(userName, pwd)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(loginResponse -> {

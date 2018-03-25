@@ -7,31 +7,20 @@ package com.example.zheng.steward.model.request;
  */
 public class LoginRequest {
 
-
-    private String region;
-    private String phone;
+    private String userName;
     private String password;
 
-    public LoginRequest(String region, String phone, String password) {
-        this.region = region;
-        this.phone = phone;
+    public LoginRequest(String userName, String password) {
+        this.userName = userName;
         this.password = password;
     }
 
-    public String getRegion() {
-        return region;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setRegion(String region) {
-        this.region = region;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getPassword() {
