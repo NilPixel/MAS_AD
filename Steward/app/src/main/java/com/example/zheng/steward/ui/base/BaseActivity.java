@@ -37,22 +37,22 @@ public abstract class BaseActivity<V, T extends BasePresenter<V>> extends AppCom
     private MaterialDialog mMaterialDialog;
 
     //以下是所有Activity中可能会出现的控件
-    @Bind(R.id.appBar)
-    protected AppBarLayout mAppBar;
-    //    @Bind(R.id.toolbar)
-    //    protected Toolbar mToolbar;
-    @Bind(R.id.flToolbar)
-    public FrameLayout mToolbar;
-    @Bind(R.id.ivToolbarNavigation)
-    public ImageView mToolbarNavigation;
-    @Bind(R.id.vToolbarDivision)
-    public View mToolbarDivision;
-    @Bind(R.id.llToolbarTitle)
-    public AutoLinearLayout mLlToolbarTitle;
-    @Bind(R.id.tvToolbarTitle)
-    public TextView mToolbarTitle;
-    @Bind(R.id.tvToolbarSubTitle)
-    public TextView mToolbarSubTitle;
+//    @Bind(R.id.appBar)
+//    protected AppBarLayout mAppBar;
+//    //    @Bind(R.id.toolbar)
+//    //    protected Toolbar mToolbar;
+//    @Bind(R.id.flToolbar)
+//    public FrameLayout mToolbar;
+//    @Bind(R.id.ivToolbarNavigation)
+//    public ImageView mToolbarNavigation;
+//    @Bind(R.id.vToolbarDivision)
+//    public View mToolbarDivision;
+//    @Bind(R.id.llToolbarTitle)
+//    public AutoLinearLayout mLlToolbarTitle;
+//    @Bind(R.id.tvToolbarTitle)
+//    public TextView mToolbarTitle;
+//    @Bind(R.id.tvToolbarSubTitle)
+//    public TextView mToolbarSubTitle;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -85,9 +85,9 @@ public abstract class BaseActivity<V, T extends BasePresenter<V>> extends AppCom
      */
     private void setupAppBarAndToolbar() {
         //如果该应用运行在android 5.0以上设备，设置标题栏的z轴高度
-        if (mAppBar != null && Build.VERSION.SDK_INT > 21) {
-            mAppBar.setElevation(10.6f);
-        }
+//        if (mAppBar != null && Build.VERSION.SDK_INT > 21) {
+//            mAppBar.setElevation(10.6f);
+//        }
 
         //如果界面中有使用toolbar，则使用toolbar替代actionbar
         //默认不是使用NoActionBar主题，所以如果需要使用Toolbar，需要自定义NoActionBar主题后，在AndroidManifest.xml中对指定Activity设置theme
@@ -101,10 +101,10 @@ public abstract class BaseActivity<V, T extends BasePresenter<V>> extends AppCom
 //            }
 //        }
 
-        mToolbarNavigation.setVisibility(isToolbarCanBack() ? View.VISIBLE : View.GONE);
-        mToolbarDivision.setVisibility(isToolbarCanBack() ? View.VISIBLE : View.GONE);
-        mToolbarNavigation.setOnClickListener(v -> onBackPressed());
-        mLlToolbarTitle.setPadding(isToolbarCanBack() ? 0 : 40, 0, 0, 0);
+//        mToolbarNavigation.setVisibility(isToolbarCanBack() ? View.VISIBLE : View.GONE);
+//        mToolbarDivision.setVisibility(isToolbarCanBack() ? View.VISIBLE : View.GONE);
+//        mToolbarNavigation.setOnClickListener(v -> onBackPressed());
+//        mLlToolbarTitle.setPadding(isToolbarCanBack() ? 0 : 40, 0, 0, 0);
     }
 
     @Override
@@ -238,11 +238,11 @@ public abstract class BaseActivity<V, T extends BasePresenter<V>> extends AppCom
 
     /*------------------ toolbar的一些视图操作 ------------------*/
     public void setToolbarTitle(String title) {
-        mToolbarTitle.setText(title);
+//        mToolbarTitle.setText(title);
     }
 
     public void setToolbarSubTitle(String subTitle) {
-        mToolbarSubTitle.setText(subTitle);
-        mToolbarSubTitle.setVisibility(subTitle.length() > 0 ? View.VISIBLE : View.GONE);
+//        mToolbarSubTitle.setText(subTitle);
+//        mToolbarSubTitle.setVisibility(subTitle.length() > 0 ? View.VISIBLE : View.GONE);
     }
 }

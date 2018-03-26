@@ -14,6 +14,7 @@ import com.example.zheng.steward.utils.ColorUtils;
 import com.example.zheng.steward.utils.UIUtils;
 
 import butterknife.Bind;
+import butterknife.ButterKnife;
 
 /**
  * Created by jarvis on 2018/3/24.
@@ -66,6 +67,11 @@ public class LoginActivity extends BaseActivity<ILoginAtView, LoginAtPresenter> 
     @Override
     protected int provideContentViewId() {
         return R.layout.activity_login;
+    }
+
+    @Override
+    public void initView() {
+        ButterKnife.bind(this);
     }
 
     @Override

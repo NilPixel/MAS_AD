@@ -68,16 +68,16 @@ public class MyApp extends BaseApp implements RongIMClient.OnReceiveMessageListe
     public void onCreate() {
         super.onCreate();
         LitePal.initialize(this);
-        //初始化融云
-        initRongCloud();
-        //初始化红包
-        initRedPacket();
-        //初始化仿微信控件ImagePicker
-        initImagePicker();
-        //初始化表情控件
-        LQREmotionKit.init(this, (context, path, imageView) -> Glide.with(context).load(path).centerCrop().diskCacheStrategy(DiskCacheStrategy.SOURCE).into(imageView));
-        //初始化ShareSDK
-        ShareSDK.initSDK(getContext());
+//        //初始化融云
+//        initRongCloud();
+//        //初始化红包
+//        initRedPacket();
+//        //初始化仿微信控件ImagePicker
+//        initImagePicker();
+//        //初始化表情控件
+//        LQREmotionKit.init(this, (context, path, imageView) -> Glide.with(context).load(path).centerCrop().diskCacheStrategy(DiskCacheStrategy.SOURCE).into(imageView));
+//        //初始化ShareSDK
+//        ShareSDK.initSDK(getContext());
     }
 
     @Override
