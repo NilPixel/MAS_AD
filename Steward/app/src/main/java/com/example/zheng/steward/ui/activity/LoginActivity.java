@@ -1,5 +1,6 @@
 package com.example.zheng.steward.ui.activity;
 
+import android.graphics.Color;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.Button;
@@ -9,6 +10,7 @@ import com.example.zheng.steward.R;
 import com.example.zheng.steward.ui.base.BaseActivity;
 import com.example.zheng.steward.ui.presenter.LoginAtPresenter;
 import com.example.zheng.steward.ui.view.ILoginAtView;
+import com.example.zheng.steward.utils.ColorUtils;
 import com.example.zheng.steward.utils.UIUtils;
 
 import butterknife.Bind;
@@ -47,6 +49,7 @@ public class LoginActivity extends BaseActivity<ILoginAtView, LoginAtPresenter> 
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
             loginBtn.setEnabled(canLogin());
+            loginBtnChangeBgColor(canLogin());
         }
 
         @Override
@@ -94,6 +97,18 @@ public class LoginActivity extends BaseActivity<ILoginAtView, LoginAtPresenter> 
             return true;
         }
         return false;
+    }
+
+    /**
+     * 登录按钮根据是否能点击登录改变背景色
+     * @param isCanLogin
+     */
+    private void loginBtnChangeBgColor(boolean isCanLogin) {
+        if (isCanLogin) {
+            loginBtn.setBackgroundColor(Color.parseColor("#07cedf"));
+        } else {
+            loginBtn.setBackgroundColor(Color.parseColor("#9E929C"));
+        }
     }
 
     @Override

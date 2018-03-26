@@ -1,5 +1,6 @@
 package com.example.zheng.steward.utils;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 
@@ -19,7 +20,7 @@ public class SPUtils {
 
     private SPUtils(Context context) {
         this.context = context;
-        sp = this.context.getSharedPreferences(SP_NAME, Context.MODE_APPEND);
+        sp = this.context.getSharedPreferences(SP_NAME, Context.MODE_PRIVATE);
         editor = sp.edit();
     }
 

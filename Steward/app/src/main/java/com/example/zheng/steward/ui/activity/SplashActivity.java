@@ -10,6 +10,7 @@ import com.example.zheng.steward.R;
 import com.example.zheng.steward.model.cache.UserCache;
 import com.example.zheng.steward.ui.base.BaseActivity;
 import com.example.zheng.steward.ui.base.BasePresenter;
+import com.example.zheng.steward.utils.StringUtils;
 
 
 import kr.co.namee.permissiongen.PermissionGen;
@@ -54,7 +55,12 @@ public class SplashActivity extends BaseActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+                Intent intent;
+                if (!StringUtils.isEmpty(UserCache.getToken())) {
+                    intent = new Intent(SplashActivity.this, MainActivity.class);
+                } else {
+                    intent = new Intent(SplashActivity.this, LoginActivity.class);
+                }
                 startActivity(intent);
                 overridePendingTransition(R.anim.right_in,R.anim.left_out);
                 finish();
