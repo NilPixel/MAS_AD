@@ -37,23 +37,32 @@ public class LoginResponse {
     }
 
     public static class ResultEntity {
-        private String id;
+        private String expireTime;
+        private String desc;
         private String token;
 
-        public void setId(String id) {
-            this.id = id;
+        public String getExpireTime() {
+            return expireTime;
         }
 
-        public void setToken(String token) {
-            this.token = token;
+        public void setExpireTime(String expireTime) {
+            this.expireTime = expireTime;
         }
 
-        public String getId() {
-            return id;
+        public String getDesc() {
+            return desc;
+        }
+
+        public void setDesc(String desc) {
+            this.desc = desc;
         }
 
         public String getToken() {
             return token;
+        }
+
+        public void setToken(String token) {
+            this.token = token;
         }
     }
 }

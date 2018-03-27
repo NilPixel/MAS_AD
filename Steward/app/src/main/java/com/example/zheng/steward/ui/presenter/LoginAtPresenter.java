@@ -11,6 +11,7 @@ import com.example.zheng.steward.model.exception.ServerException;
 import com.example.zheng.steward.ui.base.BaseActivity;
 import com.example.zheng.steward.ui.base.BasePresenter;
 import com.example.zheng.steward.ui.view.ILoginAtView;
+import com.example.zheng.steward.utils.EncryptUtils;
 import com.example.zheng.steward.utils.LogUtils;
 import com.example.zheng.steward.utils.UIUtils;
 
@@ -43,14 +44,14 @@ public class LoginAtPresenter extends BasePresenter<ILoginAtView> {
         }
 
         mContext.showWaitingDialog(UIUtils.getString(R.string.please_wait));
-        ApiRetrofit.getInstance().login(userName, pwd)
+        ApiRetrofit.getInstance().login(userName, EncryptUtils.md5Encrypt(pwd))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(loginResponse -> {
                     int code = loginResponse.getCode();
                     mContext.hideWaitingDialog();
                     if (code == 200) {
-                        UserCache.save(loginResponse.getResult().getId(), userName, loginResponse.getResult().getToken());
+                        UserCache.save(loginResponse.getResult().getExpireTime(), userName, loginResponse.getResult().getToken());
                         mContext.jumpToActivityAndClearTask(MainActivity.class);
                         mContext.finish();
                     } else {
