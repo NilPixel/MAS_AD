@@ -47,6 +47,15 @@
         android:supportsRtl="true"
         android:name=".app.MyApp">
 
+        <meta-data
+            android:name="design_width"
+            android:value="1080">
+        </meta-data>
+        <meta-data
+            android:name="design_height"
+            android:value="1920">
+        </meta-data>
+
         <activity android:name=".ui.activity.SplashActivity"
             android:theme="@style/ThemeSplash">
             <intent-filter>
