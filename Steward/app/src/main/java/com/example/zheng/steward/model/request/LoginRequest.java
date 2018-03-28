@@ -9,10 +9,20 @@ public class LoginRequest {
 
     private String userName;
     private String password;
+    private Boolean encrypt;
 
-    public LoginRequest(String userName, String password) {
+    public LoginRequest(String userName, String password, Boolean encrypt) {
         this.userName = userName;
         this.password = password;
+        this.encrypt = encrypt;
+    }
+
+    public Boolean getEncrypt() {
+        return encrypt;
+    }
+
+    public void setEncrypt(Boolean encrypt) {
+        this.encrypt = encrypt;
     }
 
     public String getUserName() {

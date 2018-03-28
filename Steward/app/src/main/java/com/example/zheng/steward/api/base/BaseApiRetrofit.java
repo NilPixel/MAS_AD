@@ -5,8 +5,10 @@ import com.example.zheng.steward.api.base.persistentcookiejar.PersistentCookieJa
 import com.example.zheng.steward.api.base.persistentcookiejar.cache.SetCookieCache;
 import com.example.zheng.steward.api.base.persistentcookiejar.persistence.SharedPrefsCookiePersistor;
 import com.example.zheng.steward.app.MyApp;
+import com.example.zheng.steward.model.cache.UserCache;
 import com.example.zheng.steward.utils.LogUtils;
 import com.example.zheng.steward.utils.NetUtils;
+import com.example.zheng.steward.utils.SystemUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -64,12 +66,15 @@ public class BaseApiRetrofit {
     Interceptor REWRITE_HEADER_CONTROL_INTERCEPTOR = chain -> {
         Request request = chain.request()
                 .newBuilder()
-                .addHeader("Content-Type", "application/json")
-//                .addHeader("Content-Type", "application/json; charset=utf-8")
-//                .addHeader("Accept-Encoding", "gzip, deflate")
-//                .addHeader("Connection", "keep-alive")
-//                .addHeader("Accept", "*/*")
-//                .addHeader("Cookie", "add cookies here")
+                .addHeader("Accept", "application/json")
+                .addHeader("Content-Type", "application/json; charset=utf-8")
+                .addHeader("platform_version", "")
+                .addHeader("phone_info", "")
+                .addHeader("uuid", SystemUtils.getUUID())
+                .addHeader("merchant_id", "")
+                .addHeader("clientid", "")
+                .addHeader("mmTicket", UserCache.getToken())
+                .addHeader("MPTSP", "")
                 .build();
         return chain.proceed(request);
     };

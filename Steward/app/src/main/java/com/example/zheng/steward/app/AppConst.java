@@ -44,6 +44,7 @@ public class AppConst {
         public static final String PHONE = "phone";
         //        public static final String ACCOUNT = "account";
         public static final String TOKEN = "token";
+        public static final String UUID = "uuid";
     }
 
 

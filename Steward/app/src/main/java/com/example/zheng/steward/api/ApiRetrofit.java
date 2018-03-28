@@ -119,8 +119,8 @@ public class ApiRetrofit extends BaseApiRetrofit {
     }
 
     //登录
-    public Observable<LoginResponse> login(String userName, String password) {
-        return mApi.login(getRequestBody(new LoginRequest(userName, password)));
+    public Observable<LoginResponse> login(String userName, String password, Boolean encrypt) {
+        return mApi.login(getRequestBody(new LoginRequest(userName, password, encrypt)));
     }
 
     //注册

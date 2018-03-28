@@ -44,7 +44,7 @@ public class LoginAtPresenter extends BasePresenter<ILoginAtView> {
         }
 
         mContext.showWaitingDialog(UIUtils.getString(R.string.please_wait));
-        ApiRetrofit.getInstance().login(userName, EncryptUtils.md5Encrypt(pwd))
+        ApiRetrofit.getInstance().login(userName, EncryptUtils.md5Encrypt(pwd), true)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(loginResponse -> {
