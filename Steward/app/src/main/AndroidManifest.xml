@@ -79,6 +79,13 @@
 
         </activity>
 
+        <service
+            android:name=".service.GeTuiPushService"
+            android:exported="true"
+            android:label="PushService"
+            android:process=":pushservice">
+        </service>
+
     </application>
 
 </manifest>

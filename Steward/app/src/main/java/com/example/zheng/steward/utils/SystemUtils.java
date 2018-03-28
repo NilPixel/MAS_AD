@@ -91,4 +91,12 @@ public class SystemUtils {
         }
         return uuid;
     }
+
+    /**
+     * 获取个推clientId
+     * @return
+     */
+    public static String getClientId() {
+        return SPUtils.getInstance(UIUtils.getContext()).getString(AppConst.User.CLIENTID, "");
+    }
 }

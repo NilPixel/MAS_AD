@@ -9,6 +9,7 @@ import com.example.zheng.steward.model.cache.UserCache;
 import com.example.zheng.steward.utils.LogUtils;
 import com.example.zheng.steward.utils.NetUtils;
 import com.example.zheng.steward.utils.SystemUtils;
+import com.example.zheng.steward.utils.TimeUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -68,13 +69,13 @@ public class BaseApiRetrofit {
                 .newBuilder()
                 .addHeader("Accept", "application/json")
                 .addHeader("Content-Type", "application/json; charset=utf-8")
-                .addHeader("platform_version", "")
-                .addHeader("phone_info", "")
+                .addHeader("platform_version", SystemUtils.getSystemVersion())
+                .addHeader("phone_info", SystemUtils.getSystemModel())
                 .addHeader("uuid", SystemUtils.getUUID())
                 .addHeader("merchant_id", "")
-                .addHeader("clientid", "")
+                .addHeader("clientid", SystemUtils.getClientId())
                 .addHeader("mmTicket", UserCache.getToken())
-                .addHeader("MPTSP", "")
+                .addHeader("MPTSP", TimeUtils.getTimestamp())
                 .build();
         return chain.proceed(request);
     };

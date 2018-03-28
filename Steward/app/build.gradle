@@ -15,6 +15,15 @@ android {
                 includeCompileClasspath = true
             }
         }
+        manifestPlaceholders = [
+                GETUI_APP_ID : "31KmdcGEkI8juS3qwOZiBA",
+                GETUI_APP_KEY : "8SVbridL6E8KdYjGlcG3X2",
+                GETUI_APP_SECRET : "xeewOGSJiEAOcUvvpuaX28"
+        ]
+        ndk {
+            abiFilters "armeabi", "armeabi-v7a", "x86_64", "arm64-v8a", "mips", "mips64", "x86"
+        }
+
     }
     buildTypes {
         release {
@@ -70,6 +79,8 @@ dependencies {
     compile 'com.lovedise:permissiongen:0.0.6'
     compile 'com.android.support:multidex:1.0.1'
     compile 'io.reactivex:rxandroid:1.2.1'
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.getui:sdk:2.12.3.0'
 
     compile(name: 'redpacket-alipay-1.1.2', ext: 'aar')
     compile files('libs/TencentLocationSDK_v4.9.7.12_r247861_161205_1104.jar')

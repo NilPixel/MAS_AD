@@ -16,9 +16,11 @@ import android.widget.TextView;
 
 import com.example.zheng.steward.R;
 import com.example.zheng.steward.app.MyApp;
+import com.example.zheng.steward.service.GeTuiPushService;
 import com.example.zheng.steward.ui.activity.WebViewActivity;
 import com.example.zheng.steward.utils.UIUtils;
 import com.example.zheng.steward.widget.CustomDialog;
+import com.igexin.sdk.PushManager;
 import com.jaeger.library.StatusBarUtil;
 import com.zhy.autolayout.AutoLinearLayout;
 
@@ -68,6 +70,8 @@ public abstract class BaseActivity<V, T extends BasePresenter<V>> extends AppCom
 
         //子类不再需要设置布局ID，也不再需要使用ButterKnife.bind()
         setContentView(provideContentViewId());
+        //初始化注册个推
+        PushManager.getInstance().initialize(this.getApplicationContext(), GeTuiPushService.class);
 //        ButterKnife.bind(this);
 
 //        setupAppBarAndToolbar();
