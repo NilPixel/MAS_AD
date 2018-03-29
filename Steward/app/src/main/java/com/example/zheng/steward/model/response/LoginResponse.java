@@ -13,6 +13,8 @@ public class LoginResponse {
      */
 
     private int code;
+
+    private String desc;
     /**
      * id : t1hWCOGvX
      * token : B0DA/kKanJviD5xxUzhwsEFIJad0/86YwGxBwz1417WFQi/Vr2OJay26s5IFDffGZaUYRMAkvN0ikvOcTl7RN9JilKZlosfQ
@@ -32,13 +34,21 @@ public class LoginResponse {
         return code;
     }
 
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
+
     public ResultEntity getResult() {
         return result;
     }
 
     public static class ResultEntity {
         private String expireTime;
-        private String desc;
+
         private String token;
 
         public String getExpireTime() {
@@ -47,14 +57,6 @@ public class LoginResponse {
 
         public void setExpireTime(String expireTime) {
             this.expireTime = expireTime;
-        }
-
-        public String getDesc() {
-            return desc;
-        }
-
-        public void setDesc(String desc) {
-            this.desc = desc;
         }
 
         public String getToken() {

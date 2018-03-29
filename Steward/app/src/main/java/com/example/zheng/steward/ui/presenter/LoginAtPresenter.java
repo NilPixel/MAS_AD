@@ -55,7 +55,7 @@ public class LoginAtPresenter extends BasePresenter<ILoginAtView> {
                         mContext.jumpToActivityAndClearTask(MainActivity.class);
                         mContext.finish();
                     } else {
-                        loginError(new ServerException(UIUtils.getString(R.string.login_error) + code));
+                        loginError(new ServerException(loginResponse.getDesc() + code));
                     }
                 }, this::loginError);
     }

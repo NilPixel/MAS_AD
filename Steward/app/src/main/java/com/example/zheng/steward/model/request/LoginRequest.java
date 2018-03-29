@@ -7,12 +7,12 @@ package com.example.zheng.steward.model.request;
  */
 public class LoginRequest {
 
-    private String userName;
+    private String username;
     private String password;
     private Boolean encrypt;
 
     public LoginRequest(String userName, String password, Boolean encrypt) {
-        this.userName = userName;
+        this.username = userName;
         this.password = password;
         this.encrypt = encrypt;
     }
@@ -25,12 +25,12 @@ public class LoginRequest {
         this.encrypt = encrypt;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
