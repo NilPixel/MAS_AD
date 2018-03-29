@@ -6,6 +6,7 @@ import com.example.zheng.steward.api.base.persistentcookiejar.cache.SetCookieCac
 import com.example.zheng.steward.api.base.persistentcookiejar.persistence.SharedPrefsCookiePersistor;
 import com.example.zheng.steward.app.MyApp;
 import com.example.zheng.steward.model.cache.UserCache;
+import com.example.zheng.steward.utils.APKVersionCodeUtils;
 import com.example.zheng.steward.utils.LogUtils;
 import com.example.zheng.steward.utils.NetUtils;
 import com.example.zheng.steward.utils.SystemUtils;
@@ -76,6 +77,8 @@ public class BaseApiRetrofit {
                 .addHeader("clientid", SystemUtils.getClientId())
                 .addHeader("mmTicket", UserCache.getToken())
                 .addHeader("MPTSP", TimeUtils.getTimestamp())
+                .addHeader("sysVersion", APKVersionCodeUtils.getVerName(MyApp.getContext()))
+                .addHeader("channel", "Android")
                 .build();
         return chain.proceed(request);
     };
