@@ -52,7 +52,7 @@ public class LoginAtPresenter extends BasePresenter<ILoginAtView> {
                     mContext.hideWaitingDialog();
                     if (code == AppConst.ResponseCode.SUCCESS) {
                         UserCache.save(loginResponse.getUserToken().getExpireTime(), userName, loginResponse.getUserToken().getToken());
-                        mContext.jumpToActivityAndClearTask(MainActivity.class);
+                        mContext.jumpToActivityAndClearTask(MainActivity.class, R.anim.bottom_in, R.anim.top_out);
                         mContext.finish();
                     } else {
                         loginError(new ServerException(loginResponse.getDesc() + code));

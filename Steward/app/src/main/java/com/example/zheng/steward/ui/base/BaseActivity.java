@@ -72,7 +72,7 @@ public abstract class BaseActivity<V, T extends BasePresenter<V>> extends AppCom
         setContentView(provideContentViewId());
         //初始化注册个推
         PushManager.getInstance().initialize(this.getApplicationContext(), GeTuiPushService.class);
-//        ButterKnife.bind(this);
+        ButterKnife.bind(this);
 
 //        setupAppBarAndToolbar();
 
@@ -227,10 +227,11 @@ public abstract class BaseActivity<V, T extends BasePresenter<V>> extends AppCom
     }
 
 
-    public void jumpToActivityAndClearTask(Class activity) {
+    public void jumpToActivityAndClearTask(Class activity, int enterAnim, int exitAnim) {
         Intent intent = new Intent(this, activity);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
+        overridePendingTransition(enterAnim, exitAnim);
         finish();
     }
 

@@ -7,6 +7,7 @@ import android.widget.EditText;
  */
 
 public interface ILoginAtView {
+
     EditText getEtUserName();
 
     EditText getEtPwd();

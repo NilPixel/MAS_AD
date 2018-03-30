@@ -71,7 +71,7 @@ public class LoginActivity extends BaseActivity<ILoginAtView, LoginAtPresenter> 
 
     @Override
     public void initView() {
-        ButterKnife.bind(this);
+
     }
 
     @Override
