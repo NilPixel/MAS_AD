@@ -69,6 +69,15 @@ public class SPUtils {
         return sp.getInt(key, defValue);
     }
 
+    public void putLong(String key, long value) {
+        editor.putLong(key, value);
+        editor.commit();
+    }
+
+    public long getLong(String key, long defValue) {
+        return sp.getLong(key, defValue);
+    }
+
     public Map<String, ?> getAll() {
         return sp.getAll();
     }

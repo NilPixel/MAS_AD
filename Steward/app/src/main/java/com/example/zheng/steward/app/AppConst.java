@@ -42,12 +42,21 @@ public class AppConst {
     public static final class User {
         public static final String ID = "id";
         public static final String PHONE = "phone";
-        //        public static final String ACCOUNT = "account";
+        public static final String EXPIRETIME = "expireTime";
+        public static final String USERNAME = "userName";
         public static final String TOKEN = "token";
         public static final String UUID = "uuid";
         public static final String CLIENTID = "clientId";
     }
 
+    public static final class ResponseCode {
+        public static final Integer SUCCESS = 0;            //请求成功
+        public static final Integer TOKEN_EXPIRE = 10013;   //token过期
+        //        public static final String ACCOUNT = "account";
+        public static final String TOKEN = "token";
+        public static final String UUID = "uuid";
+        public static final String CLIENTID = "clientId";
+    }
 
     public static final class WeChatUrl {
         public static final String HELP_FEED_BACK = "https://kf.qq.com/touch/product/wechat_app.html?scene_id=kf338&code=001ls8gj1IuCnz0kiUfj15uIfj1ls8ga&state=123";

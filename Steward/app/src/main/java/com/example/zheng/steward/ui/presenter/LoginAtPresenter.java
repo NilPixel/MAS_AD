@@ -50,8 +50,8 @@ public class LoginAtPresenter extends BasePresenter<ILoginAtView> {
                 .subscribe(loginResponse -> {
                     int code = loginResponse.getCode();
                     mContext.hideWaitingDialog();
-                    if (code == 200) {
-                        UserCache.save(loginResponse.getResult().getExpireTime(), userName, loginResponse.getResult().getToken());
+                    if (code == AppConst.ResponseCode.SUCCESS) {
+                        UserCache.save(loginResponse.getUserToken().getExpireTime(), userName, loginResponse.getUserToken().getToken());
                         mContext.jumpToActivityAndClearTask(MainActivity.class);
                         mContext.finish();
                     } else {

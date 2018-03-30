@@ -7,27 +7,14 @@ package com.example.zheng.steward.model.response;
  */
 public class LoginResponse {
 
-    /**
-     * code : 200
-     * result : {"id":"t1hWCOGvX","token":"B0DA/kKanJviD5xxUzhwsEFIJad0/86YwGxBwz1417WFQi/Vr2OJay26s5IFDffGZaUYRMAkvN0ikvOcTl7RN9JilKZlosfQ"}
-     */
-
     private int code;
 
     private String desc;
-    /**
-     * id : t1hWCOGvX
-     * token : B0DA/kKanJviD5xxUzhwsEFIJad0/86YwGxBwz1417WFQi/Vr2OJay26s5IFDffGZaUYRMAkvN0ikvOcTl7RN9JilKZlosfQ
-     */
 
-    private ResultEntity result;
+    private Token userToken;
 
     public void setCode(int code) {
         this.code = code;
-    }
-
-    public void setResult(ResultEntity result) {
-        this.result = result;
     }
 
     public int getCode() {
@@ -42,22 +29,19 @@ public class LoginResponse {
         this.desc = desc;
     }
 
-    public ResultEntity getResult() {
-        return result;
+    public Token getUserToken() {
+        return userToken;
     }
 
-    public static class ResultEntity {
-        private String expireTime;
+    public void setUserToken(Token userToken) {
+        this.userToken = userToken;
+    }
+
+    public static class Token {
 
         private String token;
 
-        public String getExpireTime() {
-            return expireTime;
-        }
-
-        public void setExpireTime(String expireTime) {
-            this.expireTime = expireTime;
-        }
+        private long expireTime;
 
         public String getToken() {
             return token;
@@ -65,6 +49,14 @@ public class LoginResponse {
 
         public void setToken(String token) {
             this.token = token;
+        }
+
+        public long getExpireTime() {
+            return expireTime;
+        }
+
+        public void setExpireTime(long expireTime) {
+            this.expireTime = expireTime;
         }
     }
 }
