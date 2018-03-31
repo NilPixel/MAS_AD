@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">么么管家</string>
     <string name="home_tab">首页</string>
-    <string name="message_tab">消息</string>
+    <string name="news_tab">消息</string>
     <string name="mine_tab">我的</string>
     <string name="amount_bg">金额展示视图背景图片</string>
     <string name="apply_query">申请件查询</string>
@@ -63,12 +63,6 @@
     <string name="vertify_code_error">验证码有误</string>
     <string name="send_code_btn_normal_tip">发送验证码</string>
     <string name="register_error">注册出错</string>
-
-    <!--主界面-->
-    <string name="message">微信</string>
-    <string name="contacts">通讯录</string>
-    <string name="discovery">发现</string>
-    <string name="me">我</string>
 
     <!--最近会话-->
     <string name="draft">[草稿]</string>

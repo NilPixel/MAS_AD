@@ -1,5 +1,6 @@
 package com.example.zheng.steward.ui.fragment;
 
+import com.example.zheng.steward.R;
 import com.example.zheng.steward.ui.base.BaseFragment;
 import com.example.zheng.steward.ui.base.BasePresenter;
 
@@ -8,7 +9,7 @@ import com.example.zheng.steward.ui.base.BasePresenter;
  * 消息fragment
  */
 
-public class MessageFragment extends BaseFragment {
+public class NewsFragment extends BaseFragment {
 
     @Override
     protected BasePresenter createPresenter() {
@@ -17,6 +18,6 @@ public class MessageFragment extends BaseFragment {
 
     @Override
     protected int provideContentViewId() {
-        return 0;
+        return R.layout.tab_news;
     }
 }

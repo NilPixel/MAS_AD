@@ -1,5 +1,6 @@
 package com.example.zheng.steward.ui.fragment;
 
+import com.example.zheng.steward.R;
 import com.example.zheng.steward.ui.base.BaseFragment;
 import com.example.zheng.steward.ui.base.BasePresenter;
 
@@ -17,6 +18,6 @@ public class MineFragment extends BaseFragment {
 
     @Override
     protected int provideContentViewId() {
-        return 0;
+        return R.layout.tab_mine;
     }
 }

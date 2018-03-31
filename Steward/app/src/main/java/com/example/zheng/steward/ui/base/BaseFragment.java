@@ -60,6 +60,7 @@ public abstract class BaseFragment<V, T extends BasePresenter<V>> extends Fragme
     }
 
     public void initView(View rootView) {
+
     }
 
     public void initData() {

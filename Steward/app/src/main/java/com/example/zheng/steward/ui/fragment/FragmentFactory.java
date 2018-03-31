@@ -24,7 +24,7 @@ public class FragmentFactory {
     }
 
     private HomeFragment mHomeFragment;
-    private MessageFragment mMessageFragment;
+    private NewsFragment mNewsFragment;
     private MineFragment mMineFragment;
 
     public HomeFragment getHomeFragment() {
@@ -38,15 +38,15 @@ public class FragmentFactory {
         return mHomeFragment;
     }
 
-    public MessageFragment getMessageFragment() {
-        if (mMessageFragment == null) {
+    public NewsFragment getMessageFragment() {
+        if (mNewsFragment == null) {
             synchronized (FragmentFactory.class) {
-                if (mMessageFragment == null) {
-                    mMessageFragment = new MessageFragment();
+                if (mNewsFragment == null) {
+                    mNewsFragment = new NewsFragment();
                 }
             }
         }
-        return mMessageFragment;
+        return mNewsFragment;
     }
 
     public MineFragment getMineFragment() {

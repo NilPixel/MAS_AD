@@ -7,9 +7,9 @@ import com.example.zheng.steward.ui.base.BasePresenter;
  * Created by zheng on 2018/3/30.
  */
 
-public class MessageFgPresenter extends BasePresenter {
+public class NewsFgPresenter extends BasePresenter {
 
-    public MessageFgPresenter(BaseActivity context) {
+    public NewsFgPresenter(BaseActivity context) {
         super(context);
     }
 }
