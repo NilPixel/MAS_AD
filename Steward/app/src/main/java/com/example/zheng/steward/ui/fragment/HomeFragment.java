@@ -12,6 +12,7 @@ import com.example.zheng.steward.MainActivity;
 import com.example.zheng.steward.R;
 import com.example.zheng.steward.ui.base.BaseFragment;
 import com.example.zheng.steward.ui.presenter.HomeFgPresenter;
+import com.example.zheng.steward.ui.view.IHomeFgView;
 import com.example.zheng.steward.widget.MyGridView;
 
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ import butterknife.Bind;
  * 首页fragment
  */
 
-public class HomeFragment extends BaseFragment {
+public class HomeFragment extends BaseFragment<IHomeFgView, HomeFgPresenter> implements IHomeFgView {
 
     private static final String TAG = "HomeFragment";
 
@@ -112,7 +113,7 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     public void initData() {
-        super.initData();
+        mPresenter.loadHomeData();
     }
 
     /**

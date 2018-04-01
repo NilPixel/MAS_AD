@@ -19,6 +19,7 @@ import com.example.zheng.steward.model.response.GetTokenResponse;
 import com.example.zheng.steward.model.response.GetUserInfoByIdResponse;
 import com.example.zheng.steward.model.response.GetUserInfoByPhoneResponse;
 import com.example.zheng.steward.model.response.GetUserInfosResponse;
+import com.example.zheng.steward.model.response.HomeDataResponse;
 import com.example.zheng.steward.model.response.JoinGroupResponse;
 import com.example.zheng.steward.model.response.LoginResponse;
 import com.example.zheng.steward.model.response.QiNiuTokenResponse;
@@ -74,6 +75,10 @@ public interface MyApi {
     //登录
     @POST("api/user/app/login/11")
     Observable<LoginResponse> login(@Body RequestBody body);
+
+    //获取首页数据
+    @GET("api/merchant/app/home")
+    Observable<HomeDataResponse> getHomeData();
 
     //获取 token 前置条件需要登录   502 坏的网关 测试环境用户已达上限
     @GET("user/get_token")

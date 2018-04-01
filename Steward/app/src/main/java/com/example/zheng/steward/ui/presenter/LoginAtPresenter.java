@@ -18,8 +18,6 @@ import com.example.zheng.steward.utils.UIUtils;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
-import static io.rong.imlib.statistics.UserData.phone;
-
 /**
  * Created by jarvis on 2018/3/22.
  */

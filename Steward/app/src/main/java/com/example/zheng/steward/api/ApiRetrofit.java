@@ -45,6 +45,7 @@ import com.example.zheng.steward.model.response.GetTokenResponse;
 import com.example.zheng.steward.model.response.GetUserInfoByIdResponse;
 import com.example.zheng.steward.model.response.GetUserInfoByPhoneResponse;
 import com.example.zheng.steward.model.response.GetUserInfosResponse;
+import com.example.zheng.steward.model.response.HomeDataResponse;
 import com.example.zheng.steward.model.response.JoinGroupResponse;
 import com.example.zheng.steward.model.response.LoginResponse;
 import com.example.zheng.steward.model.response.QiNiuTokenResponse;
@@ -121,6 +122,11 @@ public class ApiRetrofit extends BaseApiRetrofit {
     //登录
     public Observable<LoginResponse> login(String userName, String password, Boolean encrypt) {
         return mApi.login(getRequestBody(new LoginRequest(userName, password, encrypt)));
+    }
+
+    //获取首页数据
+    public Observable<HomeDataResponse> getHomeData() {
+        return mApi.getHomeData();
     }
 
     //注册

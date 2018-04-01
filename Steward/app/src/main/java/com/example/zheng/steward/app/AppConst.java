@@ -58,6 +58,12 @@ public class AppConst {
         public static final String CLIENTID = "clientId";
     }
 
+    //商户类信息
+    public static final class Merchant {
+        public static final String MERCHANT_CODE = "merchantCode";
+        public static final String MERCHANT_NAME = "merchantName";
+    }
+
     public static final class WeChatUrl {
         public static final String HELP_FEED_BACK = "https://kf.qq.com/touch/product/wechat_app.html?scene_id=kf338&code=001ls8gj1IuCnz0kiUfj15uIfj1ls8ga&state=123";
         public static final String JD = "https://m.jd.com/";
