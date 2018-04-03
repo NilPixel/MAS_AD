@@ -10,6 +10,7 @@ import com.example.zheng.steward.ui.base.BaseActivity;
 import com.example.zheng.steward.ui.base.BasePresenter;
 import com.example.zheng.steward.ui.view.IHomeFgView;
 import com.example.zheng.steward.utils.LogUtils;
+import com.example.zheng.steward.utils.NumberUtils;
 import com.example.zheng.steward.utils.SPUtils;
 import com.example.zheng.steward.utils.UIUtils;
 
@@ -46,7 +47,7 @@ public class HomeFgPresenter extends BasePresenter<IHomeFgView> {
                         getView().getOrderNumTextView().setText(String.valueOf(homeDataResponse.getMonthApply()));
 
                         SPUtils.getInstance(UIUtils.getContext()).putString(AppConst.Merchant.MONTH_AMOUNT, String.valueOf(homeDataResponse.getMonthAmount()));
-                        SPUtils.getInstance(UIUtils.getContext()).putString(AppConst.Merchant.TOTAL_AMOUNT, String.valueOf(homeDataResponse.getTotalAmount()));
+                        SPUtils.getInstance(UIUtils.getContext()).putString(AppConst.Merchant.TOTAL_AMOUNT, NumberUtils.convertToTenThousand(homeDataResponse.getTotalAmount()));
                         SPUtils.getInstance(UIUtils.getContext()).putString(AppConst.Merchant.MONTH_APPLY, String.valueOf(homeDataResponse.getMonthApply()));
                         SPUtils.getInstance(UIUtils.getContext()).putString(AppConst.Merchant.TOTAL_APPLY, String.valueOf(homeDataResponse.getTotalApply()));
                     } else {
