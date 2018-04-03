@@ -57,7 +57,7 @@
             android:layout_below="@+id/current_or_total_apply"
             android:layout_marginTop="8dp"
             android:layout_marginLeft="15dp"
-            android:text="2,160"
+            android:text="0.0"
             android:textSize="38sp"
             android:textColor="@color/amountColor"/>
 
@@ -80,7 +80,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginLeft="15dp"
             android:layout_marginBottom="30dp"
-            android:text="103"
+            android:text="0"
             android:textSize="38sp"
             android:textColor="@color/colorWhite"/>
 

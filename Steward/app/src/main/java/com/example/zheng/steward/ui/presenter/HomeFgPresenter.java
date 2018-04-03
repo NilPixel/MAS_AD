@@ -41,6 +41,14 @@ public class HomeFgPresenter extends BasePresenter<IHomeFgView> {
                     if (code == AppConst.ResponseCode.SUCCESS) {
                         SPUtils.getInstance(UIUtils.getContext()).putString(AppConst.Merchant.MERCHANT_CODE, homeDataResponse.getMerchantCode());
                         SPUtils.getInstance(UIUtils.getContext()).putString(AppConst.Merchant.MERCHANT_NAME, homeDataResponse.getMerchantName());
+
+                        getView().getSumTextView().setText(String.valueOf(homeDataResponse.getMonthAmount()));
+                        getView().getOrderNumTextView().setText(String.valueOf(homeDataResponse.getMonthApply()));
+
+                        SPUtils.getInstance(UIUtils.getContext()).putString(AppConst.Merchant.MONTH_AMOUNT, String.valueOf(homeDataResponse.getMonthAmount()));
+                        SPUtils.getInstance(UIUtils.getContext()).putString(AppConst.Merchant.TOTAL_AMOUNT, String.valueOf(homeDataResponse.getTotalAmount()));
+                        SPUtils.getInstance(UIUtils.getContext()).putString(AppConst.Merchant.MONTH_APPLY, String.valueOf(homeDataResponse.getMonthApply()));
+                        SPUtils.getInstance(UIUtils.getContext()).putString(AppConst.Merchant.TOTAL_APPLY, String.valueOf(homeDataResponse.getTotalApply()));
                     } else {
                         homeDataRequestError(new ServerException(homeDataResponse.getDesc() + code));
                     }

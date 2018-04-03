@@ -62,6 +62,12 @@ public class AppConst {
     public static final class Merchant {
         public static final String MERCHANT_CODE = "merchantCode";
         public static final String MERCHANT_NAME = "merchantName";
+
+        public static final String MONTH_AMOUNT = "monthAmount";    //当月金额
+        public static final String TOTAL_AMOUNT = "totalAmount";    //累计金额
+
+        public static final String MONTH_APPLY = "monthApply";      //当月进件数
+        public static final String TOTAL_APPLY = "totalApply";      //累计进件数
     }
 
     public static final class WeChatUrl {

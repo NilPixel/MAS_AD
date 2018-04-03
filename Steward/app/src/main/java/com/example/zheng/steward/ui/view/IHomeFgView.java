@@ -7,5 +7,9 @@ import android.widget.TextView;
  */
 
 public interface IHomeFgView {
-    
+
+    public TextView getSumTextView();
+
+
+    public TextView getOrderNumTextView();
 }

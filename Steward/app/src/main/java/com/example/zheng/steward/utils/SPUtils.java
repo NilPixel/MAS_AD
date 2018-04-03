@@ -69,6 +69,15 @@ public class SPUtils {
         return sp.getInt(key, defValue);
     }
 
+    public void putFloat(String key, float value) {
+        editor.putFloat(key, value);
+        editor.commit();
+    }
+
+    public float getFloat(String key, float defValue) {
+        return sp.getFloat(key, defValue);
+    }
+
     public void putLong(String key, long value) {
         editor.putLong(key, value);
         editor.commit();

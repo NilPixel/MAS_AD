@@ -10,9 +10,12 @@ import android.widget.TextView;
 
 import com.example.zheng.steward.MainActivity;
 import com.example.zheng.steward.R;
+import com.example.zheng.steward.app.AppConst;
 import com.example.zheng.steward.ui.base.BaseFragment;
 import com.example.zheng.steward.ui.presenter.HomeFgPresenter;
 import com.example.zheng.steward.ui.view.IHomeFgView;
+import com.example.zheng.steward.utils.SPUtils;
+import com.example.zheng.steward.utils.UIUtils;
 import com.example.zheng.steward.widget.MyGridView;
 
 import java.util.ArrayList;
@@ -197,6 +200,9 @@ public class HomeFragment extends BaseFragment<IHomeFgView, HomeFgPresenter> imp
         mCumulativeBtn.setBackgroundResource(R.mipmap.ic_view_current_month);
         currentOrTotalApplyText.setText("累计申请金额（万元）");
         currentOrTotalIntoText.setText("累计进件数 (笔）");
+
+        currentOrTotalMoneyText.setText(SPUtils.getInstance(UIUtils.getContext()).getString(AppConst.Merchant.TOTAL_AMOUNT, "0"));
+        currentOrTotalOrderText.setText(SPUtils.getInstance(UIUtils.getContext()).getString(AppConst.Merchant.TOTAL_APPLY, "0"));
     }
 
     /**
@@ -207,6 +213,9 @@ public class HomeFragment extends BaseFragment<IHomeFgView, HomeFgPresenter> imp
         mCumulativeBtn.setBackgroundResource(R.mipmap.ic_view_cumulative);
         currentOrTotalApplyText.setText("当月申请金额（元）");
         currentOrTotalIntoText.setText("当月进件数 (笔）");
+
+        currentOrTotalMoneyText.setText(SPUtils.getInstance(UIUtils.getContext()).getString(AppConst.Merchant.MONTH_AMOUNT, "0"));
+        currentOrTotalOrderText.setText(SPUtils.getInstance(UIUtils.getContext()).getString(AppConst.Merchant.MONTH_APPLY, "0"));
     }
 
     /**
@@ -228,5 +237,15 @@ public class HomeFragment extends BaseFragment<IHomeFgView, HomeFgPresenter> imp
      */
     private void newGuidelinesBtnClicked() {
         Log.d(TAG, "newGuidelinesBtnClicked: 新手须知按钮点击");
+    }
+
+    @Override
+    public TextView getSumTextView() {
+        return currentOrTotalMoneyText;
+    }
+
+    @Override
+    public TextView getOrderNumTextView() {
+        return currentOrTotalOrderText;
     }
 }
