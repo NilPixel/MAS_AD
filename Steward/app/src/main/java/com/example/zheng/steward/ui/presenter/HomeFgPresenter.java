@@ -6,6 +6,7 @@ import com.example.zheng.steward.api.ApiRetrofit;
 import com.example.zheng.steward.app.AppConst;
 import com.example.zheng.steward.model.cache.UserCache;
 import com.example.zheng.steward.model.exception.ServerException;
+import com.example.zheng.steward.ui.activity.LoginActivity;
 import com.example.zheng.steward.ui.base.BaseActivity;
 import com.example.zheng.steward.ui.base.BasePresenter;
 import com.example.zheng.steward.ui.view.IHomeFgView;
@@ -38,7 +39,6 @@ public class HomeFgPresenter extends BasePresenter<IHomeFgView> {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(homeDataResponse -> {
                     int code = homeDataResponse.getCode();
-                    mContext.hideWaitingDialog();
                     if (code == AppConst.ResponseCode.SUCCESS) {
                         SPUtils.getInstance(UIUtils.getContext()).putString(AppConst.Merchant.MERCHANT_CODE, homeDataResponse.getMerchantCode());
                         SPUtils.getInstance(UIUtils.getContext()).putString(AppConst.Merchant.MERCHANT_NAME, homeDataResponse.getMerchantName());
@@ -51,6 +51,10 @@ public class HomeFgPresenter extends BasePresenter<IHomeFgView> {
                         SPUtils.getInstance(UIUtils.getContext()).putString(AppConst.Merchant.MONTH_APPLY, String.valueOf(homeDataResponse.getMonthApply()));
                         SPUtils.getInstance(UIUtils.getContext()).putString(AppConst.Merchant.TOTAL_APPLY, String.valueOf(homeDataResponse.getTotalApply()));
                     } else {
+                        if (code == AppConst.ResponseCode.TOKEN_EXPIRE) {
+                            mContext.jumpToActivityAndClearTask(LoginActivity.class, R.anim.bottom_in, R.anim.top_out);
+                            mContext.finish();
+                        }
                         homeDataRequestError(new ServerException(homeDataResponse.getDesc() + code));
                     }
                 }, this::homeDataRequestError);
