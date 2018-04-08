@@ -223,6 +223,8 @@ public class HomeFragment extends BaseFragment<IHomeFgView, HomeFgPresenter> imp
      */
     private void verificationBtnClicked() {
         Log.d(TAG, "codeVerificationBtnClicked: 券码验证按钮点击");
+        ManualVerificationFragment manualVerificationDialog = new ManualVerificationFragment();
+        manualVerificationDialog.show(getFragmentManager(), TAG);
     }
 
     /**

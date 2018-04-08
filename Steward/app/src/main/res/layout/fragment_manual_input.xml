@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/colorWhite">
+    android:background="@color/colorWhite"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp">
 
     <TextView
         android:id="@+id/text_manual_input"
@@ -20,9 +22,9 @@
         android:layout_height="51dp"
         android:orientation="horizontal"
         android:layout_below="@id/text_manual_input"
-        android:paddingLeft="30dp"
-        android:paddingRight="30dp"
-        android:layout_marginTop="30dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:layout_marginTop="20dp"
         android:layout_marginBottom="40dp">
 
         <EditText
@@ -30,10 +32,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:imeOptions="actionDone"
-            android:layout_weight="3"
+            android:layout_weight="4"
             android:hint="@string/verification_code_hint"
             android:background="@drawable/rounded_verification_code_et"
-            android:paddingLeft="30dp"/>
+            android:paddingLeft="15dp"/>
 
         <Button
             android:id="@+id/id_sure_edit_name"
