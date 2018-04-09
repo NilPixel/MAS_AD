@@ -6,6 +6,7 @@
     android:background="@mipmap/ic_qr_bg">
 
     <TextView
+        android:id="@+id/qr_merchant_name"
         android:layout_width="match_parent"
         android:layout_height="65dp"
         android:text="商户名称"
@@ -15,9 +16,9 @@
         android:gravity="center"/>
 
     <ImageView
+        android:id="@+id/qr_code_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-
 
 
 

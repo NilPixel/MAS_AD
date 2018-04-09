@@ -234,6 +234,7 @@ public class HomeFragment extends BaseFragment<IHomeFgView, HomeFgPresenter> imp
         Log.d(TAG, "startStageBtnClicked: 开始分期按钮点击");
         QRCodeFragment qrCodeDialog = new QRCodeFragment();
         qrCodeDialog.show(getFragmentManager(), TAG);
+        qrCodeDialog.setQrString("二维码");
     }
 
     /**
