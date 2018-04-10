@@ -33,6 +33,7 @@ public class QRCodeFragment extends DialogFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.qr_code, container);
         ButterKnife.bind(this, rootView);
+        createQrCode();
         return rootView;
     }
 
@@ -53,7 +54,10 @@ public class QRCodeFragment extends DialogFragment {
 
     public void setQrString(String qrString) {
         this.qrString = qrString;
+    }
+
+    private void createQrCode(){
         Bitmap bitmap = QRCodeManager.getInstance().createQRCode(qrString, 300, 300);
-//        qrImageView.setImageBitmap(bitmap);
+        qrImageView.setImageBitmap(bitmap);
     }
 }
