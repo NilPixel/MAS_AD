@@ -22,6 +22,7 @@ import com.example.zheng.steward.model.response.GetUserInfosResponse;
 import com.example.zheng.steward.model.response.HomeDataResponse;
 import com.example.zheng.steward.model.response.JoinGroupResponse;
 import com.example.zheng.steward.model.response.LoginResponse;
+import com.example.zheng.steward.model.response.QRCodeResponse;
 import com.example.zheng.steward.model.response.QiNiuTokenResponse;
 import com.example.zheng.steward.model.response.QuitGroupResponse;
 import com.example.zheng.steward.model.response.RegisterResponse;
@@ -79,6 +80,10 @@ public interface MyApi {
     //获取首页数据
     @GET("api/merchant/app/home")
     Observable<HomeDataResponse> getHomeData();
+
+    //获取二维码字符串
+    @POST("api/qrcode/getAppTemporaryQrCodeForMobile")
+    Observable<QRCodeResponse> getQRCodeString();
 
     //获取 token 前置条件需要登录   502 坏的网关 测试环境用户已达上限
     @GET("user/get_token")

@@ -6,7 +6,7 @@
     android:background="@mipmap/ic_qr_bg">
 
     <TextView
-        android:id="@+id/qr_merchant_name"
+        android:id="@+id/qr_title_text"
         android:layout_width="match_parent"
         android:layout_height="65dp"
         android:text="商户名称"

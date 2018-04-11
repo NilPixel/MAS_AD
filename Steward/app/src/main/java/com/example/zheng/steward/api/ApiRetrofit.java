@@ -48,6 +48,7 @@ import com.example.zheng.steward.model.response.GetUserInfosResponse;
 import com.example.zheng.steward.model.response.HomeDataResponse;
 import com.example.zheng.steward.model.response.JoinGroupResponse;
 import com.example.zheng.steward.model.response.LoginResponse;
+import com.example.zheng.steward.model.response.QRCodeResponse;
 import com.example.zheng.steward.model.response.QiNiuTokenResponse;
 import com.example.zheng.steward.model.response.QuitGroupResponse;
 import com.example.zheng.steward.model.response.RegisterResponse;
@@ -127,6 +128,11 @@ public class ApiRetrofit extends BaseApiRetrofit {
     //获取首页数据
     public Observable<HomeDataResponse> getHomeData() {
         return mApi.getHomeData();
+    }
+
+    //获取二维码字符串
+    public Observable<QRCodeResponse> getQRCodeString() {
+        return mApi.getQRCodeString();
     }
 
     //注册

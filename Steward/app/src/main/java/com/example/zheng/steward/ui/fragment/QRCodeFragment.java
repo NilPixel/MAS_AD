@@ -10,9 +10,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.example.zheng.steward.MainActivity;
 import com.example.zheng.steward.R;
-import com.jwkj.libzxing.QRCodeManager;
+import com.example.zheng.steward.ui.presenter.QRCodeFgPresenter;
+import com.example.zheng.steward.ui.view.IQRCodeFgView;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -21,20 +24,30 @@ import butterknife.ButterKnife;
  * Created by jarvis on 2018/4/8.
  */
 
-public class QRCodeFragment extends DialogFragment {
+public class QRCodeFragment extends DialogFragment implements IQRCodeFgView {
 
     @Bind(R.id.qr_code_image)
     ImageView qrImageView;
 
-    String qrString;    //二维码内容
+    @Bind(R.id.qr_title_text)
+    TextView qrTitleText;
+
+    QRCodeFgPresenter qrCodeFgPresenter;    //present对象
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.qr_code, container);
         ButterKnife.bind(this, rootView);
-        createQrCode();
         return rootView;
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        qrCodeFgPresenter = new QRCodeFgPresenter((MainActivity) getActivity());
+        qrCodeFgPresenter.attachView(this);
+        qrCodeFgPresenter.loadQRCodeString();
     }
 
     @Override
@@ -48,16 +61,13 @@ public class QRCodeFragment extends DialogFragment {
         }
     }
 
-    public String getQrString() {
-        return qrString;
+    @Override
+    public ImageView getQRCodeView() {
+        return qrImageView;
     }
 
-    public void setQrString(String qrString) {
-        this.qrString = qrString;
-    }
-
-    private void createQrCode(){
-        Bitmap bitmap = QRCodeManager.getInstance().createQRCode(qrString, 300, 300);
-        qrImageView.setImageBitmap(bitmap);
+    @Override
+    public TextView getQrTitleTxView() {
+        return qrTitleText;
     }
 }

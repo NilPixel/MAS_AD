@@ -8,8 +8,8 @@ import android.widget.TextView;
 
 public interface IHomeFgView {
 
-    public TextView getSumTextView();
+    TextView getSumTextView();
 
 
-    public TextView getOrderNumTextView();
+    TextView getOrderNumTextView();
 }
