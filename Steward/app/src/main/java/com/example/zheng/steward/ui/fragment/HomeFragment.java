@@ -34,6 +34,9 @@ public class HomeFragment extends BaseFragment<IHomeFgView, HomeFgPresenter> imp
 
     private static final String TAG = "HomeFragment";
 
+    @Bind(R.id.tvToolbarTitle)
+    public TextView mToolbarTitle;
+
     /**
      * 切换当月数据和累计数据的按钮
      */
@@ -251,5 +254,10 @@ public class HomeFragment extends BaseFragment<IHomeFgView, HomeFgPresenter> imp
     @Override
     public TextView getOrderNumTextView() {
         return currentOrTotalOrderText;
+    }
+
+    @Override
+    public TextView getToolBarTitleTextView() {
+        return mToolbarTitle;
     }
 }

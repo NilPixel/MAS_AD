@@ -51,8 +51,6 @@ public abstract class BaseActivity<V, T extends BasePresenter<V>> extends AppCom
 //    public View mToolbarDivision;
 //    @Bind(R.id.llToolbarTitle)
 //    public AutoLinearLayout mLlToolbarTitle;
-//    @Bind(R.id.tvToolbarTitle)
-//    public TextView mToolbarTitle;
 //    @Bind(R.id.tvToolbarSubTitle)
 //    public TextView mToolbarSubTitle;
 

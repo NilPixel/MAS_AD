@@ -7,10 +7,12 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.zheng.steward.R;
+import com.example.zheng.steward.app.AppConst;
 import com.example.zheng.steward.ui.base.BaseActivity;
 import com.example.zheng.steward.ui.presenter.LoginAtPresenter;
 import com.example.zheng.steward.ui.view.ILoginAtView;
 import com.example.zheng.steward.utils.ColorUtils;
+import com.example.zheng.steward.utils.SPUtils;
 import com.example.zheng.steward.utils.UIUtils;
 
 import butterknife.Bind;
@@ -71,7 +73,9 @@ public class LoginActivity extends BaseActivity<ILoginAtView, LoginAtPresenter> 
 
     @Override
     public void initView() {
-
+        String userName = SPUtils.getInstance(UIUtils.getContext()).getString(AppConst.User.USERNAME,"");
+        userNameEt.setText(userName);
+        userNameEt.setSelection(userName.length());//将光标移至最后
     }
 
     @Override

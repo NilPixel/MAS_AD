@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     android:background="@color/colorSplitline">
 
+    <include layout="@layout/include_toolbar"/>
+
     <!--金额视图-->
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"

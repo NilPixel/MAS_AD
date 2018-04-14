@@ -18,11 +18,14 @@ import android.widget.LinearLayout;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
+import com.example.zheng.steward.app.AppConst;
 import com.example.zheng.steward.ui.adapter.CommonFragmentPagerAdapter;
 import com.example.zheng.steward.ui.base.BaseActivity;
 import com.example.zheng.steward.ui.base.BaseFragment;
 import com.example.zheng.steward.ui.base.BasePresenter;
 import com.example.zheng.steward.ui.fragment.FragmentFactory;
+import com.example.zheng.steward.utils.SPUtils;
+import com.example.zheng.steward.utils.UIUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -96,36 +99,6 @@ public class MainActivity extends BaseActivity {
         mHomeText.setTextColor(Color.parseColor("#AAADB7"));
         mNewsText.setTextColor(Color.parseColor("#AAADB7"));
         mMineText.setTextColor(Color.parseColor("#AAADB7"));
-    }
-
-    /**
-     * 添加右侧扫描二维码菜单按钮
-     *
-     * @param menu
-     * @return
-     */
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.actionbar_menu, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    /**
-     * 菜单点击事件
-     *
-     * @param item
-     * @return
-     */
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.qr_scan_btn:
-                Log.d(TAG, "onOptionsItemSelected: 扫码按钮点击");
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
     }
 
     @Override

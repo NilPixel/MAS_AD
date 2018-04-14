@@ -14,6 +14,7 @@
     <style name="ThemeNoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="windowNoTitle">true</item>
         <item name="android:windowNoTitle">true</item>
+        <item name="colorPrimaryDark">@color/colorNavigation</item>
     </style>
 
     <!--圆角Dialog-->

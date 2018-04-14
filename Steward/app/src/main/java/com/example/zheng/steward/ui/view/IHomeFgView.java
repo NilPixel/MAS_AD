@@ -10,6 +10,7 @@ public interface IHomeFgView {
 
     TextView getSumTextView();
 
-
     TextView getOrderNumTextView();
+
+    TextView getToolBarTitleTextView();
 }

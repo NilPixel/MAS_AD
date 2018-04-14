@@ -45,6 +45,7 @@ public class HomeFgPresenter extends BasePresenter<IHomeFgView> {
 
                         getView().getSumTextView().setText(String.valueOf(homeDataResponse.getMonthAmount()));
                         getView().getOrderNumTextView().setText(String.valueOf(homeDataResponse.getMonthApply()));
+                        getView().getToolBarTitleTextView().setText(homeDataResponse.getMerchantName());
 
                         SPUtils.getInstance(UIUtils.getContext()).putString(AppConst.Merchant.MONTH_AMOUNT, String.valueOf(homeDataResponse.getMonthAmount()));
                         SPUtils.getInstance(UIUtils.getContext()).putString(AppConst.Merchant.TOTAL_AMOUNT, NumberUtils.convertToTenThousand(homeDataResponse.getTotalAmount()));

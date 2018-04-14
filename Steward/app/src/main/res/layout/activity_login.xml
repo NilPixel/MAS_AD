@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@mipmap/ic_login_bg"
-    android:theme="@style/ThemeLogin"
     android:scaleType="centerCrop">
 
 
