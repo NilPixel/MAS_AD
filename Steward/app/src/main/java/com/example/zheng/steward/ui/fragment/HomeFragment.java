@@ -1,5 +1,6 @@
 package com.example.zheng.steward.ui.fragment;
 
+import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -17,6 +18,8 @@ import com.example.zheng.steward.ui.view.IHomeFgView;
 import com.example.zheng.steward.utils.SPUtils;
 import com.example.zheng.steward.utils.UIUtils;
 import com.example.zheng.steward.widget.MyGridView;
+import com.jwsd.libzxing.OnQRCodeScanCallback;
+import com.jwsd.libzxing.QRCodeManager;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -34,8 +37,17 @@ public class HomeFragment extends BaseFragment<IHomeFgView, HomeFgPresenter> imp
 
     private static final String TAG = "HomeFragment";
 
+    /**
+     * 工具栏上的title
+     */
     @Bind(R.id.tvToolbarTitle)
     public TextView mToolbarTitle;
+
+    /**
+     * 扫描二维码按钮
+     */
+    @Bind(R.id.ibScanMenu)
+    public ImageButton mScanBtn;
 
     /**
      * 切换当月数据和累计数据的按钮
@@ -122,11 +134,21 @@ public class HomeFragment extends BaseFragment<IHomeFgView, HomeFgPresenter> imp
         mPresenter.loadHomeData();
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        //注册onActivityResult
+        QRCodeManager.getInstance().with(getActivity()).onActivityResult(requestCode, resultCode, data);
+    }
+
     /**
      * 初始化各按钮的点击监听事件
      */
     @Override
     public void initListener() {
+
+        mScanBtn.setOnClickListener(view -> scanButtonClicked());
+
         mCumulativeBtn.setOnClickListener(view -> cumulativeButtonClicked());
         mVerificationBtn.setOnClickListener(view -> verificationBtnClicked());
 
@@ -182,6 +204,26 @@ public class HomeFragment extends BaseFragment<IHomeFgView, HomeFgPresenter> imp
             list.add(map);
         }
         return list;
+    }
+
+    private void scanButtonClicked() {
+        Log.i(TAG, "scanButtonClicked: 扫描二维码按钮点击");
+        QRCodeManager.getInstance().with(getActivity()).setReqeustType(1).scanningQRCode(new OnQRCodeScanCallback() {
+            @Override
+            public void onCompleted(String s) {
+                Log.i(TAG, "onCompleted: ");
+            }
+
+            @Override
+            public void onError(Throwable throwable) {
+                Log.i(TAG, "onError: ");
+            }
+
+            @Override
+            public void onCancel() {
+                Log.i(TAG, "onCancel: ");
+            }
+        });
     }
 
     /**

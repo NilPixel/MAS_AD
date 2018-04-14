@@ -14,7 +14,7 @@ import com.example.zheng.steward.utils.LogUtils;
 import com.example.zheng.steward.utils.NumberUtils;
 import com.example.zheng.steward.utils.SPUtils;
 import com.example.zheng.steward.utils.UIUtils;
-import com.jwkj.libzxing.QRCodeManager;
+import com.jwsd.libzxing.QRCodeManager;
 
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
