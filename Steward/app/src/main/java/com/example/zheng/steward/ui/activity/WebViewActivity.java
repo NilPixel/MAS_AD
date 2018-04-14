@@ -33,8 +33,6 @@ public class WebViewActivity extends BaseActivity {
 
     private boolean isLoading = false;
 
-    @Bind(R.id.ibToolbarMore)
-    ImageButton mIbToolbarMore;
     @Bind(R.id.webview)
     public ProgressWebView mWebView;
 
@@ -63,7 +61,6 @@ public class WebViewActivity extends BaseActivity {
 
     @Override
     public void initView() {
-        mIbToolbarMore.setVisibility(View.VISIBLE);
         //设置webView
         WebSettings settings = mWebView.getSettings();
         settings.setRenderPriority(WebSettings.RenderPriority.HIGH);
@@ -82,7 +79,6 @@ public class WebViewActivity extends BaseActivity {
 
     @Override
     public void initListener() {
-        mIbToolbarMore.setOnClickListener(v -> showShare());
     }
 
     @Override

@@ -2,6 +2,8 @@ package com.example.zheng.steward.ui.fragment;
 
 import android.app.Dialog;
 import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
@@ -37,6 +39,7 @@ public class QRCodeFragment extends DialogFragment implements IQRCodeFgView {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         View rootView = inflater.inflate(R.layout.qr_code, container);
         ButterKnife.bind(this, rootView);
         return rootView;
