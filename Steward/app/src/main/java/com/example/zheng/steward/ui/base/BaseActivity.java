@@ -213,9 +213,10 @@ public abstract class BaseActivity<V, T extends BasePresenter<V>> extends AppCom
         startActivity(intent);
     }
 
-    public void jumpToActivity(Class activity) {
+    public void jumpToActivity(Class activity, int enterAnim, int exitAnim) {
         Intent intent = new Intent(this, activity);
         startActivity(intent);
+        overridePendingTransition(enterAnim, exitAnim);
     }
 
     public void jumpToWebViewActivity(String url) {

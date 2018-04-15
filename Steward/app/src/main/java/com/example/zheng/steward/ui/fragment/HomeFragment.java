@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.example.zheng.steward.MainActivity;
 import com.example.zheng.steward.R;
 import com.example.zheng.steward.app.AppConst;
+import com.example.zheng.steward.ui.activity.OrderManagerActivity;
 import com.example.zheng.steward.ui.base.BaseFragment;
 import com.example.zheng.steward.ui.presenter.HomeFgPresenter;
 import com.example.zheng.steward.ui.view.IHomeFgView;
@@ -163,6 +164,7 @@ public class HomeFragment extends BaseFragment<IHomeFgView, HomeFgPresenter> imp
                 switch (position) {
                     case 0:
                         Log.d(TAG, "onItemClick: 申请件查询");
+                        getActivity().startActivity(new Intent(getContext(), OrderManagerActivity.class));
                         break;
                     case 1:
                         Log.d(TAG, "onItemClick: 待放款件查询");
