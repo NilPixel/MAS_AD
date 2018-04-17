@@ -11,6 +11,16 @@
         android:orientation="horizontal"
         android:background="@color/colorNavigation">
 
+        <!--扫描二维码菜单-->
+        <ImageButton
+            android:id="@+id/naviBack"
+            android:layout_width="12dp"
+            android:layout_height="20dp"
+            android:background="@mipmap/ic_navi_back"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            android:layout_marginLeft="15dp"/>
+
         <TextView
             android:id="@+id/tvToolbarTitle"
             android:layout_width="0dp"
