@@ -165,6 +165,7 @@ public class HomeFragment extends BaseFragment<IHomeFgView, HomeFgPresenter> imp
                     case 0:
                         Log.d(TAG, "onItemClick: 申请件查询");
                         getActivity().startActivity(new Intent(getContext(), OrderManagerActivity.class));
+                        getActivity().overridePendingTransition(R.anim.right_in,R.anim.left_out);
                         break;
                     case 1:
                         Log.d(TAG, "onItemClick: 待放款件查询");
