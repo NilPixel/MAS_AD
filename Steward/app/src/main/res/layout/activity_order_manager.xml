@@ -9,7 +9,15 @@
 
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="56dp" />
+        android:layout_height="56dp"
+        android:background="@color/orderSearchETBgColor"
+        android:drawableLeft="@mipmap/ic_order_search"
+        android:paddingLeft="15dp"
+        android:drawablePadding="15dp"
+        android:hint="@string/order_search_hint"
+        android:textColor="@color/colorWhite"
+        android:textColorHint="@color/colorWhite"
+        android:textSize="14sp"/>
 
 
     <LinearLayout

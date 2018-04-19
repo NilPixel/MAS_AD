@@ -6,12 +6,13 @@
     android:id="@+id/appBar">
 
     <LinearLayout
+        android:id="@+id/naviLinearLayout"
         android:layout_width="match_parent"
         android:layout_height="44dp"
         android:orientation="horizontal"
         android:background="@color/colorNavigation">
 
-        <!--扫描二维码菜单-->
+        <!--返回按钮-->
         <ImageButton
             android:id="@+id/naviBack"
             android:layout_width="12dp"

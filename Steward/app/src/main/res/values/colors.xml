@@ -12,6 +12,7 @@
     <color name="loginTextBgColor">#33000000</color><!--登录输入框背景色/5%透明黑色-->
     <color name="loginBtnBgColor">#9E929C</color><!--登录按钮背景色-->
     <color name="colorTitleText">#333333</color><!--标题文本颜色-->
+    <color name="orderSearchETBgColor">#4ab8cb</color><!--订单管理列表搜索框背景色-->
 
     <color name="white">#ffffff</color>
     <color name="line">#D2D2D2</color>

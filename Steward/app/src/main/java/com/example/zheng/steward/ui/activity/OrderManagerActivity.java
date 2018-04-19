@@ -1,7 +1,10 @@
 package com.example.zheng.steward.ui.activity;
 
+import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.zheng.steward.R;
@@ -14,6 +17,7 @@ import com.example.zheng.steward.utils.UIUtils;
 import butterknife.Bind;
 
 import static android.view.View.GONE;
+import static android.view.View.INVISIBLE;
 import static android.view.View.VISIBLE;
 
 /**
@@ -34,8 +38,12 @@ public class OrderManagerActivity extends BaseActivity {
     @Bind(R.id.tvToolbarTitle)
     TextView titleTextView;
 
+    /**
+     * 扫码按钮
+     */
     @Bind(R.id.ibScanMenu)
     ImageButton qrScanBtn;
+
 
     @Override
     protected BasePresenter createPresenter() {
@@ -52,7 +60,8 @@ public class OrderManagerActivity extends BaseActivity {
         super.initView();
         naviBackBtn.setVisibility(VISIBLE);
         qrScanBtn.setVisibility(GONE);
-        titleTextView.setText(SPUtils.getInstance(UIUtils.getContext()).getString(AppConst.Merchant.MERCHANT_NAME, ""));
+        titleTextView.setText("订单管理");
+        titleTextView.setGravity(Gravity.CENTER);
     }
 
     @Override
@@ -68,4 +77,5 @@ public class OrderManagerActivity extends BaseActivity {
         finish();
         overridePendingTransition(R.anim.left_in,R.anim.right_out);
     }
+
 }

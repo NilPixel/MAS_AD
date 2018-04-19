@@ -53,6 +53,9 @@
     <string name="vertify_code_not_empty">验证码不能为空</string>
     <string name="disconnect_server">与服务器失联</string>
 
+    <!--订单管理列表-->
+    <string name="order_search_hint">请输入贷款编号或客户姓名</string>
+
     <!--注册-->
     <string name="nickname">昵称</string>
     <string name="password">密码</string>
