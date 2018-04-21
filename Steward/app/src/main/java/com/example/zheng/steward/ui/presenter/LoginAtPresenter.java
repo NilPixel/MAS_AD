@@ -46,9 +46,9 @@ public class LoginAtPresenter extends BasePresenter<ILoginAtView> {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(loginResponse -> {
-                    int code = loginResponse.getCode();
+                    String code = loginResponse.getCode();
                     mContext.hideWaitingDialog();
-                    if (code == AppConst.ResponseCode.SUCCESS) {
+                    if (AppConst.ResponseCode.SUCCESS.equals(code)) {
                         UserCache.save(loginResponse.getUserToken().getExpireTime(), userName, loginResponse.getUserToken().getToken());
                         mContext.jumpToActivityAndClearTask(MainActivity.class, R.anim.bottom_in, R.anim.top_out);
                         mContext.finish();

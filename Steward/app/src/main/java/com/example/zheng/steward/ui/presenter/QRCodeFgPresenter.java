@@ -40,8 +40,8 @@ public class QRCodeFgPresenter extends BasePresenter<IQRCodeFgView> {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(qrCodeResponse -> {
-                    int code = qrCodeResponse.getCode();
-                    if (code == AppConst.ResponseCode.SUCCESS) {
+                    String code = qrCodeResponse.getCode();
+                    if (AppConst.ResponseCode.SUCCESS.equals(code)) {
                         Bitmap bitmap = QRCodeManager.getInstance().createQRCode(qrCodeResponse.getDetailInfo(), 300, 300);
                         mContext.hideWaitingDialog();
                         getView().getQrTitleTxView().setText(SPUtils.getInstance(UIUtils.getContext()).getString(AppConst.Merchant.MERCHANT_NAME, ""));
@@ -49,7 +49,7 @@ public class QRCodeFgPresenter extends BasePresenter<IQRCodeFgView> {
 
                     } else {
                         mContext.hideWaitingDialog();
-                        if (code == AppConst.ResponseCode.TOKEN_EXPIRE) {
+                        if (AppConst.ResponseCode.TOKEN_EXPIRE.equals(code)) {
                             mContext.jumpToActivityAndClearTask(LoginActivity.class, R.anim.bottom_in, R.anim.top_out);
                             mContext.finish();
                         }

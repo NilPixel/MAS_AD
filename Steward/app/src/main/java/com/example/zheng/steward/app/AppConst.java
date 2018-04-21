@@ -50,8 +50,8 @@ public class AppConst {
     }
 
     public static final class ResponseCode {
-        public static final Integer SUCCESS = 0;            //请求成功
-        public static final Integer TOKEN_EXPIRE = 10013;   //token过期
+        public static final String SUCCESS = "0";            //请求成功
+        public static final String TOKEN_EXPIRE = "10013";   //token过期
         //        public static final String ACCOUNT = "account";
         public static final String TOKEN = "token";
         public static final String UUID = "uuid";

@@ -165,7 +165,7 @@ public class HomeFragment extends BaseFragment<IHomeFgView, HomeFgPresenter> imp
                     case 0:
                         Log.d(TAG, "onItemClick: 申请件查询");
                         getActivity().startActivity(new Intent(getContext(), OrderManagerActivity.class));
-                        getActivity().overridePendingTransition(R.anim.right_in,R.anim.left_out);
+                        getActivity().overridePendingTransition(R.anim.right_in, R.anim.left_out);
                         break;
                     case 1:
                         Log.d(TAG, "onItemClick: 待放款件查询");
@@ -192,13 +192,14 @@ public class HomeFragment extends BaseFragment<IHomeFgView, HomeFgPresenter> imp
 
     /**
      * 初始化gridView数据源
+     *
      * @return
      */
     private List<Map<String, Object>> getList() {
         List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
 
-        String[] titles = new String[] {"申请件查询", "待放款件查询", "放款件查询", "逾期件查询", "优惠券查询", "客户画像"};
-        Integer[] images = new Integer[] {R.mipmap.ic_apply_query, R.mipmap.ic_for_lending, R.mipmap.ic_lended, R.mipmap.ic_overdue, R.mipmap.ic_coupon, R.mipmap.ic_customer};
+        String[] titles = new String[]{"申请件查询", "待放款件查询", "放款件查询", "逾期件查询", "优惠券查询", "客户画像"};
+        Integer[] images = new Integer[]{R.mipmap.ic_apply_query, R.mipmap.ic_for_lending, R.mipmap.ic_lended, R.mipmap.ic_overdue, R.mipmap.ic_coupon, R.mipmap.ic_customer};
 
         for (int i = 0; i < images.length; i++) {
             Map<String, Object> map = new HashMap<>();

@@ -38,8 +38,8 @@ public class HomeFgPresenter extends BasePresenter<IHomeFgView> {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(homeDataResponse -> {
-                    int code = homeDataResponse.getCode();
-                    if (code == AppConst.ResponseCode.SUCCESS) {
+                    String code = homeDataResponse.getCode();
+                    if (AppConst.ResponseCode.SUCCESS.equals(code)) {
                         SPUtils.getInstance(UIUtils.getContext()).putString(AppConst.Merchant.MERCHANT_CODE, homeDataResponse.getMerchantCode());
                         SPUtils.getInstance(UIUtils.getContext()).putString(AppConst.Merchant.MERCHANT_NAME, homeDataResponse.getMerchantName());
 
@@ -52,7 +52,7 @@ public class HomeFgPresenter extends BasePresenter<IHomeFgView> {
                         SPUtils.getInstance(UIUtils.getContext()).putString(AppConst.Merchant.MONTH_APPLY, String.valueOf(homeDataResponse.getMonthApply()));
                         SPUtils.getInstance(UIUtils.getContext()).putString(AppConst.Merchant.TOTAL_APPLY, String.valueOf(homeDataResponse.getTotalApply()));
                     } else {
-                        if (code == AppConst.ResponseCode.TOKEN_EXPIRE) {
+                        if (AppConst.ResponseCode.TOKEN_EXPIRE.equals(code)) {
                             mContext.jumpToActivityAndClearTask(LoginActivity.class, R.anim.bottom_in, R.anim.top_out);
                             mContext.finish();
                         }

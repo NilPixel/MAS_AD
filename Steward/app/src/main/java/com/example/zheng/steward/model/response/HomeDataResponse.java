@@ -6,7 +6,7 @@ package com.example.zheng.steward.model.response;
 
 public class HomeDataResponse {
 
-    private int code;               //操作代码
+    private String code;            //操作代码
 
     private String merchantCode;    //商户code
 
@@ -36,11 +36,11 @@ public class HomeDataResponse {
 
     private boolean customerPortraitFunc;//客户画像功能是否开启
 
-    public int getCode() {
+    public String getCode() {
         return code;
     }
 
-    public void setCode(int code) {
+    public void setCode(String code) {
         this.code = code;
     }
 
