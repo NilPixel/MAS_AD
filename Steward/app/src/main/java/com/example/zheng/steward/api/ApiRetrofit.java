@@ -6,7 +6,6 @@ import com.example.zheng.steward.model.request.AddGroupMemberRequest;
 import com.example.zheng.steward.model.request.AddToBlackListRequest;
 import com.example.zheng.steward.model.request.AgreeFriendsRequest;
 import com.example.zheng.steward.model.request.ChangePasswordRequest;
-import com.example.zheng.steward.model.request.CheckPhoneRequest;
 import com.example.zheng.steward.model.request.CreateGroupRequest;
 import com.example.zheng.steward.model.request.DeleteFriendRequest;
 import com.example.zheng.steward.model.request.DeleteGroupMemberRequest;
@@ -14,6 +13,7 @@ import com.example.zheng.steward.model.request.DismissGroupRequest;
 import com.example.zheng.steward.model.request.FriendInvitationRequest;
 import com.example.zheng.steward.model.request.JoinGroupRequest;
 import com.example.zheng.steward.model.request.LoginRequest;
+import com.example.zheng.steward.model.request.OrderManagerListRequest;
 import com.example.zheng.steward.model.request.QuitGroupRequest;
 import com.example.zheng.steward.model.request.RegisterRequest;
 import com.example.zheng.steward.model.request.RemoveFromBlacklistRequest;
@@ -30,7 +30,6 @@ import com.example.zheng.steward.model.response.AddGroupMemberResponse;
 import com.example.zheng.steward.model.response.AddToBlackListResponse;
 import com.example.zheng.steward.model.response.AgreeFriendsResponse;
 import com.example.zheng.steward.model.response.ChangePasswordResponse;
-import com.example.zheng.steward.model.response.CheckPhoneResponse;
 import com.example.zheng.steward.model.response.CreateGroupResponse;
 import com.example.zheng.steward.model.response.DefaultConversationResponse;
 import com.example.zheng.steward.model.response.DeleteFriendResponse;
@@ -48,6 +47,7 @@ import com.example.zheng.steward.model.response.GetUserInfosResponse;
 import com.example.zheng.steward.model.response.HomeDataResponse;
 import com.example.zheng.steward.model.response.JoinGroupResponse;
 import com.example.zheng.steward.model.response.LoginResponse;
+import com.example.zheng.steward.model.response.OrderManagerListResponse;
 import com.example.zheng.steward.model.response.QRCodeResponse;
 import com.example.zheng.steward.model.response.QiNiuTokenResponse;
 import com.example.zheng.steward.model.response.QuitGroupResponse;
@@ -135,9 +135,9 @@ public class ApiRetrofit extends BaseApiRetrofit {
         return mApi.getQRCodeString();
     }
 
-    //注册
-    public Observable<CheckPhoneResponse> checkPhoneAvailable(String region, String phone) {
-        return mApi.checkPhoneAvailable(getRequestBody(new CheckPhoneRequest(phone, region)));
+    //获取订单列表
+    public Observable<OrderManagerListResponse> getOrderListData(Integer page, Integer pageLength, String sortMethod, String param, String sellerNo, String store, String applyStatus) {
+        return mApi.getOrderListData(getRequestBody(new OrderManagerListRequest(page, pageLength, sortMethod, param, sellerNo, store, applyStatus)));
     }
 
     public Observable<SendCodeResponse> sendCode(String region, String phone) {

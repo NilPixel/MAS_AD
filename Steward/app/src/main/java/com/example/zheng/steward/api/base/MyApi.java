@@ -22,6 +22,7 @@ import com.example.zheng.steward.model.response.GetUserInfosResponse;
 import com.example.zheng.steward.model.response.HomeDataResponse;
 import com.example.zheng.steward.model.response.JoinGroupResponse;
 import com.example.zheng.steward.model.response.LoginResponse;
+import com.example.zheng.steward.model.response.OrderManagerListResponse;
 import com.example.zheng.steward.model.response.QRCodeResponse;
 import com.example.zheng.steward.model.response.QiNiuTokenResponse;
 import com.example.zheng.steward.model.response.QuitGroupResponse;
@@ -58,8 +59,8 @@ public interface MyApi {
     public static final String BASE_URL = "https://mrs2.memedai.cn/";
 
     //检查手机是否被注册
-    @POST("user/check_phone_available")
-    Observable<CheckPhoneResponse> checkPhoneAvailable(@Body RequestBody body);
+    @POST("app/rest/appOrderManage/getOrderListForPage")
+    Observable<OrderManagerListResponse> getOrderListData(@Body RequestBody body);
 
     //发送验证码
     @POST("user/send_code")

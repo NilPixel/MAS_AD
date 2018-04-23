@@ -21,6 +21,7 @@
             android:layout_weight="1"/>
 
         <TextView
+            android:id="@+id/order_manager_lendingNo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="2017020810101210"
@@ -58,6 +59,7 @@
             android:layout_weight="1"/>
 
         <TextView
+            android:id="@+id/order_manager_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="黄敏杰"
@@ -84,6 +86,7 @@
             android:layout_weight="1"/>
 
         <TextView
+            android:id="@+id/order_manager_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="2017-02-08"
@@ -110,6 +113,7 @@
             android:layout_weight="1"/>
 
         <TextView
+            android:id="@+id/order_manager_storeName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="米么金福内测门店"
@@ -136,6 +140,7 @@
             android:layout_weight="1"/>
 
         <TextView
+            android:id="@+id/order_manager_orderStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="放款成功"
