@@ -64,7 +64,6 @@ public class HomeFgPresenter extends BasePresenter<IHomeFgView> {
     private void homeDataRequestError(Throwable throwable) {
         LogUtils.e(throwable.getLocalizedMessage());
         UIUtils.showToast(throwable.getLocalizedMessage());
-        mContext.hideWaitingDialog();
     }
 
 }
