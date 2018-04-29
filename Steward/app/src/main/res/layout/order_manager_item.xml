@@ -2,151 +2,170 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/listViewBgColor">
 
     <LinearLayout
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp">
+        android:layout_height="match_parent"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/rounded_list_item">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="贷款编号:"
-            android:textSize="12sp"
-            android:layout_marginLeft="15dp"
-            android:layout_gravity="center"
-            android:layout_weight="1"/>
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp">
 
-        <TextView
-            android:id="@+id/order_manager_lendingNo"
-            android:layout_width="wrap_content"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="贷款编号:"
+                android:textSize="12sp"
+                android:layout_marginLeft="15dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/order_manager_lendingNo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2017020810101210"
+                android:textSize="12sp"
+                android:layout_gravity="center"
+                android:layout_marginRight="15dp"/>
+
+            <Button
+                android:layout_width="40dp"
+                android:layout_height="20dp"
+                android:text="复制"
+                android:textSize="12sp"
+                android:textColor="@color/orderSearchETBgColor"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/rounded_paste_btn"/>
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@mipmap/ic_imaginary_line">
+
+        </ImageView>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="2017020810101210"
-            android:textSize="12sp"
-            android:layout_gravity="center"
-            android:layout_marginRight="15dp"/>
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp">
 
-        <Button
-            android:layout_width="40dp"
-            android:layout_height="20dp"
-            android:text="复制"
-            android:textSize="12sp"
-            android:textColor="@color/orderSearchETBgColor"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:layout_marginRight="15dp"
-            android:background="@drawable/rounded_paste_btn"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="申请人姓名:"
+                android:textSize="12sp"
+                android:layout_marginLeft="15dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"/>
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/order_manager_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="黄敏杰"
+                android:textSize="12sp"
+                android:layout_gravity="center"
+                android:layout_marginRight="15dp"/>
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp">
+        </LinearLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="申请人姓名:"
-            android:textSize="12sp"
-            android:layout_marginLeft="15dp"
-            android:layout_gravity="center"
-            android:layout_weight="1"/>
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp">
 
-        <TextView
-            android:id="@+id/order_manager_name"
-            android:layout_width="wrap_content"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="申请时间:"
+                android:textSize="12sp"
+                android:layout_marginLeft="15dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/order_manager_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2017-02-08"
+                android:textSize="12sp"
+                android:layout_gravity="center"
+                android:layout_marginRight="15dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="黄敏杰"
-            android:textSize="12sp"
-            android:layout_gravity="center"
-            android:layout_marginRight="15dp"/>
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp">
 
-    </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="所属门店:"
+                android:textSize="12sp"
+                android:layout_marginLeft="15dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"/>
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp">
+            <TextView
+                android:id="@+id/order_manager_storeName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="米么金福内测门店"
+                android:textSize="12sp"
+                android:layout_gravity="center"
+                android:layout_marginRight="15dp"/>
 
-        <TextView
-            android:layout_width="wrap_content"
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="申请时间:"
-            android:textSize="12sp"
-            android:layout_marginLeft="15dp"
-            android:layout_gravity="center"
-            android:layout_weight="1"/>
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp">
 
-        <TextView
-            android:id="@+id/order_manager_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="2017-02-08"
-            android:textSize="12sp"
-            android:layout_gravity="center"
-            android:layout_marginRight="15dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="订单状态:"
+                android:textSize="12sp"
+                android:layout_marginLeft="15dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"/>
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/order_manager_orderStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="放款成功"
+                android:textSize="12sp"
+                android:layout_gravity="center"
+                android:layout_marginRight="15dp"/>
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="所属门店:"
-            android:textSize="12sp"
-            android:layout_marginLeft="15dp"
-            android:layout_gravity="center"
-            android:layout_weight="1"/>
-
-        <TextView
-            android:id="@+id/order_manager_storeName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="米么金福内测门店"
-            android:textSize="12sp"
-            android:layout_gravity="center"
-            android:layout_marginRight="15dp"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="订单状态:"
-            android:textSize="12sp"
-            android:layout_marginLeft="15dp"
-            android:layout_gravity="center"
-            android:layout_weight="1"/>
-
-        <TextView
-            android:id="@+id/order_manager_orderStatus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="放款成功"
-            android:textSize="12sp"
-            android:layout_gravity="center"
-            android:layout_marginRight="15dp"/>
+        </LinearLayout>
 
     </LinearLayout>
 
