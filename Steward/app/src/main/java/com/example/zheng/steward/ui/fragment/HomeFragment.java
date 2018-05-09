@@ -48,7 +48,7 @@ public class HomeFragment extends BaseFragment<IHomeFgView, HomeFgPresenter> imp
      * 扫描二维码按钮
      */
     @Bind(R.id.ibScanMenu)
-    public ImageButton mScanBtn;
+    public Button mScanBtn;
 
     /**
      * 切换当月数据和累计数据的按钮

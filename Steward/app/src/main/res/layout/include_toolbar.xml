@@ -12,6 +12,16 @@
         android:orientation="horizontal"
         android:background="@color/colorNavigation">
 
+        <ImageView
+            android:id="@+id/id_placeHolder_image"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:visibility="gone"
+            android:background="@color/clearColor"
+            android:layout_marginRight="15dp">
+
+        </ImageView>
+
         <!--返回按钮-->
         <ImageButton
             android:id="@+id/naviBack"
@@ -35,7 +45,7 @@
             android:layout_marginRight="15dp"/>
 
         <!--扫描二维码菜单-->
-        <ImageButton
+        <Button
             android:id="@+id/ibScanMenu"
             android:layout_width="22.5dp"
             android:layout_height="22.5dp"
@@ -43,6 +53,19 @@
             android:layout_gravity="center"
             android:visibility="visible"
             android:layout_marginRight="15dp"/>
+
+        <Button
+            android:id="@+id/id_setting"
+            android:layout_width="32dp"
+            android:layout_height="30dp"
+            android:text="@string/setting"
+            android:visibility="gone"
+            android:layout_marginRight="15dp"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:layout_gravity="center"
+            android:background="@color/clearColor"/>
 
     </LinearLayout>
 

@@ -2,6 +2,7 @@ package com.example.zheng.steward.ui.fragment;
 
 import android.view.Gravity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -35,7 +36,7 @@ public class NewsFragment extends BaseFragment {
      * 扫描二维码按钮
      */
     @Bind(R.id.ibScanMenu)
-    public ImageButton mScanBtn;
+    public Button mScanBtn;
 
     @Override
     public void initView(View rootView) {
