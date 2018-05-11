@@ -2,6 +2,7 @@ package com.example.zheng.steward.ui.activity;
 
 import android.view.Gravity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -50,7 +51,7 @@ public class OrderManagerActivity extends BaseActivity<IOrderManagerView, OrderM
      * 扫码按钮
      */
     @Bind(R.id.ibScanMenu)
-    ImageButton qrScanBtn;
+    Button qrScanBtn;
 
     /**
      * 订单列表
