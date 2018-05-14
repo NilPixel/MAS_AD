@@ -13,6 +13,7 @@ import com.example.zheng.steward.ui.base.BasePresenter;
 import com.example.zheng.steward.ui.view.IOrderManagerView;
 import com.example.zheng.steward.utils.LogUtils;
 import com.example.zheng.steward.utils.UIUtils;
+import com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout;
 
 import java.util.List;
 
@@ -41,6 +42,9 @@ public class OrderManagerPresenter extends BasePresenter<IOrderManagerView> {
                         OrderManagerListAdapter adapter = getView().getAdapter();
                         ListView listView = getView().getOrderList();
                         listView.setAdapter(adapter);
+
+                        TwinklingRefreshLayout refreshLayout = getView().getRefresher();
+                        refreshLayout.finishRefreshing();
                     } else {
                         loginError(new ServerException(listResponse.getDesc() + code));
                     }

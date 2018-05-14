@@ -122,6 +122,7 @@ public class OrderManagerActivity extends BaseActivity<IOrderManagerView, OrderM
             @Override
             public void onRefresh(TwinklingRefreshLayout refreshLayout) {
                 super.onRefresh(refreshLayout);
+                mPresenter.getOrderListData();
             }
 
             @Override
@@ -168,5 +169,10 @@ public class OrderManagerActivity extends BaseActivity<IOrderManagerView, OrderM
     @Override
     public ListView getOrderList() {
         return orderListView;
+    }
+
+    @Override
+    public TwinklingRefreshLayout getRefresher() {
+        return refreshLayout;
     }
 }
