@@ -19,6 +19,8 @@ import com.example.zheng.steward.ui.presenter.OrderManagerPresenter;
 import com.example.zheng.steward.ui.view.IOrderManagerView;
 import com.example.zheng.steward.utils.SPUtils;
 import com.example.zheng.steward.utils.UIUtils;
+import com.lcodecore.tkrefreshlayout.RefreshListenerAdapter;
+import com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,6 +62,12 @@ public class OrderManagerActivity extends BaseActivity<IOrderManagerView, OrderM
     ListView orderListView;
 
     /**
+     * 上拉、下拉刷新控件
+     */
+    @Bind(R.id.order_manager_refresher)
+    TwinklingRefreshLayout refreshLayout;
+
+    /**
      * listView数据源
      */
     private List<OrderManagerListItem> orderList = new ArrayList<OrderManagerListItem>();
@@ -99,6 +107,38 @@ public class OrderManagerActivity extends BaseActivity<IOrderManagerView, OrderM
     public void initListener() {
         super.initListener();
         naviBackBtn.setOnClickListener(view -> backBtnClicked());
+
+        refreshLayout.setOnRefreshListener(new RefreshListenerAdapter() {
+            @Override
+            public void onPullingDown(TwinklingRefreshLayout refreshLayout, float fraction) {
+                super.onPullingDown(refreshLayout, fraction);
+            }
+
+            @Override
+            public void onPullingUp(TwinklingRefreshLayout refreshLayout, float fraction) {
+                super.onPullingUp(refreshLayout, fraction);
+            }
+
+            @Override
+            public void onRefresh(TwinklingRefreshLayout refreshLayout) {
+                super.onRefresh(refreshLayout);
+            }
+
+            @Override
+            public void onLoadMore(TwinklingRefreshLayout refreshLayout) {
+                super.onLoadMore(refreshLayout);
+            }
+
+            @Override
+            public void onFinishRefresh() {
+                super.onFinishRefresh();
+            }
+
+            @Override
+            public void onFinishLoadMore() {
+                super.onFinishLoadMore();
+            }
+        });
     }
 
     /**

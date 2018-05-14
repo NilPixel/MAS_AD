@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <include layout="@layout/include_toolbar"/>
@@ -28,13 +28,24 @@
 
     </LinearLayout>
 
-    <ListView
-        android:id="@+id/order_manager_list"
+    <com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout
+        android:id="@+id/order_manager_refresher"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scrollbars="none"
-        android:divider="@null">
+        android:layout_height="match_parent"
+        app:tr_wave_height="180dp"
+        app:tr_head_height="100dp">
 
-    </ListView>
+        <ListView
+            android:id="@+id/order_manager_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none"
+            android:divider="@null"
+            android:overScrollMode="never">
+
+        </ListView>
+
+    </com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout>
+
 
 </LinearLayout>
