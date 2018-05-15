@@ -1,31 +1,29 @@
 package com.example.zheng.steward.ui.activity;
 
+import android.annotation.SuppressLint;
+import android.graphics.Color;
 import android.view.Gravity;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.zheng.steward.R;
-import com.example.zheng.steward.app.AppConst;
 import com.example.zheng.steward.db.model.OrderManagerListItem;
 import com.example.zheng.steward.ui.adapter.OrderManagerListAdapter;
 import com.example.zheng.steward.ui.base.BaseActivity;
-import com.example.zheng.steward.ui.base.BasePresenter;
 import com.example.zheng.steward.ui.presenter.OrderManagerPresenter;
 import com.example.zheng.steward.ui.view.IOrderManagerView;
-import com.example.zheng.steward.utils.SPUtils;
-import com.example.zheng.steward.utils.UIUtils;
-import com.lcodecore.tkrefreshlayout.RefreshListenerAdapter;
-import com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout;
+
+
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
+import cn.bingoogolapple.refreshlayout.BGANormalRefreshViewHolder;
+import cn.bingoogolapple.refreshlayout.BGARefreshLayout;
+import cn.bingoogolapple.refreshlayout.BGARefreshViewHolder;
 
 import static android.view.View.GONE;
 import static android.view.View.INVISIBLE;
@@ -35,7 +33,7 @@ import static android.view.View.VISIBLE;
  * 订单管理
  */
 
-public class OrderManagerActivity extends BaseActivity<IOrderManagerView, OrderManagerPresenter> implements IOrderManagerView {
+public class OrderManagerActivity extends BaseActivity<IOrderManagerView, OrderManagerPresenter> implements IOrderManagerView, BGARefreshLayout.BGARefreshLayoutDelegate {
 
     /**
      * 返回按钮
@@ -65,7 +63,7 @@ public class OrderManagerActivity extends BaseActivity<IOrderManagerView, OrderM
      * 上拉、下拉刷新控件
      */
     @Bind(R.id.order_manager_refresher)
-    TwinklingRefreshLayout refreshLayout;
+    BGARefreshLayout mRefreshLayout;
 
     /**
      * listView数据源
@@ -94,6 +92,7 @@ public class OrderManagerActivity extends BaseActivity<IOrderManagerView, OrderM
         qrScanBtn.setVisibility(GONE);
         titleTextView.setText("订单管理");
         titleTextView.setGravity(Gravity.CENTER);
+
     }
 
     @Override
@@ -108,38 +107,34 @@ public class OrderManagerActivity extends BaseActivity<IOrderManagerView, OrderM
         super.initListener();
         naviBackBtn.setOnClickListener(view -> backBtnClicked());
 
-        refreshLayout.setOnRefreshListener(new RefreshListenerAdapter() {
-            @Override
-            public void onPullingDown(TwinklingRefreshLayout refreshLayout, float fraction) {
-                super.onPullingDown(refreshLayout, fraction);
-            }
+    }
 
-            @Override
-            public void onPullingUp(TwinklingRefreshLayout refreshLayout, float fraction) {
-                super.onPullingUp(refreshLayout, fraction);
-            }
+    @SuppressLint("ResourceType")
+    public void initRefreshLayout() {
+        // 为BGARefreshLayout 设置代理
+        mRefreshLayout.setDelegate(this);
+        // 设置下拉刷新和上拉加载更多的风格     参数1：应用程序上下文，参数2：是否具有上拉加载更多功能
+        BGARefreshViewHolder refreshViewHolder = new BGANormalRefreshViewHolder(this, true);
+        // 设置下拉刷新和上拉加载更多的风格
+        mRefreshLayout.setRefreshViewHolder(refreshViewHolder);
 
-            @Override
-            public void onRefresh(TwinklingRefreshLayout refreshLayout) {
-                super.onRefresh(refreshLayout);
-                mPresenter.getOrderListData();
-            }
 
-            @Override
-            public void onLoadMore(TwinklingRefreshLayout refreshLayout) {
-                super.onLoadMore(refreshLayout);
-            }
-
-            @Override
-            public void onFinishRefresh() {
-                super.onFinishRefresh();
-            }
-
-            @Override
-            public void onFinishLoadMore() {
-                super.onFinishLoadMore();
-            }
-        });
+        // 为了增加下拉刷新头部和加载更多的通用性，提供了以下可选配置选项  -------------START
+        // 设置正在加载更多时不显示加载更多控件
+        // mRefreshLayout.setIsShowLoadingMoreView(false);
+        // 设置正在加载更多时的文本
+        refreshViewHolder.setLoadingMoreText("上拉加载更多");
+        // 设置整个加载更多控件的背景颜色资源 id
+//        refreshViewHolder.setLoadMoreBackgroundColorRes(Color.WHITE);
+//        // 设置整个加载更多控件的背景 drawable 资源 id
+//        refreshViewHolder.setLoadMoreBackgroundDrawableRes(loadMoreBackgroundDrawableRes);
+//        // 设置下拉刷新控件的背景颜色资源 id
+//        refreshViewHolder.setRefreshViewBackgroundColorRes(refreshViewBackgroundColorRes);
+//        // 设置下拉刷新控件的背景 drawable 资源 id
+//        refreshViewHolder.setRefreshViewBackgroundDrawableRes(refreshViewBackgroundDrawableRes);
+        // 设置自定义头部视图（也可以不用设置）     参数1：自定义头部视图（例如广告位）， 参数2：上拉加载更多是否可用
+//        mRefreshLayout.setCustomHeaderView(mBanner, false);
+        // 可选配置  -------------END
     }
 
     /**
@@ -172,7 +167,23 @@ public class OrderManagerActivity extends BaseActivity<IOrderManagerView, OrderM
     }
 
     @Override
-    public TwinklingRefreshLayout getRefresher() {
-        return refreshLayout;
+    public BGARefreshLayout getRefresher() {
+        return mRefreshLayout;
+    }
+
+    @Override
+    public void onBGARefreshLayoutBeginRefreshing(BGARefreshLayout refreshLayout) {
+        mPresenter.getOrderListData();
+    }
+
+    @Override
+    public boolean onBGARefreshLayoutBeginLoadingMore(BGARefreshLayout refreshLayout) {
+        mPresenter.getOrderListData();
+        return true;
+    }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
     }
 }

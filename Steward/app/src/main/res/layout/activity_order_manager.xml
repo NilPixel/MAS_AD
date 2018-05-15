@@ -27,8 +27,7 @@
 
     </LinearLayout>
 
-    <com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <cn.bingoogolapple.refreshlayout.BGARefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/order_manager_refresher"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -36,14 +35,15 @@
         <ListView
             android:id="@+id/order_manager_list"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:scrollbars="none"
             android:divider="@null"
-            android:overScrollMode="never">
+            android:overScrollMode="never"
+            android:layout_weight="1">
 
         </ListView>
 
-    </com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout>
+    </cn.bingoogolapple.refreshlayout.BGARefreshLayout>
 
 
 </LinearLayout>
