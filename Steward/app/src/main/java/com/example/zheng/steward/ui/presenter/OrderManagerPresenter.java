@@ -25,10 +25,10 @@ public class OrderManagerPresenter extends BasePresenter<IOrderManagerView> {
         super(context);
     }
 
-    public void getOrderListData() {
+    public void getOrderListData(Integer currentPage) {
 
         mContext.showWaitingDialog(UIUtils.getString(R.string.please_wait));
-        ApiRetrofit.getInstance().getOrderListData(1, 15,"DESC","", "", "", "")
+        ApiRetrofit.getInstance().getOrderListData(currentPage, 15,"DESC","", "", "", "")
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(listResponse -> {
@@ -36,12 +36,18 @@ public class OrderManagerPresenter extends BasePresenter<IOrderManagerView> {
                     mContext.hideWaitingDialog();
                     if (AppConst.ResponseCode.SUCCESS.equals(code)) {
                         List<OrderManagerListItem> data = getView().getDataArrayList();
-                        data.addAll(listResponse.getResult());
 
+                        if (currentPage == 1) {
+                            data.clear();
+                            data.addAll(listResponse.getResult());
+                            getView().getRefresher().endRefreshing();
+                        } else {
+                            data.addAll(listResponse.getResult());
+                            getView().getRefresher().endLoadingMore();
+                        }
                         OrderManagerListAdapter adapter = getView().getAdapter();
                         ListView listView = getView().getOrderList();
                         listView.setAdapter(adapter);
-
                     } else {
                         loginError(new ServerException(listResponse.getDesc() + code));
                     }

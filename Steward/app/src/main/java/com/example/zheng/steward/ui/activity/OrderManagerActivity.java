@@ -65,6 +65,8 @@ public class OrderManagerActivity extends BaseActivity<IOrderManagerView, OrderM
     @Bind(R.id.order_manager_refresher)
     BGARefreshLayout mRefreshLayout;
 
+    private Integer currentPage = 1;
+
     /**
      * listView数据源
      */
@@ -92,14 +94,14 @@ public class OrderManagerActivity extends BaseActivity<IOrderManagerView, OrderM
         qrScanBtn.setVisibility(GONE);
         titleTextView.setText("订单管理");
         titleTextView.setGravity(Gravity.CENTER);
-
+        initRefreshLayout();
     }
 
     @Override
     public void initData() {
         super.initData();
         listAdapter = new OrderManagerListAdapter(OrderManagerActivity.this, R.layout.order_manager_item, orderList);
-        mPresenter.getOrderListData();
+        mPresenter.getOrderListData(currentPage);
     }
 
     @Override
@@ -115,8 +117,7 @@ public class OrderManagerActivity extends BaseActivity<IOrderManagerView, OrderM
         mRefreshLayout.setDelegate(this);
         // 设置下拉刷新和上拉加载更多的风格     参数1：应用程序上下文，参数2：是否具有上拉加载更多功能
         BGARefreshViewHolder refreshViewHolder = new BGANormalRefreshViewHolder(this, true);
-        // 设置下拉刷新和上拉加载更多的风格
-        mRefreshLayout.setRefreshViewHolder(refreshViewHolder);
+
 
 
         // 为了增加下拉刷新头部和加载更多的通用性，提供了以下可选配置选项  -------------START
@@ -135,6 +136,8 @@ public class OrderManagerActivity extends BaseActivity<IOrderManagerView, OrderM
         // 设置自定义头部视图（也可以不用设置）     参数1：自定义头部视图（例如广告位）， 参数2：上拉加载更多是否可用
 //        mRefreshLayout.setCustomHeaderView(mBanner, false);
         // 可选配置  -------------END
+        // 设置下拉刷新和上拉加载更多的风格
+        mRefreshLayout.setRefreshViewHolder(refreshViewHolder);
     }
 
     /**
@@ -173,12 +176,14 @@ public class OrderManagerActivity extends BaseActivity<IOrderManagerView, OrderM
 
     @Override
     public void onBGARefreshLayoutBeginRefreshing(BGARefreshLayout refreshLayout) {
-        mPresenter.getOrderListData();
+        currentPage = 1;
+        mPresenter.getOrderListData(currentPage);
     }
 
     @Override
     public boolean onBGARefreshLayoutBeginLoadingMore(BGARefreshLayout refreshLayout) {
-        mPresenter.getOrderListData();
+        currentPage += 1;
+        mPresenter.getOrderListData(currentPage);
         return true;
     }
 
