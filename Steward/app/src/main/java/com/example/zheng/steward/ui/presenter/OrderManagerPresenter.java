@@ -1,6 +1,7 @@
 package com.example.zheng.steward.ui.presenter;
 
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.zheng.steward.R;
 import com.example.zheng.steward.api.ApiRetrofit;
@@ -44,6 +45,10 @@ public class OrderManagerPresenter extends BasePresenter<IOrderManagerView> {
                         } else {
                             data.addAll(listResponse.getResult());
                             getView().getRefresher().endLoadingMore();
+                        }
+
+                        if (data.size() >= listResponse.getRecords()) {
+                            UIUtils.showToast("没有更多数据");
                         }
                         OrderManagerListAdapter adapter = getView().getAdapter();
                         ListView listView = getView().getOrderList();
