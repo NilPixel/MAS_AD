@@ -56,7 +56,7 @@ public class NewsFragment extends BaseFragment {
     @Bind(R.id.id_news_viewPager)
     public ViewPager mViewPager;
 
-    protected ArrayList<NewsTabInfo> mNewsTabInfos;
+    protected ArrayList<BaseFragment> mNewsTabInfos = new ArrayList<>(5);
 
     @Override
     public void initView(View rootView) {
@@ -76,17 +76,12 @@ public class NewsFragment extends BaseFragment {
     }
 
     private void initNewsTabInfos() {
-        //初始化Adapter需要使用的数据,标题,创建的Fragment对象,传递的参数
-        mNewsTabInfos = new ArrayList<NewsTabInfo>();
+        mNewsTabInfos.add(FragmentFactory.getInstance().getAllFragment());
+        mNewsTabInfos.add(FragmentFactory.getInstance().getMessageFragment());
 
-        // Fragment fragment = Fragment.instantiate(mContext, NewsPagerFragment.class.getName());
-        NewsPagerFragment fragment = new NewsPagerFragment();
-        mNewsTabInfos.add(new NewsTabInfo("全部", NewsPagerFragment.class,bundle));
-        mNewsTabInfos.add(new NewsTabInfo("资讯", NewsPagerFragment.class,null));
-
-        mNewsTabInfos.add(new NewsTabInfo("申请提醒", NewsPagerFragment.class,null));
-        mNewsTabInfos.add(new NewsTabInfo("逾期提醒", NewsPagerFragment.class,null));
-        mNewsTabInfos.add(new NewsTabInfo("回购提醒", NewsPagerFragment.class,null));
+        mNewsTabInfos.add(FragmentFactory.getInstance().getApplyRemindFragment());
+        mNewsTabInfos.add(FragmentFactory.getInstance().getOverDueFragment());
+        mNewsTabInfos.add(FragmentFactory.getInstance().getBuyBackFragment());
     }
 
     private void initNewsTablayoutAndViewPager() {

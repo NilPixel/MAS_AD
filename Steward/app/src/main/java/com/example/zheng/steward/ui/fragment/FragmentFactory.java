@@ -1,5 +1,11 @@
 package com.example.zheng.steward.ui.fragment;
 
+import com.example.zheng.steward.ui.fragment.news.AllFragment;
+import com.example.zheng.steward.ui.fragment.news.ApplyRemindFragment;
+import com.example.zheng.steward.ui.fragment.news.BuyBackFragment;
+import com.example.zheng.steward.ui.fragment.news.MessageFragment;
+import com.example.zheng.steward.ui.fragment.news.OverDueFragment;
+
 /**
  * Created by zheng on 2018/3/30.
  * 主界面3个tab的Fragment工厂
@@ -28,11 +34,11 @@ public class FragmentFactory {
     private MineFragment mMineFragment;
 
     private AllFragment mAllFragment;
-    private NewsFragment mNewsFragment;
-    private MineFragment mMineFragment;
+    private MessageFragment mMessageFragment;
+    private ApplyRemindFragment mApplyRemindFragment;
 
-    private HomeFragment mHomeFragment;
-    private NewsFragment mNewsFragment;
+    private OverDueFragment mOverDueFragment;
+    private BuyBackFragment mBuyBackFragment;
 
     public HomeFragment getHomeFragment() {
         if (mHomeFragment == null) {
@@ -45,7 +51,7 @@ public class FragmentFactory {
         return mHomeFragment;
     }
 
-    public NewsFragment getMessageFragment() {
+    public NewsFragment getNewsFragment() {
         if (mNewsFragment == null) {
             synchronized (FragmentFactory.class) {
                 if (mNewsFragment == null) {
@@ -68,57 +74,57 @@ public class FragmentFactory {
     }
 
     public AllFragment getAllFragment() {
-        if (mMineFragment == null) {
+        if (mAllFragment == null) {
             synchronized (FragmentFactory.class) {
-                if (mMineFragment == null) {
-                    mMineFragment = new MineFragment();
+                if (mAllFragment == null) {
+                    mAllFragment = new AllFragment();
                 }
             }
         }
-        return mMineFragment;
+        return mAllFragment;
     }
 
-    public MineFragment getMineFragment() {
-        if (mMineFragment == null) {
+    public MessageFragment getMessageFragment() {
+        if (mMessageFragment == null) {
             synchronized (FragmentFactory.class) {
-                if (mMineFragment == null) {
-                    mMineFragment = new MineFragment();
+                if (mMessageFragment == null) {
+                    mMessageFragment = new MessageFragment();
                 }
             }
         }
-        return mMineFragment;
+        return mMessageFragment;
     }
 
-    public MineFragment getMineFragment() {
-        if (mMineFragment == null) {
+    public ApplyRemindFragment getApplyRemindFragment() {
+        if (mApplyRemindFragment == null) {
             synchronized (FragmentFactory.class) {
-                if (mMineFragment == null) {
-                    mMineFragment = new MineFragment();
+                if (mApplyRemindFragment == null) {
+                    mApplyRemindFragment = new ApplyRemindFragment();
                 }
             }
         }
-        return mMineFragment;
+        return mApplyRemindFragment;
     }
 
-    public MineFragment getMineFragment() {
-        if (mMineFragment == null) {
+    public OverDueFragment getOverDueFragment() {
+        if (mOverDueFragment == null) {
             synchronized (FragmentFactory.class) {
-                if (mMineFragment == null) {
-                    mMineFragment = new MineFragment();
+                if (mOverDueFragment == null) {
+                    mOverDueFragment = new OverDueFragment();
                 }
             }
         }
-        return mMineFragment;
+        return mOverDueFragment;
     }
 
-    public MineFragment getMineFragment() {
-        if (mMineFragment == null) {
+    public BuyBackFragment getBuyBackFragment() {
+        if (mBuyBackFragment == null) {
             synchronized (FragmentFactory.class) {
-                if (mMineFragment == null) {
-                    mMineFragment = new MineFragment();
+                if (mBuyBackFragment == null) {
+                    mBuyBackFragment = new BuyBackFragment();
                 }
             }
         }
-        return mMineFragment;
+        return mBuyBackFragment;
     }
 }

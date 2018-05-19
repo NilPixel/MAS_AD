@@ -121,7 +121,7 @@ public class MainActivity extends BaseActivity {
         mViewPager.setOffscreenPageLimit(2);
 
         mFragmentList.add(FragmentFactory.getInstance().getHomeFragment());
-        mFragmentList.add(FragmentFactory.getInstance().getMessageFragment());
+        mFragmentList.add(FragmentFactory.getInstance().getNewsFragment());
         mFragmentList.add(FragmentFactory.getInstance().getMineFragment());
 
         mViewPager.setAdapter(new CommonFragmentPagerAdapter(getSupportFragmentManager(), mFragmentList));
