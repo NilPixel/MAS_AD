@@ -27,6 +27,13 @@ public class FragmentFactory {
     private NewsFragment mNewsFragment;
     private MineFragment mMineFragment;
 
+    private AllFragment mAllFragment;
+    private NewsFragment mNewsFragment;
+    private MineFragment mMineFragment;
+
+    private HomeFragment mHomeFragment;
+    private NewsFragment mNewsFragment;
+
     public HomeFragment getHomeFragment() {
         if (mHomeFragment == null) {
             synchronized (FragmentFactory.class) {
@@ -47,6 +54,61 @@ public class FragmentFactory {
             }
         }
         return mNewsFragment;
+    }
+
+    public MineFragment getMineFragment() {
+        if (mMineFragment == null) {
+            synchronized (FragmentFactory.class) {
+                if (mMineFragment == null) {
+                    mMineFragment = new MineFragment();
+                }
+            }
+        }
+        return mMineFragment;
+    }
+
+    public AllFragment getAllFragment() {
+        if (mMineFragment == null) {
+            synchronized (FragmentFactory.class) {
+                if (mMineFragment == null) {
+                    mMineFragment = new MineFragment();
+                }
+            }
+        }
+        return mMineFragment;
+    }
+
+    public MineFragment getMineFragment() {
+        if (mMineFragment == null) {
+            synchronized (FragmentFactory.class) {
+                if (mMineFragment == null) {
+                    mMineFragment = new MineFragment();
+                }
+            }
+        }
+        return mMineFragment;
+    }
+
+    public MineFragment getMineFragment() {
+        if (mMineFragment == null) {
+            synchronized (FragmentFactory.class) {
+                if (mMineFragment == null) {
+                    mMineFragment = new MineFragment();
+                }
+            }
+        }
+        return mMineFragment;
+    }
+
+    public MineFragment getMineFragment() {
+        if (mMineFragment == null) {
+            synchronized (FragmentFactory.class) {
+                if (mMineFragment == null) {
+                    mMineFragment = new MineFragment();
+                }
+            }
+        }
+        return mMineFragment;
     }
 
     public MineFragment getMineFragment() {
