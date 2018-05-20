@@ -42,19 +42,17 @@ public class NewsFragment extends BaseFragment {
     @Bind(R.id.ibScanMenu)
     public Button mScanBtn;
 
-
     /**
      * tab
      */
-    @Bind(R.id.id_news_tab)
+    @Bind(R.id.newsTab)
     public SmartTabLayout mNewsTab;
-
 
     /**
      * viewPager
      */
-    @Bind(R.id.id_news_viewPager)
-    public ViewPager mViewPager;
+    @Bind(R.id.newsViewPager)
+    ViewPager mViewPager;
 
     protected ArrayList<BaseFragment> mNewsTabInfos = new ArrayList<>(5);
 
