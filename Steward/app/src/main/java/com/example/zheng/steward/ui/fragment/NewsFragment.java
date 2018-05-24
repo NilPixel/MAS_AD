@@ -6,11 +6,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.zheng.steward.MainActivity;
 import com.example.zheng.steward.R;
 import com.example.zheng.steward.app.AppConst;
 import com.example.zheng.steward.ui.adapter.CommonFragmentPagerAdapter;
 import com.example.zheng.steward.ui.base.BaseFragment;
 import com.example.zheng.steward.ui.base.BasePresenter;
+import com.example.zheng.steward.ui.presenter.HomeFgPresenter;
+import com.example.zheng.steward.ui.presenter.NewsFgPresenter;
 import com.example.zheng.steward.utils.SPUtils;
 import com.example.zheng.steward.utils.UIUtils;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
@@ -89,7 +92,7 @@ public class NewsFragment extends BaseFragment {
 
     @Override
     protected BasePresenter createPresenter() {
-        return null;
+        return new NewsFgPresenter((MainActivity) getActivity());
     }
 
     @Override
