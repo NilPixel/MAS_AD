@@ -1,5 +1,6 @@
 package com.example.zheng.steward.ui.fragment;
 
+import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.Gravity;
 import android.view.View;
@@ -9,10 +10,11 @@ import android.widget.TextView;
 import com.example.zheng.steward.MainActivity;
 import com.example.zheng.steward.R;
 import com.example.zheng.steward.app.AppConst;
-import com.example.zheng.steward.ui.adapter.CommonFragmentPagerAdapter;
+import com.example.zheng.steward.ui.adapter.NewsPagerAdapter;
 import com.example.zheng.steward.ui.base.BaseFragment;
 import com.example.zheng.steward.ui.base.BasePresenter;
-import com.example.zheng.steward.ui.presenter.HomeFgPresenter;
+import com.example.zheng.steward.ui.fragment.news.NewsPagerFragment;
+import com.example.zheng.steward.ui.fragment.news.NewsTabInfo;
 import com.example.zheng.steward.ui.presenter.NewsFgPresenter;
 import com.example.zheng.steward.utils.SPUtils;
 import com.example.zheng.steward.utils.UIUtils;
@@ -57,7 +59,7 @@ public class NewsFragment extends BaseFragment {
     @Bind(R.id.newsViewPager)
     ViewPager mViewPager;
 
-    protected ArrayList<BaseFragment> mNewsTabInfos = new ArrayList<>(5);
+    protected ArrayList<NewsTabInfo> mNewsTabInfos = new ArrayList<>(5);
 
     @Override
     public void initView(View rootView) {
@@ -77,16 +79,19 @@ public class NewsFragment extends BaseFragment {
     }
 
     private void initNewsTabInfos() {
-        mNewsTabInfos.add(FragmentFactory.getInstance().getAllFragment());
-        mNewsTabInfos.add(FragmentFactory.getInstance().getMessageFragment());
 
-        mNewsTabInfos.add(FragmentFactory.getInstance().getApplyRemindFragment());
-        mNewsTabInfos.add(FragmentFactory.getInstance().getOverDueFragment());
-        mNewsTabInfos.add(FragmentFactory.getInstance().getBuyBackFragment());
+        //初始化Adapter需要使用的数据,标题,创建的Fragment对象,传递的参数
+        Bundle bundle = new Bundle();
+        bundle.putString("args","我是资讯");
+        // Fragment fragment = Fragment.instantiate(mContext, NewsPagerFragment.class.getName());
+        NewsPagerFragment fragment = new NewsPagerFragment();
+        mNewsTabInfos.add(new NewsTabInfo("最新动弹", NewsPagerFragment.class, bundle));
+        mNewsTabInfos.add(new NewsTabInfo("热门动弹", NewsPagerFragment.class,null));
+        mNewsTabInfos.add(new NewsTabInfo("我的动弹", NewsPagerFragment.class,null));
     }
 
     private void initNewsTablayoutAndViewPager() {
-        mViewPager.setAdapter(new CommonFragmentPagerAdapter(getActivity().getSupportFragmentManager(), mNewsTabInfos));
+        mViewPager.setAdapter(new NewsPagerAdapter(getChildFragmentManager(), getContext(), mNewsTabInfos));
         mNewsTab.setViewPager(mViewPager);
     }
 

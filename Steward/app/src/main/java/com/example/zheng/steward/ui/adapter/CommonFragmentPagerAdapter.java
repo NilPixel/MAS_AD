@@ -20,7 +20,6 @@ public class CommonFragmentPagerAdapter extends FragmentPagerAdapter {
 
     private int mViewPagerType = 0;
     public String[] mainViewPagerTitle = null;
-    private Context mContext;
     private List<BaseFragment> mFragments;
 
     public CommonFragmentPagerAdapter(FragmentManager fm, List<BaseFragment> fragments) {
@@ -32,12 +31,6 @@ public class CommonFragmentPagerAdapter extends FragmentPagerAdapter {
     public CommonFragmentPagerAdapter(FragmentManager fm, List<BaseFragment> fragments, int viewPagerType) {
         this(fm, fragments);
         mViewPagerType = viewPagerType;
-    }
-
-    public CommonFragmentPagerAdapter(FragmentManager fm, Context context, List<BaseFragment> fragments) {
-        super(fm);
-        mContext = context;
-        mFragments = fragments;
     }
 
     @Override
