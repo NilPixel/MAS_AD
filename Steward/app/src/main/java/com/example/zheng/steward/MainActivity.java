@@ -26,6 +26,7 @@ import com.example.zheng.steward.ui.base.BasePresenter;
 import com.example.zheng.steward.ui.fragment.FragmentFactory;
 import com.example.zheng.steward.utils.SPUtils;
 import com.example.zheng.steward.utils.UIUtils;
+import com.example.zheng.steward.widget.MyViewPager;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -44,7 +45,7 @@ public class MainActivity extends BaseActivity {
      * 三个tab页的容器ViewPager
      */
     @Bind(R.id.tab_viewpager)
-    ViewPager mViewPager;
+    MyViewPager mViewPager;
 
     /**
      * 底部tabbar三个LinearLayout
@@ -119,6 +120,8 @@ public class MainActivity extends BaseActivity {
 
         //设置ViewPager的最大缓存页面
         mViewPager.setOffscreenPageLimit(2);
+        // 设置viewPager不可以左右滑动
+        mViewPager.setScroll(false);
 
         mFragmentList.add(FragmentFactory.getInstance().getHomeFragment());
         mFragmentList.add(FragmentFactory.getInstance().getNewsFragment());

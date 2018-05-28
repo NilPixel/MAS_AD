@@ -16,7 +16,7 @@ import java.util.List;
 
 public class CommonFragmentPagerAdapter extends FragmentPagerAdapter {
 
-    public static int MAIN_VIEW_PAGER = 1;//主页的ViewPager
+    public static int MAIN_VIEW_PAGER = 1;  //主页的ViewPager
 
     private int mViewPagerType = 0;
     public String[] mainViewPagerTitle = null;
