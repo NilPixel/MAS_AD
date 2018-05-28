@@ -82,12 +82,14 @@ public class NewsFragment extends BaseFragment {
 
         //初始化Adapter需要使用的数据,标题,创建的Fragment对象,传递的参数
         Bundle bundle = new Bundle();
-        bundle.putString("args","我是资讯");
+        bundle.putString("args","消息");
         // Fragment fragment = Fragment.instantiate(mContext, NewsPagerFragment.class.getName());
-        NewsPagerFragment fragment = new NewsPagerFragment();
-        mNewsTabInfos.add(new NewsTabInfo("最新动弹", NewsPagerFragment.class, bundle));
-        mNewsTabInfos.add(new NewsTabInfo("热门动弹", NewsPagerFragment.class,null));
-        mNewsTabInfos.add(new NewsTabInfo("我的动弹", NewsPagerFragment.class,null));
+//        NewsPagerFragment fragment = new NewsPagerFragment();
+        mNewsTabInfos.add(new NewsTabInfo("全部", NewsPagerFragment.class, bundle));
+        mNewsTabInfos.add(new NewsTabInfo("资讯", NewsPagerFragment.class,null));
+        mNewsTabInfos.add(new NewsTabInfo("申请提醒", NewsPagerFragment.class,null));
+        mNewsTabInfos.add(new NewsTabInfo("逾期提醒", NewsPagerFragment.class,null));
+        mNewsTabInfos.add(new NewsTabInfo("回购提醒", NewsPagerFragment.class,null));
     }
 
     private void initNewsTablayoutAndViewPager() {
