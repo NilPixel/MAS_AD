@@ -22,6 +22,7 @@ import com.example.zheng.steward.model.response.GetUserInfosResponse;
 import com.example.zheng.steward.model.response.HomeDataResponse;
 import com.example.zheng.steward.model.response.JoinGroupResponse;
 import com.example.zheng.steward.model.response.LoginResponse;
+import com.example.zheng.steward.model.response.NewsPagerListResponse;
 import com.example.zheng.steward.model.response.OrderManagerListResponse;
 import com.example.zheng.steward.model.response.QRCodeResponse;
 import com.example.zheng.steward.model.response.QiNiuTokenResponse;
@@ -58,7 +59,7 @@ import rx.Observable;
 public interface MyApi {
     public static final String BASE_URL = "https://mrs2.memedai.cn/";
 
-    //检查手机是否被注册
+    //获取订单列表数据
     @POST("app/rest/appOrderManage/getOrderListForPage")
     Observable<OrderManagerListResponse> getOrderListData(@Body RequestBody body);
 
@@ -85,6 +86,10 @@ public interface MyApi {
     //获取二维码字符串
     @POST("api/qrcode/getAppTemporaryQrCodeForMobile")
     Observable<QRCodeResponse> getQRCodeString();
+
+    //获取消息列表数据
+    @POST("api/messagePush/getPushedMessageListForMobile")
+    Observable<NewsPagerListResponse> getNewsPagerListData(@Body RequestBody body);
 
     //获取 token 前置条件需要登录   502 坏的网关 测试环境用户已达上限
     @GET("user/get_token")

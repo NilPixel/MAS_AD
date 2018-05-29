@@ -13,6 +13,7 @@ import com.example.zheng.steward.model.request.DismissGroupRequest;
 import com.example.zheng.steward.model.request.FriendInvitationRequest;
 import com.example.zheng.steward.model.request.JoinGroupRequest;
 import com.example.zheng.steward.model.request.LoginRequest;
+import com.example.zheng.steward.model.request.NewsPagerListRequest;
 import com.example.zheng.steward.model.request.OrderManagerListRequest;
 import com.example.zheng.steward.model.request.QuitGroupRequest;
 import com.example.zheng.steward.model.request.RegisterRequest;
@@ -47,6 +48,7 @@ import com.example.zheng.steward.model.response.GetUserInfosResponse;
 import com.example.zheng.steward.model.response.HomeDataResponse;
 import com.example.zheng.steward.model.response.JoinGroupResponse;
 import com.example.zheng.steward.model.response.LoginResponse;
+import com.example.zheng.steward.model.response.NewsPagerListResponse;
 import com.example.zheng.steward.model.response.OrderManagerListResponse;
 import com.example.zheng.steward.model.response.QRCodeResponse;
 import com.example.zheng.steward.model.response.QiNiuTokenResponse;
@@ -138,6 +140,11 @@ public class ApiRetrofit extends BaseApiRetrofit {
     //获取订单列表
     public Observable<OrderManagerListResponse> getOrderListData(Integer page, Integer pageLength, String sortMethod, String param, String sellerNo, String store, String applyStatus) {
         return mApi.getOrderListData(getRequestBody(new OrderManagerListRequest(page, pageLength, sortMethod, param, sellerNo, store, applyStatus)));
+    }
+
+    //获取消息列表
+    public Observable<NewsPagerListResponse> getNewsPagerListData(String currentPage, String msgType) {
+        return mApi.getNewsPagerListData(getRequestBody(new NewsPagerListRequest(currentPage, msgType)));
     }
 
     public Observable<SendCodeResponse> sendCode(String region, String phone) {

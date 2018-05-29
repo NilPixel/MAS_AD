@@ -46,6 +46,8 @@ public class NewsPagerFragment extends BaseFragment<INewsPagerFgView, NewsPagerF
      */
     private NewsPagerListAdapter listAdapter;
 
+    public String msgType = "";
+
     @Override
     public void initView(View rootView) {
         super.initView(rootView);
@@ -85,6 +87,7 @@ public class NewsPagerFragment extends BaseFragment<INewsPagerFgView, NewsPagerF
     public void initData() {
         super.initData();
         listAdapter = new NewsPagerListAdapter(getContext(), R.layout.order_manager_item, newsList);
+        mPresenter.loadNewsData(currentPage, msgType);
     }
 
     @Override
@@ -100,31 +103,33 @@ public class NewsPagerFragment extends BaseFragment<INewsPagerFgView, NewsPagerF
     @Override
     public void onBGARefreshLayoutBeginRefreshing(BGARefreshLayout refreshLayout) {
         currentPage = 1;
+        mPresenter.loadNewsData(currentPage, msgType);
     }
 
     @Override
     public boolean onBGARefreshLayoutBeginLoadingMore(BGARefreshLayout refreshLayout) {
         currentPage += 1;
+        mPresenter.loadNewsData(currentPage, msgType);
         return true;
     }
 
     @Override
     public NewsPagerListAdapter getAdapter() {
-        return null;
+        return listAdapter;
     }
 
     @Override
     public List<NewsPagerListItem> getDataArrayList() {
-        return null;
+        return newsList;
     }
 
     @Override
     public ListView getNewsList() {
-        return null;
+        return newsListView;
     }
 
     @Override
     public BGARefreshLayout getRefresher() {
-        return null;
+        return mRefreshLayout;
     }
 }

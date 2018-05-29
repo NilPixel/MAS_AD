@@ -8,6 +8,7 @@ import com.example.zheng.steward.api.ApiRetrofit;
 import com.example.zheng.steward.app.AppConst;
 import com.example.zheng.steward.db.model.OrderManagerListItem;
 import com.example.zheng.steward.model.exception.ServerException;
+import com.example.zheng.steward.ui.activity.LoginActivity;
 import com.example.zheng.steward.ui.adapter.OrderManagerListAdapter;
 import com.example.zheng.steward.ui.base.BaseActivity;
 import com.example.zheng.steward.ui.base.BasePresenter;
@@ -54,6 +55,10 @@ public class OrderManagerPresenter extends BasePresenter<IOrderManagerView> {
                         ListView listView = getView().getOrderList();
                         listView.setAdapter(adapter);
                     } else {
+                        if (AppConst.ResponseCode.TOKEN_EXPIRE.equals(code)) {
+                            mContext.jumpToActivityAndClearTask(LoginActivity.class, R.anim.bottom_in, R.anim.top_out);
+                            mContext.finish();
+                        }
                         loginError(new ServerException(listResponse.getDesc() + code));
                     }
                 }, this::loginError);
