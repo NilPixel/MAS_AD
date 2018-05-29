@@ -86,7 +86,7 @@ public class NewsPagerFragment extends BaseFragment<INewsPagerFgView, NewsPagerF
     @Override
     public void initData() {
         super.initData();
-        listAdapter = new NewsPagerListAdapter(getContext(), R.layout.order_manager_item, newsList);
+        listAdapter = new NewsPagerListAdapter(getContext(), R.layout.news_pager_item, newsList);
         mPresenter.loadNewsData(currentPage, msgType);
     }
 

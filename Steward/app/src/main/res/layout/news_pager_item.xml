@@ -9,7 +9,6 @@
         android:id="@+id/new_item_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="您有一笔订单申请失败，请查看！"
         android:textSize="15sp"
         android:textStyle="bold"
         android:layout_marginLeft="15dp"
@@ -20,20 +19,21 @@
         android:id="@+id/new_item_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="查看详情查看详情查看详情查看详情查看详情查看详情查看详情查看详情查看详情查看详情查看详情查看详情"
         android:textSize="12sp"
         android:layout_gravity="left"
         android:layout_marginTop="13dp"
-        android:layout_marginLeft="15dp"/>
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:lineSpacingExtra="5dp"/>
 
     <TextView
         android:id="@+id/new_item_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="2017-08-08 00:18"
         android:textSize="12sp"
         android:layout_gravity="left"
         android:layout_marginTop="13dp"
-        android:layout_marginLeft="15dp"/>
+        android:layout_marginLeft="15dp"
+        android:layout_marginBottom="31dp"/>
 
 </LinearLayout>

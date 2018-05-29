@@ -92,6 +92,40 @@ public class NewsFragment extends BaseFragment {
         mNewsTabInfos.add(new NewsTabInfo("回购提醒", NewsPagerFragment.class,null));
     }
 
+    @Override
+    public void initListener() {
+        super.initListener();
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                switch (position) {
+                    case 0:
+                        break;
+                    case 1:
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        break;
+                    case 4:
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+    }
+
     private void initNewsTablayoutAndViewPager() {
         mViewPager.setAdapter(new NewsPagerAdapter(getChildFragmentManager(), getContext(), mNewsTabInfos));
         mNewsTab.setViewPager(mViewPager);
