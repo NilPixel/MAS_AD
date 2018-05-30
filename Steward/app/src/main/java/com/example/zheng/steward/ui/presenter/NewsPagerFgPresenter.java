@@ -57,12 +57,14 @@ public class NewsPagerFgPresenter extends BasePresenter<INewsPagerFgView> {
                         }
 
                         if (data.size() >= newsListDataResponse.getRecords()) {
-                            UIUtils.showToast("没有更多数据");
+//                            UIUtils.showToast("没有更多数据");
                         }
                         NewsPagerListAdapter adapter = getView().getAdapter();
                         ListView listView = getView().getNewsList();
                         listView.setAdapter(adapter);
                     } else {
+                        getView().getRefresher().endRefreshing();
+                        getView().getRefresher().endLoadingMore();
                         if (AppConst.ResponseCode.TOKEN_EXPIRE.equals(code)) {
                             mContext.jumpToActivityAndClearTask(LoginActivity.class, R.anim.bottom_in, R.anim.top_out);
                             mContext.finish();

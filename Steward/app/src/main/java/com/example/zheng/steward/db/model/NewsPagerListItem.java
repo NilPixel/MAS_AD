@@ -1,5 +1,7 @@
 package com.example.zheng.steward.db.model;
 
+import com.example.zheng.steward.utils.StringUtils;
+
 public class NewsPagerListItem {
     private String msgId;                   //消息ID
     private String msgTitle;                //消息标题。
@@ -25,7 +27,7 @@ public class NewsPagerListItem {
     }
 
     public String getMsgContent() {
-        return msgContent;
+        return StringUtils.StringFilter(msgContent, "[\t\n\r]");
     }
 
     public void setMsgContent(String msgContent) {

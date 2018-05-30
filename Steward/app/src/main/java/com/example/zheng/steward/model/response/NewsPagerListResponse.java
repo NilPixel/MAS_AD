@@ -14,7 +14,7 @@ public class NewsPagerListResponse {
 
     private String desc;            //操作描述，即操作代码的中文描述
 
-    private int page;               //商户名称
+    private int page;               //当前页码，从1开始。
 
     private int total;              //总页数
 

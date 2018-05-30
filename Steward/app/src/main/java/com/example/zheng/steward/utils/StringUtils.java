@@ -1,6 +1,9 @@
 package com.example.zheng.steward.utils;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
 
 /**
  * Created by zheng on 2018/2/5.
@@ -67,5 +70,19 @@ public class StringUtils {
         sb.append(utfString.substring(pos, utfString.length()));
 
         return sb.toString();
+    }
+
+    /**
+     * 过滤特殊字符
+     * @param str
+     * @return
+     * @throws PatternSyntaxException
+     */
+    public static String StringFilter(String str, String regEx) throws PatternSyntaxException {
+        // 只允许字母和数字 // String regEx ="[^a-zA-Z0-9]";
+        // 清除掉所有特殊字符 String regEx = "[`~!@#$%^&*()+=|{}':;',\\[\\].<>/?~！@#￥%……&*（）——+|{}【】‘；：”“’。，、？]";
+        Pattern p = Pattern.compile(regEx);
+        Matcher m = p.matcher(str);
+        return m.replaceAll("").trim();
     }
 }

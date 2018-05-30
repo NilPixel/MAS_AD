@@ -67,6 +67,8 @@ public class NewsFragment extends BaseFragment {
         mScanBtn.setVisibility(GONE);
         mToolbarTitle.setText(SPUtils.getInstance(UIUtils.getContext()).getString(AppConst.Merchant.MERCHANT_NAME, ""));
         mToolbarTitle.setGravity(Gravity.CENTER);
+        //设置ViewPager的最大缓存页面
+        mViewPager.setOffscreenPageLimit(4);
     }
 
     @Override
