@@ -81,27 +81,14 @@ public class NewsFragment extends BaseFragment {
     private void initNewsTabInfos() {
 
         //初始化Adapter需要使用的数据,标题,创建的Fragment对象,传递的参数
-        Bundle allBundle = new Bundle();
-        allBundle.putString("msgType","");
 
-        Bundle messageBundle = new Bundle();
-        messageBundle.putString("msgType","0");
-
-        Bundle buybackBundle = new Bundle();
-        buybackBundle.putString("msgType","1");
-
-        Bundle overdueBundle = new Bundle();
-        overdueBundle.putString("msgType","2");
-
-        Bundle applyBundle = new Bundle();
-        applyBundle.putString("msgType","5");
         // Fragment fragment = Fragment.instantiate(mContext, NewsPagerFragment.class.getName());
 //        NewsPagerFragment fragment = new NewsPagerFragment();
-        mNewsTabInfos.add(new NewsTabInfo("全部", NewsPagerFragment.class, allBundle));
-        mNewsTabInfos.add(new NewsTabInfo("资讯", NewsPagerFragment.class, messageBundle));
-        mNewsTabInfos.add(new NewsTabInfo("申请提醒", NewsPagerFragment.class, applyBundle));
-        mNewsTabInfos.add(new NewsTabInfo("逾期提醒", NewsPagerFragment.class, overdueBundle));
-        mNewsTabInfos.add(new NewsTabInfo("回购提醒", NewsPagerFragment.class, buybackBundle));
+        mNewsTabInfos.add(new NewsTabInfo("全部", NewsPagerFragment.class, null));
+        mNewsTabInfos.add(new NewsTabInfo("资讯", NewsPagerFragment.class, null));
+        mNewsTabInfos.add(new NewsTabInfo("申请提醒", NewsPagerFragment.class, null));
+        mNewsTabInfos.add(new NewsTabInfo("逾期提醒", NewsPagerFragment.class, null));
+        mNewsTabInfos.add(new NewsTabInfo("回购提醒", NewsPagerFragment.class, null));
     }
 
     @Override
@@ -115,20 +102,7 @@ public class NewsFragment extends BaseFragment {
 
             @Override
             public void onPageSelected(int position) {
-                switch (position) {
-                    case 0:
-                        break;
-                    case 1:
-                        break;
-                    case 2:
-                        break;
-                    case 3:
-                        break;
-                    case 4:
-                        break;
-                    default:
-                        break;
-                }
+
             }
 
             @Override
