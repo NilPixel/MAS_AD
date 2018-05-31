@@ -2,8 +2,95 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="@color/background">
 
     <include layout="@layout/include_toolbar"/>
+
+    <LinearLayout
+        android:id="@+id/mine_header"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:background="@color/colorWhite">
+        
+        <ImageView
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:src="@mipmap/ic_head_default"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/account"
+                android:textSize="12sp"
+                android:textColor="@color/newsTitleUnselectedColor"
+                android:layout_marginTop="15dp"/>
+
+            <TextView
+                android:id="@+id/mine_account_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="测试自营门店"
+                android:textSize="17sp"
+                android:textColor="@color/colorTitleText"
+                android:layout_marginTop="5dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginRight="15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textSize="12sp"
+                android:textColor="@color/newsTitleUnselectedColor"
+                android:text="@string/modify_header_img"
+                android:gravity="center"
+                android:layout_marginRight="15dp"/>
+
+            <ImageView
+                android:layout_width="12dp"
+                android:layout_height="23dp"
+                android:src="@mipmap/ic_arrow_right"
+                android:layout_gravity="center"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/mine_service"
+        android:layout_width="match_parent"
+        android:layout_height="135dp"
+        android:orientation="vertical"
+        android:layout_marginTop="15dp"
+        android:background="@color/colorWhite">
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/mine_versions"
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="15dp"
+        android:background="@color/colorWhite">
+    </LinearLayout>
 
 </LinearLayout>
