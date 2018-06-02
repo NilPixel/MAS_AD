@@ -115,6 +115,7 @@
 
     <string name="version">当前版本</string>
     <string name="modify_header_img">修改头像</string>
+    <string name="go_to_see">去看看</string>
     <string name="qr_code_card_tip">扫一扫上面的二维码图案，加我微信</string>
 
     <!--我的个人信息-->

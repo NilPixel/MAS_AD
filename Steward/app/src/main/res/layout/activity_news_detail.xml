@@ -8,28 +8,70 @@
 
 
     <TextView
+        android:id="@+id/news_detail_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="您有一笔新申请的订单，请查看！"
+        android:textSize="18sp"
+        android:textColor="@color/colorTitleText"
+        android:textStyle="bold"
+        android:layout_marginTop="34dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"/>
+
+    <TextView
+        android:id="@+id/news_detail_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="2017-07-05 21:35"
+        android:textSize="12sp"
+        android:textColor="@color/newsTitleUnselectedColor"
+        android:layout_marginTop="12dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="31dp"
+        android:layout_marginLeft="15dp"
+        android:background="@color/line"/>
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        />
+        android:layout_weight="1">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/news_detail_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:lineSpacingExtra="5dp"
+            android:text="您好，测试客户刚刚申请了一笔订单，您可通过点击下方去看看查看详情"
+            android:textColor="@color/colorContentText"
+            android:textSize="15sp"/>
+
+    </ScrollView>
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="15dp"
+        android:background="@color/line"
+        android:layout_marginBottom="15dp"/>
 
     <Button
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="45dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/rounded_news_gotoseebtn"
+        android:text="@string/go_to_see"
+        android:textColor="@color/colorWhite"
+        android:textSize="20sp"/>
 
 </LinearLayout>
