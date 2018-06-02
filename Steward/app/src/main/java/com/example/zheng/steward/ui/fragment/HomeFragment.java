@@ -169,18 +169,28 @@ public class HomeFragment extends BaseFragment<IHomeFgView, HomeFgPresenter> imp
                         break;
                     case 1:
                         Log.d(TAG, "onItemClick: 待放款件查询");
+                        getActivity().startActivity(new Intent(getContext(), OrderManagerActivity.class));
+                        getActivity().overridePendingTransition(R.anim.right_in, R.anim.left_out);
                         break;
                     case 2:
                         Log.d(TAG, "onItemClick: 放款件查询");
+                        getActivity().startActivity(new Intent(getContext(), OrderManagerActivity.class));
+                        getActivity().overridePendingTransition(R.anim.right_in, R.anim.left_out);
                         break;
                     case 3:
                         Log.d(TAG, "onItemClick: 逾期件查询");
+                        getActivity().startActivity(new Intent(getContext(), OrderManagerActivity.class));
+                        getActivity().overridePendingTransition(R.anim.right_in, R.anim.left_out);
                         break;
                     case 4:
                         Log.d(TAG, "onItemClick: 优惠券查询");
+                        getActivity().startActivity(new Intent(getContext(), OrderManagerActivity.class));
+                        getActivity().overridePendingTransition(R.anim.right_in, R.anim.left_out);
                         break;
                     case 5:
                         Log.d(TAG, "onItemClick: 客户画像");
+                        getActivity().startActivity(new Intent(getContext(), OrderManagerActivity.class));
+                        getActivity().overridePendingTransition(R.anim.right_in, R.anim.left_out);
                         break;
                     default:
                         Log.d(TAG, "onItemClick: 无效点击");

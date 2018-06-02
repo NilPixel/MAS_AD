@@ -1,12 +1,16 @@
 package com.example.zheng.steward.ui.fragment.news;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.zheng.steward.MainActivity;
 import com.example.zheng.steward.R;
 import com.example.zheng.steward.db.model.NewsPagerListItem;
+import com.example.zheng.steward.ui.activity.NewsDetailActivity;
+import com.example.zheng.steward.ui.activity.OrderManagerActivity;
 import com.example.zheng.steward.ui.adapter.NewsPagerListAdapter;
 import com.example.zheng.steward.ui.base.BaseFragment;
 import com.example.zheng.steward.ui.presenter.NewsPagerFgPresenter;
@@ -89,6 +93,24 @@ public class NewsPagerFragment extends BaseFragment<INewsPagerFgView, NewsPagerF
         msgType = getArguments().getString("msgType");
         listAdapter = new NewsPagerListAdapter(getContext(), R.layout.news_pager_item, newsList);
         mRefreshLayout.beginRefreshing();
+    }
+
+    @Override
+    public void initListener() {
+        super.initListener();
+        newsListView.setOnItemClickListener((AdapterView<?> parent, View view, int position, long id) -> listItemClicked(parent, view, position, id));
+    }
+
+    /**
+     * listview item的点击事件
+     * @param parent
+     * @param view
+     * @param position
+     * @param id
+     */
+    void listItemClicked(AdapterView<?> parent, View view, int position, long id) {
+        getActivity().startActivity(new Intent(getContext(), NewsDetailActivity.class));
+        getActivity().overridePendingTransition(R.anim.right_in, R.anim.left_out);
     }
 
     @Override
