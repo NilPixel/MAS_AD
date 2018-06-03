@@ -9,4 +9,6 @@ public interface INewsDetailView {
     TextView getNewsTime();
 
     TextView getNewsContent();
+
+    void setLendingNo(String lendingNo);
 }

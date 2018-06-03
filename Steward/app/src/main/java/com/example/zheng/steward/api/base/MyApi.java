@@ -24,6 +24,7 @@ import com.example.zheng.steward.model.response.JoinGroupResponse;
 import com.example.zheng.steward.model.response.LoginResponse;
 import com.example.zheng.steward.model.response.NewsDetailResponse;
 import com.example.zheng.steward.model.response.NewsPagerListResponse;
+import com.example.zheng.steward.model.response.OrderDetailResponse;
 import com.example.zheng.steward.model.response.OrderManagerListResponse;
 import com.example.zheng.steward.model.response.QRCodeResponse;
 import com.example.zheng.steward.model.response.QiNiuTokenResponse;
@@ -95,6 +96,10 @@ public interface MyApi {
     //获取消息详情数据
     @POST("api/messagePush/getPushedMessageDetailForMobile")
     Observable<NewsDetailResponse> getNewsDetailData(@Body RequestBody body);
+
+    //获取订单详情数据
+    @POST("app/rest/appOrderManage/getOrderDetail")
+    Observable<OrderDetailResponse> getOrderDetailData(@Body RequestBody body);
 
     //获取 token 前置条件需要登录   502 坏的网关 测试环境用户已达上限
     @GET("user/get_token")

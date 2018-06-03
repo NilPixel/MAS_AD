@@ -15,6 +15,7 @@ import com.example.zheng.steward.model.request.JoinGroupRequest;
 import com.example.zheng.steward.model.request.LoginRequest;
 import com.example.zheng.steward.model.request.NewsDetailRequest;
 import com.example.zheng.steward.model.request.NewsPagerListRequest;
+import com.example.zheng.steward.model.request.OrderDetailRequest;
 import com.example.zheng.steward.model.request.OrderManagerListRequest;
 import com.example.zheng.steward.model.request.QuitGroupRequest;
 import com.example.zheng.steward.model.request.RegisterRequest;
@@ -51,6 +52,7 @@ import com.example.zheng.steward.model.response.JoinGroupResponse;
 import com.example.zheng.steward.model.response.LoginResponse;
 import com.example.zheng.steward.model.response.NewsDetailResponse;
 import com.example.zheng.steward.model.response.NewsPagerListResponse;
+import com.example.zheng.steward.model.response.OrderDetailResponse;
 import com.example.zheng.steward.model.response.OrderManagerListResponse;
 import com.example.zheng.steward.model.response.QRCodeResponse;
 import com.example.zheng.steward.model.response.QiNiuTokenResponse;
@@ -152,6 +154,11 @@ public class ApiRetrofit extends BaseApiRetrofit {
     //获取消息详情
     public Observable<NewsDetailResponse> getNewsDetailData(String msgId) {
         return mApi.getNewsDetailData(getRequestBody(new NewsDetailRequest(msgId)));
+    }
+
+    //获取订单详情
+    public Observable<OrderDetailResponse> getOrderDetailData(String lendingNo) {
+        return mApi.getOrderDetailData(getRequestBody(new OrderDetailRequest(lendingNo)));
     }
 
     public Observable<SendCodeResponse> sendCode(String region, String phone) {

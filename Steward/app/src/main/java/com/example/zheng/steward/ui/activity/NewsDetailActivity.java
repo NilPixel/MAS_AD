@@ -1,5 +1,6 @@
 package com.example.zheng.steward.ui.activity;
 
+import android.content.Intent;
 import android.view.Gravity;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -53,6 +54,17 @@ public class NewsDetailActivity extends BaseActivity<INewsDetailView, NewsDetail
     @Bind(R.id.news_detail_content)
     TextView newsContent;
 
+    /**
+     * 消息内容
+     */
+    @Bind(R.id.go_to_see_btn)
+    Button goToSeeBtn;
+
+    /**
+     * 贷款编号
+     */
+    private String lendingNo;
+
     @Override
     public void initView() {
         super.initView();
@@ -66,6 +78,7 @@ public class NewsDetailActivity extends BaseActivity<INewsDetailView, NewsDetail
     public void initListener() {
         super.initListener();
         naviBackBtn.setOnClickListener(view -> backBtnClicked());
+        goToSeeBtn.setOnClickListener(v -> goToSeeBtnClicked());
     }
 
     @Override
@@ -78,6 +91,14 @@ public class NewsDetailActivity extends BaseActivity<INewsDetailView, NewsDetail
     void backBtnClicked() {
         finish();
         overridePendingTransition(R.anim.left_in,R.anim.right_out);
+    }
+
+    void goToSeeBtnClicked() {
+        Intent intent = new Intent(this, NewsDetailActivity.class);
+        intent.putExtra("lendingNo", lendingNo);
+
+        startActivity(intent);
+        overridePendingTransition(R.anim.right_in, R.anim.left_out);
     }
 
     @Override
@@ -109,5 +130,10 @@ public class NewsDetailActivity extends BaseActivity<INewsDetailView, NewsDetail
     @Override
     public TextView getNewsContent() {
         return newsContent;
+    }
+
+    @Override
+    public void setLendingNo(String lendingNo) {
+        this.lendingNo = lendingNo;
     }
 }
