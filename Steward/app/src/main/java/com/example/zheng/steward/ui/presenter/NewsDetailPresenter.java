@@ -1,7 +1,7 @@
 package com.example.zheng.steward.ui.presenter;
 
 import android.widget.ListView;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.example.zheng.steward.R;
 import com.example.zheng.steward.api.ApiRetrofit;
@@ -12,8 +12,9 @@ import com.example.zheng.steward.ui.activity.LoginActivity;
 import com.example.zheng.steward.ui.adapter.OrderManagerListAdapter;
 import com.example.zheng.steward.ui.base.BaseActivity;
 import com.example.zheng.steward.ui.base.BasePresenter;
-import com.example.zheng.steward.ui.view.IOrderManagerView;
+import com.example.zheng.steward.ui.view.INewsDetailView;
 import com.example.zheng.steward.utils.LogUtils;
+import com.example.zheng.steward.utils.TimeUtils;
 import com.example.zheng.steward.utils.UIUtils;
 
 import java.util.List;
@@ -21,50 +22,44 @@ import java.util.List;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
-public class OrderManagerPresenter extends BasePresenter<IOrderManagerView> {
+public class NewsDetailPresenter extends BasePresenter<INewsDetailView> {
 
-    public OrderManagerPresenter(BaseActivity context) {
+    public NewsDetailPresenter(BaseActivity context) {
         super(context);
     }
 
-    public void getOrderListData(Integer currentPage) {
+    public void getMsgDetail(String msgId) {
 
         mContext.showWaitingDialog(UIUtils.getString(R.string.please_wait));
-        ApiRetrofit.getInstance().getOrderListData(currentPage, 15,"DESC","", "", "", "")
+        ApiRetrofit.getInstance().getNewsDetailData(msgId)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(listResponse -> {
-                    String code = listResponse.getCode();
+                .subscribe(detailResponse -> {
+                    String code = detailResponse.getCode();
                     mContext.hideWaitingDialog();
                     if (AppConst.ResponseCode.SUCCESS.equals(code)) {
-                        List<OrderManagerListItem> data = getView().getDataArrayList();
 
-                        if (currentPage == 1) {
-                            data.clear();
-                            data.addAll(listResponse.getResult());
-                            getView().getRefresher().endRefreshing();
-                        } else {
-                            data.addAll(listResponse.getResult());
-                            getView().getRefresher().endLoadingMore();
-                        }
+                        TextView newsTitle = getView().getNewsTitle();
+                        newsTitle.setText(detailResponse.getDetailInfo().getMsgTitle());
 
-                        if (data.size() >= listResponse.getRecords()) {
-                            UIUtils.showToast("没有更多数据");
-                        }
-                        OrderManagerListAdapter adapter = getView().getAdapter();
-                        ListView listView = getView().getOrderList();
-                        listView.setAdapter(adapter);
+                        TextView newsTime = getView().getNewsTime();
+                        newsTime.setText(TimeUtils.getDateToString(Long.parseLong(detailResponse.getDetailInfo().getSentTime()), "yyyy-MM-dd HH:mm"));
+
+
+                        TextView newsContent = getView().getNewsContent();
+                        newsContent.setText(detailResponse.getDetailInfo().getMsgContent());
+
                     } else {
                         if (AppConst.ResponseCode.TOKEN_EXPIRE.equals(code)) {
                             mContext.jumpToActivityAndClearTask(LoginActivity.class, R.anim.bottom_in, R.anim.top_out);
                             mContext.finish();
                         }
-                        getListDataError(new ServerException(listResponse.getDesc() + code));
+                        getDetailDataError(new ServerException(detailResponse.getDesc() + code));
                     }
-                }, this::getListDataError);
+                }, this::getDetailDataError);
     }
 
-    private void getListDataError(Throwable throwable) {
+    private void getDetailDataError(Throwable throwable) {
         LogUtils.e(throwable.getLocalizedMessage());
         UIUtils.showToast(throwable.getLocalizedMessage());
         mContext.hideWaitingDialog();

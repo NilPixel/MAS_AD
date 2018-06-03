@@ -7,14 +7,15 @@ import android.widget.TextView;
 
 import com.example.zheng.steward.R;
 import com.example.zheng.steward.ui.base.BaseActivity;
-import com.example.zheng.steward.ui.base.BasePresenter;
+import com.example.zheng.steward.ui.presenter.NewsDetailPresenter;
+import com.example.zheng.steward.ui.view.INewsDetailView;
 
 import butterknife.Bind;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 
-public class NewsDetailActivity extends BaseActivity {
+public class NewsDetailActivity extends BaseActivity<INewsDetailView, NewsDetailPresenter> implements INewsDetailView {
 
     /**
      * 返回按钮
@@ -34,6 +35,24 @@ public class NewsDetailActivity extends BaseActivity {
     @Bind(R.id.ibScanMenu)
     Button qrScanBtn;
 
+    /**
+     * 消息标题
+     */
+    @Bind(R.id.news_detail_title)
+    TextView newsTitle;
+
+    /**
+     * 消息时间
+     */
+    @Bind(R.id.news_detail_time)
+    TextView newsTime;
+
+    /**
+     * 消息内容
+     */
+    @Bind(R.id.news_detail_content)
+    TextView newsContent;
+
     @Override
     public void initView() {
         super.initView();
@@ -49,6 +68,13 @@ public class NewsDetailActivity extends BaseActivity {
         naviBackBtn.setOnClickListener(view -> backBtnClicked());
     }
 
+    @Override
+    public void initData() {
+        super.initData();
+        String msgId = getIntent().getStringExtra("msgId");
+        mPresenter.getMsgDetail(msgId);
+    }
+
     void backBtnClicked() {
         finish();
         overridePendingTransition(R.anim.left_in,R.anim.right_out);
@@ -61,12 +87,27 @@ public class NewsDetailActivity extends BaseActivity {
     }
 
     @Override
-    protected BasePresenter createPresenter() {
-        return null;
+    protected NewsDetailPresenter createPresenter() {
+        return new NewsDetailPresenter(this);
     }
 
     @Override
     protected int provideContentViewId() {
         return R.layout.activity_news_detail;
+    }
+
+    @Override
+    public TextView getNewsTitle() {
+        return newsTitle;
+    }
+
+    @Override
+    public TextView getNewsTime() {
+        return newsTime;
+    }
+
+    @Override
+    public TextView getNewsContent() {
+        return newsContent;
     }
 }

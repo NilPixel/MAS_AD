@@ -13,6 +13,7 @@ import com.example.zheng.steward.model.request.DismissGroupRequest;
 import com.example.zheng.steward.model.request.FriendInvitationRequest;
 import com.example.zheng.steward.model.request.JoinGroupRequest;
 import com.example.zheng.steward.model.request.LoginRequest;
+import com.example.zheng.steward.model.request.NewsDetailRequest;
 import com.example.zheng.steward.model.request.NewsPagerListRequest;
 import com.example.zheng.steward.model.request.OrderManagerListRequest;
 import com.example.zheng.steward.model.request.QuitGroupRequest;
@@ -48,6 +49,7 @@ import com.example.zheng.steward.model.response.GetUserInfosResponse;
 import com.example.zheng.steward.model.response.HomeDataResponse;
 import com.example.zheng.steward.model.response.JoinGroupResponse;
 import com.example.zheng.steward.model.response.LoginResponse;
+import com.example.zheng.steward.model.response.NewsDetailResponse;
 import com.example.zheng.steward.model.response.NewsPagerListResponse;
 import com.example.zheng.steward.model.response.OrderManagerListResponse;
 import com.example.zheng.steward.model.response.QRCodeResponse;
@@ -145,6 +147,11 @@ public class ApiRetrofit extends BaseApiRetrofit {
     //获取消息列表
     public Observable<NewsPagerListResponse> getNewsPagerListData(String currentPage, String msgType) {
         return mApi.getNewsPagerListData(getRequestBody(new NewsPagerListRequest(currentPage, msgType)));
+    }
+
+    //获取消息详情
+    public Observable<NewsDetailResponse> getNewsDetailData(String msgId) {
+        return mApi.getNewsDetailData(getRequestBody(new NewsDetailRequest(msgId)));
     }
 
     public Observable<SendCodeResponse> sendCode(String region, String phone) {

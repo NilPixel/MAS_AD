@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.zheng.steward.R;
 import com.example.zheng.steward.db.model.NewsPagerListItem;
+import com.example.zheng.steward.utils.TimeUtils;
 
 import java.util.List;
 
@@ -36,7 +37,7 @@ public class NewsPagerListAdapter extends ArrayAdapter {
         msgContent.setText(listItem.getMsgContent());
 
         TextView time = view.findViewById(R.id.new_item_time);
-        time.setText(listItem.getSentTime());
+        time.setText(TimeUtils.getDateToString(Long.parseLong(listItem.getSentTime()), "yyyy-MM-dd HH:mm"));
 
         return view;
     }

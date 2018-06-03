@@ -15,6 +15,7 @@ import com.example.zheng.steward.ui.adapter.NewsPagerListAdapter;
 import com.example.zheng.steward.ui.base.BaseFragment;
 import com.example.zheng.steward.ui.presenter.NewsPagerFgPresenter;
 import com.example.zheng.steward.ui.view.INewsPagerFgView;
+import com.example.zheng.steward.utils.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -109,7 +110,11 @@ public class NewsPagerFragment extends BaseFragment<INewsPagerFgView, NewsPagerF
      * @param id
      */
     void listItemClicked(AdapterView<?> parent, View view, int position, long id) {
-        getActivity().startActivity(new Intent(getContext(), NewsDetailActivity.class));
+        String msgId = newsList.get(position).getMsgId();
+        Intent intent = new Intent(getContext(), NewsDetailActivity.class);
+        intent.putExtra("msgId", msgId);
+
+        getActivity().startActivity(intent);
         getActivity().overridePendingTransition(R.anim.right_in, R.anim.left_out);
     }
 
