@@ -20,11 +20,11 @@ public class OrderDetailListContent {
 
     private String merchantFeeShow; //展示的商户手续费
 
-    private Integer periods;        //期数
+    private String periods;         //期数
 
     private String salesName;       //销售员姓名
 
-    private double store;           //所属门店
+    private String store;           //所属门店
 
     private String applyStatus;     //申请状态
 
@@ -110,11 +110,11 @@ public class OrderDetailListContent {
         this.merchantFeeShow = merchantFeeShow;
     }
 
-    public Integer getPeriods() {
+    public String getPeriods() {
         return periods;
     }
 
-    public void setPeriods(Integer periods) {
+    public void setPeriods(String periods) {
         this.periods = periods;
     }
 
@@ -126,11 +126,11 @@ public class OrderDetailListContent {
         this.salesName = salesName;
     }
 
-    public double getStore() {
+    public String getStore() {
         return store;
     }
 
-    public void setStore(double store) {
+    public void setStore(String store) {
         this.store = store;
     }
 

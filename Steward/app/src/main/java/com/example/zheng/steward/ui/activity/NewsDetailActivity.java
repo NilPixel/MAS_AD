@@ -94,7 +94,7 @@ public class NewsDetailActivity extends BaseActivity<INewsDetailView, NewsDetail
     }
 
     void goToSeeBtnClicked() {
-        Intent intent = new Intent(this, NewsDetailActivity.class);
+        Intent intent = new Intent(this, OrderDetailActivity.class);
         intent.putExtra("lendingNo", lendingNo);
 
         startActivity(intent);

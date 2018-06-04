@@ -91,6 +91,12 @@
 
         </activity>
 
+        <activity android:name=".ui.activity.OrderDetailActivity"
+            android:theme="@style/ThemeNoActionBar"
+            android:screenOrientation="portrait">
+
+        </activity>
+
         <service
             android:name=".service.GeTuiPushService"
             android:exported="true"
