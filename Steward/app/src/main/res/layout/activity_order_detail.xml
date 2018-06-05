@@ -3,7 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/orderDetailBackgroundColor">
 
     <include layout="@layout/include_toolbar"/>
 
@@ -15,7 +16,9 @@
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:layout_marginBottom="15dp"
-        android:background="@drawable/rounded_order_detail_list">
+        android:divider="@null"
+        android:background="@drawable/rounded_order_detail_list"
+        android:scrollIndicators="none">
 
     </ListView>
 

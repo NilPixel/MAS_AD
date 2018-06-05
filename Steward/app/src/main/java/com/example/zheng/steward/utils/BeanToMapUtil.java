@@ -1,6 +1,7 @@
 package com.example.zheng.steward.utils;
 import java.lang.reflect.Field;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class BeanToMapUtil {
@@ -16,7 +17,7 @@ public class BeanToMapUtil {
         if(beanObj == null){
             return null;
         }
-        Map<K, V> map = new HashMap<>();
+        Map<K, V> map = new LinkedHashMap<>();
 
         Field[] declaredFields = beanObj.getClass().getDeclaredFields(); //获取所有的属性
         for (Field field : declaredFields) {

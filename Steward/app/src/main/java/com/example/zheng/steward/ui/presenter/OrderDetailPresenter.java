@@ -79,60 +79,81 @@ public class OrderDetailPresenter extends BasePresenter<IOrderDetailView> {
         ArrayList<OrderDetailListItem> data = new ArrayList<>();
 
         for (String key : contentMap.keySet()) {
-            OrderDetailListItem item = new OrderDetailListItem();
             switch (key) {
                 case "lendingNo":
-                    item.setTitle("贷款编号:");
-                    item.setContent(contentMap.get(key));
+                    OrderDetailListItem lendingNoItem = new OrderDetailListItem();
+                    lendingNoItem.setTitle("贷款编号:");
+                    lendingNoItem.setContent(contentMap.get(key));
+                    data.add(lendingNoItem);
                     break;
                 case "applyName":
-                    item.setTitle("申请人姓名:");
-                    item.setContent(contentMap.get(key));
+                    OrderDetailListItem applyNameItem = new OrderDetailListItem();
+                    applyNameItem.setTitle("申请人姓名:");
+                    applyNameItem.setContent(contentMap.get(key));
+                    data.add(applyNameItem);
                     break;
                 case "sex":
-                    item.setTitle("性别:");
-                    item.setContent(contentMap.get(key));
+                    OrderDetailListItem sexItem = new OrderDetailListItem();
+                    sexItem.setTitle("性别:");
+                    sexItem.setContent(contentMap.get(key));
+                    data.add(sexItem);
                     break;
                 case "phoneNumber":
-                    item.setTitle("手机号码:");
-                    item.setContent(contentMap.get(key));
+                    OrderDetailListItem phoneNumberItem = new OrderDetailListItem();
+                    phoneNumberItem.setTitle("手机号码:");
+                    phoneNumberItem.setContent(contentMap.get(key));
+                    data.add(phoneNumberItem);
                     break;
                 case "productName":
-                    item.setTitle("商品名称:");
-                    item.setContent(contentMap.get(key));
+                    OrderDetailListItem productNameItem = new OrderDetailListItem();
+                    productNameItem.setTitle("商品名称:");
+                    productNameItem.setContent(contentMap.get(key));
+                    data.add(productNameItem);
                     break;
                 case "applyDate":
-                    item.setTitle("申请日期:");
-                    item.setContent(contentMap.get(key));
+                    OrderDetailListItem applyDateItem = new OrderDetailListItem();
+                    applyDateItem.setTitle("申请日期:");
+                    applyDateItem.setContent(contentMap.get(key));
+                    data.add(applyDateItem);
                     break;
                 case "applyAmtShow":
-                    item.setTitle("申请金额:");
-                    item.setContent(contentMap.get(key));
+                    OrderDetailListItem applyAmtShowItem = new OrderDetailListItem();
+                    applyAmtShowItem.setTitle("申请金额:");
+                    applyAmtShowItem.setContent(contentMap.get(key));
+                    data.add(applyAmtShowItem);
                     break;
                 case "passedAmtShow":
-                    item.setTitle("审核通过金额:");
-                    item.setContent(contentMap.get(key));
+                    OrderDetailListItem passedAmtShowItem = new OrderDetailListItem();
+                    passedAmtShowItem.setTitle("审核通过金额:");
+                    passedAmtShowItem.setContent(contentMap.get(key));
+                    data.add(passedAmtShowItem);
                     break;
                 case "merchantFeeShow":
-                    item.setTitle("商户手续费:");
-                    item.setContent(contentMap.get(key));
+                    OrderDetailListItem merchantFeeShowItem = new OrderDetailListItem();
+                    merchantFeeShowItem.setTitle("商户手续费:");
+                    merchantFeeShowItem.setContent(contentMap.get(key));
+                    data.add(merchantFeeShowItem);
                     break;
                 case "periods":
-                    item.setTitle("期数:");
-                    item.setContent(contentMap.get(key));
+                    OrderDetailListItem periodsItem = new OrderDetailListItem();
+                    periodsItem.setTitle("期数:");
+                    periodsItem.setContent(contentMap.get(key));
+                    data.add(periodsItem);
                     break;
                 case "salesName":
-                    item.setTitle("销售人员:");
-                    item.setContent(contentMap.get(key));
+                    OrderDetailListItem salesNameItem = new OrderDetailListItem();
+                    salesNameItem.setTitle("销售人员:");
+                    salesNameItem.setContent(contentMap.get(key));
+                    data.add(salesNameItem);
                     break;
                 case "applyStatus":
-                    item.setTitle("订单状态:");
-                    item.setContent(contentMap.get(key));
+                    OrderDetailListItem applyStatusItem = new OrderDetailListItem();
+                    applyStatusItem.setTitle("订单状态:");
+                    applyStatusItem.setContent(contentMap.get(key));
+                    data.add(applyStatusItem);
                     break;
                     default:break;
             }
-
-            data.add(item);
         }
 
         return data;

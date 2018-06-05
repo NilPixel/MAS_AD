@@ -18,6 +18,7 @@
     <color name="newsTitleSelectedColor">#07cedf</color><!--订单管理列表搜索框背景色-->
     <color name="newsTitleUnselectedColor">#999999</color><!--订单管理列表搜索框背景色-->
     <color name="detailTextColor">#4d5560</color><!--订单管理列表搜索框背景色-->
+    <color name="orderDetailBackgroundColor">#f5f5f5</color><!--订单管理列表搜索框背景色-->
 
     <color name="white">#ffffff</color>
     <color name="line">#D2D2D2</color>
