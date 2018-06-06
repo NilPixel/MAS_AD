@@ -3,8 +3,10 @@ package com.example.zheng.steward.ui.activity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -13,14 +15,16 @@ import android.widget.TextView;
 
 import com.example.zheng.steward.R;
 import com.example.zheng.steward.db.model.OrderManagerListItem;
+import com.example.zheng.steward.ui.adapter.ListDropDownAdapter;
 import com.example.zheng.steward.ui.adapter.OrderManagerListAdapter;
 import com.example.zheng.steward.ui.base.BaseActivity;
 import com.example.zheng.steward.ui.presenter.OrderManagerPresenter;
 import com.example.zheng.steward.ui.view.IOrderManagerView;
-
+import com.yyydjk.library.DropDownMenu;
 
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import butterknife.Bind;
@@ -68,7 +72,18 @@ public class OrderManagerActivity extends BaseActivity<IOrderManagerView, OrderM
     @Bind(R.id.order_manager_refresher)
     BGARefreshLayout mRefreshLayout;
 
+    /**
+     * 条件筛选控件
+     */
+    @Bind(R.id.dropDownMenu)
+    DropDownMenu mDropDownMenu;
+
     private Integer currentPage = 1;
+    private String headers[] = {"订单状态", "销售筛选", "申请时间"};
+    private List<View> popupViews = new ArrayList<>();
+
+    private ListDropDownAdapter statusAdapter;
+    private ListDropDownAdapter sellerAdapter;
 
     /**
      * listView数据源
@@ -98,6 +113,15 @@ public class OrderManagerActivity extends BaseActivity<IOrderManagerView, OrderM
         titleTextView.setText("订单管理");
         titleTextView.setGravity(Gravity.CENTER);
         initRefreshLayout();
+
+        //init context view
+        TextView contentView = new TextView(this);
+        contentView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        contentView.setText("内容显示区域");
+        contentView.setGravity(Gravity.CENTER);
+        contentView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
+
+        mDropDownMenu.setDropDownMenu(Arrays.asList(headers), popupViews, contentView);
     }
 
     @Override
