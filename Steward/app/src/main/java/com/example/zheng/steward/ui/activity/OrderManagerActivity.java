@@ -1,8 +1,11 @@
 package com.example.zheng.steward.ui.activity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Color;
 import android.view.Gravity;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -33,7 +36,7 @@ import static android.view.View.VISIBLE;
  * 订单管理
  */
 
-public class OrderManagerActivity extends BaseActivity<IOrderManagerView, OrderManagerPresenter> implements IOrderManagerView, BGARefreshLayout.BGARefreshLayoutDelegate {
+public class OrderManagerActivity extends BaseActivity<IOrderManagerView, OrderManagerPresenter> implements IOrderManagerView, BGARefreshLayout.BGARefreshLayoutDelegate, AdapterView.OnItemClickListener {
 
     /**
      * 返回按钮
@@ -108,7 +111,7 @@ public class OrderManagerActivity extends BaseActivity<IOrderManagerView, OrderM
     public void initListener() {
         super.initListener();
         naviBackBtn.setOnClickListener(view -> backBtnClicked());
-
+        orderListView.setOnItemClickListener(this);
     }
 
     @SuppressLint("ResourceType")
@@ -190,5 +193,15 @@ public class OrderManagerActivity extends BaseActivity<IOrderManagerView, OrderM
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
 
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        OrderManagerListItem item = orderList.get(position);
+        Intent intent = new Intent(this, OrderDetailActivity.class);
+        intent.putExtra("lendingNo", item.getLendingNo());
+
+        startActivity(intent);
+        overridePendingTransition(R.anim.right_in, R.anim.left_out);
     }
 }
