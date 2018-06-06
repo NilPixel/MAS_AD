@@ -11,7 +11,7 @@ public interface IOrderDetailView {
 
     OrderDetailListAdapter getAdapter();
 
-    List<OrderDetailListItem> getDataArrayList();
+    List<String> getDataArrayList();
 
     ListView getOrderList();
 }

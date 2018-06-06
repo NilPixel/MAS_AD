@@ -17,7 +17,9 @@ import com.example.zheng.steward.ui.presenter.OrderDetailPresenter;
 import com.example.zheng.steward.ui.view.INewsDetailView;
 import com.example.zheng.steward.ui.view.IOrderDetailView;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import butterknife.Bind;
@@ -59,7 +61,7 @@ public class OrderDetailActivity extends BaseActivity<IOrderDetailView, OrderDet
     /**
      * listView数据源
      */
-    private List<OrderDetailListItem> orderDetailList = new ArrayList<OrderDetailListItem>();
+    private List<String> orderDetailList = new ArrayList<>(Arrays.asList("lendingNo","applyName","sex","phoneNumber","productName","applyDate","applyAmtShow","passedAmtShow","merchantFeeShow","periods","salesName","applyStatus"));
 
     @Override
     public void initView() {
@@ -114,7 +116,7 @@ public class OrderDetailActivity extends BaseActivity<IOrderDetailView, OrderDet
     }
 
     @Override
-    public List<OrderDetailListItem> getDataArrayList() {
+    public List<String> getDataArrayList() {
         return orderDetailList;
     }
 
