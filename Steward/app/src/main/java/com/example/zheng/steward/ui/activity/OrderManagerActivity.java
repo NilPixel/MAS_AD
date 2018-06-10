@@ -80,10 +80,19 @@ public class OrderManagerActivity extends BaseActivity<IOrderManagerView, OrderM
 
     private Integer currentPage = 1;
     private String headers[] = {"订单状态", "销售筛选", "申请时间"};
+
+    private String status[] = {"全部", "审批中", "待用户确认", "等待放款", "放款处理中", "放款成功", "待补件", "退件", "取消件"};// 订单状态选择菜单
+    private String sellers[] = {"不限", "18岁以下", "18-22岁", "23-26岁", "27-35岁", "35岁以上"};
+
     private List<View> popupViews = new ArrayList<>();
+
+    private ListView statusView; // 订单状态筛选view
+    private ListView sellerView; // 销售筛选view
 
     private ListDropDownAdapter statusAdapter;
     private ListDropDownAdapter sellerAdapter;
+
+    private int constellationPosition = 0;//  选中群体样式列表的序列号
 
     /**
      * listView数据源
@@ -114,14 +123,20 @@ public class OrderManagerActivity extends BaseActivity<IOrderManagerView, OrderM
         titleTextView.setGravity(Gravity.CENTER);
         initRefreshLayout();
 
-        //init context view
-        TextView contentView = new TextView(this);
-        contentView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-        contentView.setText("内容显示区域");
-        contentView.setGravity(Gravity.CENTER);
-        contentView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
+    }
 
-        mDropDownMenu.setDropDownMenu(Arrays.asList(headers), popupViews, contentView);
+    private void initDropDownMenu() {
+        //init city menu
+        statusView = new ListView(this);
+        statusAdapter = new ListDropDownAdapter(this, Arrays.asList(status));
+        statusView.setDividerHeight(0);//设置ListView条目间隔的距离
+        statusView.setAdapter(statusAdapter);
+
+        //init age menu
+        sellerView = new ListView(this);
+        sellerView.setDividerHeight(0);
+        sellerAdapter = new ListDropDownAdapter(this, Arrays.asList(sellers));
+        sellerView.setAdapter(sellerAdapter);
     }
 
     @Override
