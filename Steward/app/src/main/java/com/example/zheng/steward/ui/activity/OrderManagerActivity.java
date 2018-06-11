@@ -2,11 +2,8 @@ package com.example.zheng.steward.ui.activity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.graphics.Color;
-import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -15,12 +12,10 @@ import android.widget.TextView;
 
 import com.example.zheng.steward.R;
 import com.example.zheng.steward.db.model.OrderManagerListItem;
-import com.example.zheng.steward.ui.adapter.ListDropDownAdapter;
 import com.example.zheng.steward.ui.adapter.OrderManagerListAdapter;
 import com.example.zheng.steward.ui.base.BaseActivity;
 import com.example.zheng.steward.ui.presenter.OrderManagerPresenter;
 import com.example.zheng.steward.ui.view.IOrderManagerView;
-import com.yyydjk.library.DropDownMenu;
 
 
 import java.util.ArrayList;
@@ -33,7 +28,6 @@ import cn.bingoogolapple.refreshlayout.BGARefreshLayout;
 import cn.bingoogolapple.refreshlayout.BGARefreshViewHolder;
 
 import static android.view.View.GONE;
-import static android.view.View.INVISIBLE;
 import static android.view.View.VISIBLE;
 
 /**
@@ -72,11 +66,11 @@ public class OrderManagerActivity extends BaseActivity<IOrderManagerView, OrderM
     @Bind(R.id.order_manager_refresher)
     BGARefreshLayout mRefreshLayout;
 
-    /**
-     * 条件筛选控件
-     */
-    @Bind(R.id.dropDownMenu)
-    DropDownMenu mDropDownMenu;
+//    /**
+//     * 条件筛选控件
+//     */
+//    @Bind(R.id.dropDownMenu)
+//    DropDownMenu mDropDownMenu;
 
     private Integer currentPage = 1;
     private String headers[] = {"订单状态", "销售筛选", "申请时间"};
@@ -89,8 +83,6 @@ public class OrderManagerActivity extends BaseActivity<IOrderManagerView, OrderM
     private ListView statusView; // 订单状态筛选view
     private ListView sellerView; // 销售筛选view
 
-    private ListDropDownAdapter statusAdapter;
-    private ListDropDownAdapter sellerAdapter;
 
     private int constellationPosition = 0;//  选中群体样式列表的序列号
 
@@ -127,16 +119,16 @@ public class OrderManagerActivity extends BaseActivity<IOrderManagerView, OrderM
 
     private void initDropDownMenu() {
         //init city menu
-        statusView = new ListView(this);
-        statusAdapter = new ListDropDownAdapter(this, Arrays.asList(status));
-        statusView.setDividerHeight(0);//设置ListView条目间隔的距离
-        statusView.setAdapter(statusAdapter);
-
-        //init age menu
-        sellerView = new ListView(this);
-        sellerView.setDividerHeight(0);
-        sellerAdapter = new ListDropDownAdapter(this, Arrays.asList(sellers));
-        sellerView.setAdapter(sellerAdapter);
+//        statusView = new ListView(this);
+//        statusAdapter = new ListDropDownAdapter(this, Arrays.asList(status));
+//        statusView.setDividerHeight(0);//设置ListView条目间隔的距离
+//        statusView.setAdapter(statusAdapter);
+//
+//        //init age menu
+//        sellerView = new ListView(this);
+//        sellerView.setDividerHeight(0);
+//        sellerAdapter = new ListDropDownAdapter(this, Arrays.asList(sellers));
+//        sellerView.setAdapter(sellerAdapter);
     }
 
     @Override
