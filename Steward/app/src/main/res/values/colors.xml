@@ -23,6 +23,7 @@
     <color name="white">#ffffff</color>
     <color name="line">#D2D2D2</color>
     <color name="background">#EAEAEA</color>
+    <color name="comment_divider">#cccccc</color>
 
     <color name="main">#26AAFD</color>
     <color name="main_bg0">#f0f0f0</color>

@@ -10,16 +10,18 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.baiiu.filter.DropDownMenu;
+import com.baiiu.filter.interfaces.OnFilterDoneListener;
 import com.example.zheng.steward.R;
 import com.example.zheng.steward.db.model.OrderManagerListItem;
+import com.example.zheng.steward.model.dropMenuEntity.FilterUrl;
+import com.example.zheng.steward.ui.adapter.DropMenuAdapter;
 import com.example.zheng.steward.ui.adapter.OrderManagerListAdapter;
 import com.example.zheng.steward.ui.base.BaseActivity;
 import com.example.zheng.steward.ui.presenter.OrderManagerPresenter;
 import com.example.zheng.steward.ui.view.IOrderManagerView;
 
-
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import butterknife.Bind;
@@ -34,7 +36,7 @@ import static android.view.View.VISIBLE;
  * 订单管理
  */
 
-public class OrderManagerActivity extends BaseActivity<IOrderManagerView, OrderManagerPresenter> implements IOrderManagerView, BGARefreshLayout.BGARefreshLayoutDelegate, AdapterView.OnItemClickListener {
+public class OrderManagerActivity extends BaseActivity<IOrderManagerView, OrderManagerPresenter> implements IOrderManagerView, BGARefreshLayout.BGARefreshLayoutDelegate, AdapterView.OnItemClickListener, OnFilterDoneListener {
 
     /**
      * 返回按钮
@@ -66,14 +68,20 @@ public class OrderManagerActivity extends BaseActivity<IOrderManagerView, OrderM
     @Bind(R.id.order_manager_refresher)
     BGARefreshLayout mRefreshLayout;
 
-//    /**
-//     * 条件筛选控件
-//     */
-//    @Bind(R.id.dropDownMenu)
-//    DropDownMenu mDropDownMenu;
+    /**
+     * 条件筛选控件
+     */
+    @Bind(R.id.dropDownMenu)
+    DropDownMenu mDropDownMenu;
+
+    /**
+     * 条件筛选控件
+     */
+    @Bind(R.id.mFilterContentView)
+    TextView mFilterContentView;
 
     private Integer currentPage = 1;
-    private String headers[] = {"订单状态", "销售筛选", "申请时间"};
+    private String[] headers = new String[] {"订单状态", "销售筛选", "申请时间"};
 
     private String status[] = {"全部", "审批中", "待用户确认", "等待放款", "放款处理中", "放款成功", "待补件", "退件", "取消件"};// 订单状态选择菜单
     private String sellers[] = {"不限", "18岁以下", "18-22岁", "23-26岁", "27-35岁", "35岁以上"};
@@ -114,21 +122,11 @@ public class OrderManagerActivity extends BaseActivity<IOrderManagerView, OrderM
         titleTextView.setText("订单管理");
         titleTextView.setGravity(Gravity.CENTER);
         initRefreshLayout();
-
+        initDropDownMenu();
     }
 
     private void initDropDownMenu() {
-        //init city menu
-//        statusView = new ListView(this);
-//        statusAdapter = new ListDropDownAdapter(this, Arrays.asList(status));
-//        statusView.setDividerHeight(0);//设置ListView条目间隔的距离
-//        statusView.setAdapter(statusAdapter);
-//
-//        //init age menu
-//        sellerView = new ListView(this);
-//        sellerView.setDividerHeight(0);
-//        sellerAdapter = new ListDropDownAdapter(this, Arrays.asList(sellers));
-//        sellerView.setAdapter(sellerAdapter);
+       mDropDownMenu.setMenuAdapter(new DropMenuAdapter(this, headers, this));
     }
 
     @Override
@@ -234,5 +232,13 @@ public class OrderManagerActivity extends BaseActivity<IOrderManagerView, OrderM
 
         startActivity(intent);
         overridePendingTransition(R.anim.right_in, R.anim.left_out);
+    }
+
+    @Override
+    public void onFilterDone(int position, String positionTitle, String urlValue) {
+        mDropDownMenu.setPositionIndicatorText(FilterUrl.instance().position, FilterUrl.instance().positionTitle);
+        mDropDownMenu.close();
+        mFilterContentView.setText(FilterUrl.instance()
+                .toString());
     }
 }
