@@ -36,7 +36,7 @@ import static android.view.View.VISIBLE;
  * 订单管理
  */
 
-public class OrderManagerActivity extends BaseActivity<IOrderManagerView, OrderManagerPresenter> implements IOrderManagerView, BGARefreshLayout.BGARefreshLayoutDelegate, AdapterView.OnItemClickListener, OnFilterDoneListener {
+public class OrderManagerActivity extends BaseActivity<IOrderManagerView, OrderManagerPresenter> implements IOrderManagerView, BGARefreshLayout.BGARefreshLayoutDelegate, AdapterView.OnItemClickListener, OnFilterDoneListener, View.OnClickListener {
 
     /**
      * 返回按钮
@@ -74,11 +74,11 @@ public class OrderManagerActivity extends BaseActivity<IOrderManagerView, OrderM
     @Bind(R.id.dropDownMenu)
     DropDownMenu mDropDownMenu;
 
-    /**
-     * 条件筛选控件
-     */
-    @Bind(R.id.mFilterContentView)
-    TextView mFilterContentView;
+//    /**
+//     * 条件筛选控件
+//     */
+//    @Bind(R.id.mFilterContentView)
+//    TextView mFilterContentView;
 
     private Integer currentPage = 1;
     private String[] headers = new String[] {"订单状态", "销售筛选", "申请时间"};
@@ -141,6 +141,7 @@ public class OrderManagerActivity extends BaseActivity<IOrderManagerView, OrderM
         super.initListener();
         naviBackBtn.setOnClickListener(view -> backBtnClicked());
         orderListView.setOnItemClickListener(this);
+//        mFilterContentView.setOnClickListener(this);
     }
 
     @SuppressLint("ResourceType")
@@ -238,7 +239,19 @@ public class OrderManagerActivity extends BaseActivity<IOrderManagerView, OrderM
     public void onFilterDone(int position, String positionTitle, String urlValue) {
         mDropDownMenu.setPositionIndicatorText(FilterUrl.instance().position, FilterUrl.instance().positionTitle);
         mDropDownMenu.close();
-        mFilterContentView.setText(FilterUrl.instance()
-                .toString());
+//        mFilterContentView.setText(FilterUrl.instance()
+//                .toString());
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        FilterUrl.instance()
+                .clear();
+    }
+
+    @Override
+    public void onClick(View v) {
+//        startActivity(new Intent(this, FilterActivity.class));
     }
 }

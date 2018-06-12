@@ -132,4 +132,5 @@ public class DoubleGridView extends ScrollView implements View.OnClickListener {
     public void setOnFilterDoneListener(OnFilterDoneListener listener) {
         onFilterDoneListener = listener;
     }
+
 }

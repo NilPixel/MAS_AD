@@ -72,6 +72,7 @@ public class DropMenuAdapter implements MenuAdapter {
                 break;
             case 2:
                 view = createSingleGridView();
+                view.setVisibility(View.GONE);
                 break;
             case 3:
                 // view = createDoubleGrid();

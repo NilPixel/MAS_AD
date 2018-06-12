@@ -26,7 +26,7 @@
         <TextView
             android:id="@id/mFilterContentView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="350dp"
             android:gravity="center_vertical"
             android:textSize="22sp" />
 
